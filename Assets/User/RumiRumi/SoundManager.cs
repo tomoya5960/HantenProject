@@ -7,13 +7,13 @@ public class SoundManager : MonoBehaviour
     public enum BgmType    //BGMの種類
     {
         //以後追加
-        Test,
+        BgmTest,
         Silent = 999,   //無音
     }
     public enum SeType    //SEの種類
     {
         //以後追加
-        Test,
+        SeTest,
     }
 
 #region ボリューム調整
@@ -65,7 +65,7 @@ public class SoundManager : MonoBehaviour
 
 #region BGM関連
 
-    public void PlayBgm(BgmType bgmType,bool loopFlg = true)
+    public void PlayBGM(BgmType bgmType,bool loopFlg = true)
     {
         if((int)bgmType == 999) //無音にするときのやつ
         {

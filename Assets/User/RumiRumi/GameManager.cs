@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;  //ゲームマネージャは一つしかないよっていうやつ
 
-    private SoundManager soundManager;  //SoundManagerを格納するやつだ！！！
+    [HideInInspector]
+    public SoundManager soundManager;  //SoundManagerを格納するやつだ！！！
     private void Awake()    //スタートの前に呼び出すよ
     {
         if(instance == null)    //もしゲームマネージャーがなかった場合に呼ぶよ
