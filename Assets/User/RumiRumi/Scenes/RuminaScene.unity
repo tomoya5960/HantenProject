@@ -363,10 +363,16 @@ MonoBehaviour:
   BgmClips:
   - name: 0
     volume: 0.5
-    bgmData: {fileID: 8300000, guid: e4f6659b28e28894a9e57944a45d7839, type: 3}
+    bgmData: {fileID: 0}
   - name: 1
     volume: 0.5
-    bgmData: {fileID: 8300000, guid: 812de1f8c520c8e4c860a02e80d03663, type: 3}
+    bgmData: {fileID: 0}
+  - name: 2
+    volume: 0.5
+    bgmData: {fileID: 0}
+  - name: 3
+    volume: 0.5
+    bgmData: {fileID: 0}
 --- !u!1 &1868008743
 GameObject:
   m_ObjectHideFlags: 0

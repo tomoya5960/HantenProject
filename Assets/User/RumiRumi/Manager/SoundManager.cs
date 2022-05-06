@@ -1,5 +1,6 @@
 using UnityEngine;
-
+[RequireComponent(typeof(SE))]
+[RequireComponent(typeof(BGM))]
 public class SoundManager : MonoBehaviour
 {
     [HideInInspector]

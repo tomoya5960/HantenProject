@@ -12,7 +12,7 @@ public class ototest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
             GameManager.instance.soundManager.bgm.PlayBGM(0);    //BGM
         if (Input.GetKeyDown(KeyCode.W))
-            GameManager.instance.soundManager.se.PlaySE(SE.SeName.Se002);   //SE
+            GameManager.instance.soundManager.se.PlaySE(SE.SeName.se_02);   //SE
 
         //í‚é~
         if (Input.GetKeyDown(KeyCode.E))

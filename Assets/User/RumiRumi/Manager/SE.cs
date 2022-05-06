@@ -7,9 +7,20 @@ public class SE : MonoBehaviour
     public enum SeName    //BGM‚ÌŽí—Þ
     {
         //ˆÈŒã’Ç‰Á
-        Se001,
-        Se002,
-        Se003,
+        se_01,
+        se_02,
+        se_03,      
+        se_04,
+        se_05,
+        se_06,
+        se_07,
+        se_08,
+        se_09,
+        se_10,
+        se_11,
+        se_12,
+        se_13,
+        se_14,
     }
 
     private AudioSource seSource;

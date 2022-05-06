@@ -7,15 +7,17 @@ public class BGM : MonoBehaviour
     public enum BgmName    //BGM‚Ìí—Ş
     {
         //ˆÈŒã’Ç‰Á
-        Bgm001,
-        Bgm002,
-        Bgm003,
+        bgm_01,
+        bgm_02,
+        bgm_03,
+        bgm_04,
         Silent = 999,
     }
 
     private AudioSource bgmSource;
     public List<BgmStatus> BgmClips;
     private int[] bgmNumber;   //BgmName‚Ì€–Ú”‚Ìæ“¾
+
     [System.Serializable]
     public struct BgmStatus  //ƒŠƒXƒgî•ñ
     {

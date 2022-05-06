@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(SoundManager))]
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;  //ゲームマネージャは一つしかないよっていうやつ
