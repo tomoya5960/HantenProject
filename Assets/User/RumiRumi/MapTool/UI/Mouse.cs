@@ -3,10 +3,11 @@ using UnityEngine.UI;
 
 public class Mouse : MonoBehaviour
 {
-    public GameObject clickedGameObject;
+    private GameObject clickedGameObject,ChildObject;   //選択肢たタイルとその子の選択中に表示されるオブジェクト
     private Image image;
     private TileData getTileData;   //セットするタイルのデータ
     private TileData setTileData;   //入れ替えるタイルのデータ（格納用）
+    private bool isChangeTile =false;  //右側のタイルを変更中にほかのものを選択できないようにするやつ
     private void Update()
     {
         if (Input.GetMouseButton(0))     //クリックした場所に選択するタイルがあるか
@@ -17,24 +18,48 @@ public class Mouse : MonoBehaviour
             {
                 if (hit2d.transform.gameObject.tag == "TileData" && clickedGameObject != hit2d.transform.gameObject)
                 {
-                    clickedGameObject = hit2d.transform.gameObject;
-                    getTileData = clickedGameObject.GetComponent<TileData>();
+                    if (ChildObject != null)
+                    {
+                        ChildObject.SetActive(false);   //ほかの選択状態の子オブジェクトがある場合はfalseにする
+                        ChildObject = null;
+                    }
+                    if (!isChangeTile)
+                    {
+                        clickedGameObject = hit2d.transform.gameObject; //タイルを格納
+                        ChildObject = clickedGameObject.transform.GetChild(0).gameObject;   //子オブジェクト（選択しているタイルを強調表示するためのオブジェクト）を格納
+                        ChildObject.SetActive(true);    //強調表示する
+                        getTileData = clickedGameObject.GetComponent<TileData>();   //タイルデータを読み込み
+                    }
                 }
                 
                 if(hit2d.transform.gameObject.tag == "MapTile" && clickedGameObject != null && image != hit2d.transform.gameObject.GetComponent<Image>())
                 {
-                    image = clickedGameObject.GetComponent<Image>();
-                    SetData(hit2d.transform.gameObject);  //置き換え
+                    if (!isChangeTile)
+                        isChangeTile = true;    //タイルを選択し、塗り始めている場合は他のタイルを選択できなくする
+                    else
+                    {
+                        image = clickedGameObject.GetComponent<Image>();
+                        SetData(hit2d.transform.gameObject);  //置き換え
+                    }
                 }
                 else if (hit2d.transform.gameObject.tag == "MapTile" && clickedGameObject != null && image == hit2d.transform.gameObject.GetComponent<Image>())
                 {
-                    SetData(hit2d.transform.gameObject);  //置き換え
+                    if (!isChangeTile)
+                        isChangeTile = true;
+                    else
+                        SetData(hit2d.transform.gameObject);  //置き換え
                 }
             }
         }
+        if(Input.GetMouseButtonUp(0))
+        {
+            if (isChangeTile)
+                isChangeTile = false;   //他のタイルを選択できなくする状態を解除
+        }
         if (Input.GetMouseButtonDown(1))
         {
-            clickedGameObject = null;   //選択を解除
+            //選択をすべて解除
+            clickedGameObject = null;   
             RisetData();
         }
     }
@@ -53,6 +78,8 @@ public class Mouse : MonoBehaviour
     /// <summary> データのリセット </summary>
     private void RisetData()
     {
+        ChildObject.SetActive(false);
+        ChildObject = null;
         getTileData = null;
         setTileData = null;
     }

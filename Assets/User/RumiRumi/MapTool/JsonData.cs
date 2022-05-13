@@ -14,10 +14,10 @@ public class JsonData : MonoBehaviour
     public List<GameObject> _panels = new List<GameObject>();    //ここにタイルを保存
     private int[] _num;
     MapData _mapData;
-    [SerializeField]
+    [HideInInspector]
     public string _fileName = "";   //保存するファイルの名前
     private string _filePath = "";      //データの保存先
-    [SerializeField]
+    [HideInInspector]
     public bool overWriteSave = true;  //上書き保存しないかするか選択してね
     private void Start()
     {
@@ -27,8 +27,6 @@ public class JsonData : MonoBehaviour
         //  ボタンを押したときのイベントを登録する
         _dataSave.onClick.AddListener(OnClickSave);
         _dataLoad.onClick.AddListener(OnClickLoad);
-       
-      
     }
 
     /// <summary> DataSave ボタンが押されたら呼び出される</summary>
@@ -50,8 +48,7 @@ public class JsonData : MonoBehaviour
                 {
                     Debug.Log("同じ名前のデータが存在しており、上書き保存しないを選択したため終了");
                     return;
-                }
-                
+                } 
             }
         }
 
@@ -69,9 +66,10 @@ public class JsonData : MonoBehaviour
     /// <summary> DataLoad ボタンが押されたら呼び出される</summary>
     private void OnClickLoad()
     {
+        _filePath = Path.Combine(Application.dataPath, "MapData/" + _fileName + ".json");   //入力したデータがあるか検索
         if (!File.Exists(_filePath))
         {
-            Debug.Log($"<color=yellow>{_filePath} にJSONないよ</color>");
+            Debug.Log($"<color=yellow>{_filePath} にJSONがないよ</color>");
             return;
         }
         var json = File.ReadAllText(_filePath); // 指定したファイルにある情報を取り出す
