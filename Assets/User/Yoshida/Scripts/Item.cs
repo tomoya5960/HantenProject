@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
 
+    public bool ItemGet = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,8 @@ public class Item : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Debug.Log("êGÇ¡ÇΩÇÊ");
-            Destroy(gameObject);           
+            Destroy(gameObject);
+            ItemGet = true;
         }
     }
 

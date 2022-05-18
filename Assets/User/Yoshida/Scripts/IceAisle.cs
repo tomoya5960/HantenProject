@@ -5,7 +5,7 @@ using UnityEngine;
 public class IceAisle : MonoBehaviour
 {
 
-    [SerializeField] Player _player;
+
 
 
     // Start is called before the first frame update
