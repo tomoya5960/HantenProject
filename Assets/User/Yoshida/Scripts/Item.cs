@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
 
-    public bool ItemGet = false;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,6 @@ public class Item : MonoBehaviour
         {
             Debug.Log("êGÇ¡ÇΩÇÊ");
             Destroy(gameObject);
-            ItemGet = true;
         }
     }
 

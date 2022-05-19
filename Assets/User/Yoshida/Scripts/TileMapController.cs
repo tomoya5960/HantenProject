@@ -35,6 +35,7 @@ public class TileMapController : MonoBehaviour
             DownWallStop(playerCellPos - Vector3Int.down);
             RightWallStop(playerCellPos - Vector3Int.right);
             LeftWallStop(playerCellPos - Vector3Int.left);
+
             beforePlayerCellPos = playerCellPos;
         }
     }
