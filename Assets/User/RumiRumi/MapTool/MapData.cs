@@ -13,19 +13,19 @@ public class MapData
         public int turnCount;       //反転した回数
         public bool isTurnOver;     //反転可能の有無
         public bool isRope;         //そのタイルにロープが落ちているか
-        public MapChip(Vector2 _mapArray,int Id)   //初期化
+        public MapChip(Vector2 _mapArray,int Id,bool Rope, bool Turn)   //初期化
         {
-            mapImageID = Id;
             mapArray = _mapArray;
-            turnCount = 0;
-            isTurnOver = false;
+            mapImageID = Id;
+            isRope = Rope;
+            isTurnOver = Turn;
         }
     }
 
     public List<MapChip> Map = new List<MapChip>();
 
     /// <summary>コンストラクタ</summary>
-    public MapData(Vector2 _mapPos,int[] Id)
+    public MapData(Vector2 _mapPos,int[] Id,bool[] Rope,bool[] Turn)
     {
         Vector2 _mapPosCount;
         int count = 0;
@@ -36,7 +36,7 @@ public class MapData
             {
                 if (count == 56)
                     break;
-                Map.Add(new MapData.MapChip(_mapPosCount,Id[count]));
+                Map.Add(new MapChip(_mapPosCount,Id[count],Rope[count],Turn[count]));
                 count++;
             }
         }

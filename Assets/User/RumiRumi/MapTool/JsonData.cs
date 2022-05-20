@@ -13,6 +13,8 @@ public class JsonData : MonoBehaviour
     private Button _dataLoad = null;    //データをロード
     public List<GameObject> _panels = new List<GameObject>();    //ここにタイルを保存
     private int[] _num;
+    private bool[] _rope;
+    private bool[] _turn;
     MapData _mapData;
     [HideInInspector]
     public string _fileName = "";   //保存するファイルの名前
@@ -23,7 +25,10 @@ public class JsonData : MonoBehaviour
     {
         Debug.Assert(null != _dataSave, "_dataOutPut ボタンが設定されていません");
         Debug.Assert(null != _dataLoad, "_LoadData ボタンが設定されていません");
-        _num = new int[56];
+        var listNum = 56;
+        _num = new int[listNum];
+        _rope = new bool[listNum];
+        _turn = new bool[listNum];
         //  ボタンを押したときのイベントを登録する
         _dataSave.onClick.AddListener(OnClickSave);
         _dataLoad.onClick.AddListener(OnClickLoad);
@@ -54,10 +59,12 @@ public class JsonData : MonoBehaviour
 
         foreach (int num in Enumerable.Range(0, _panels.Count))
         {
-            _num[num] = _panels[num].gameObject.GetComponent<TileData>().ImageID;
+            _num[num] = _panels[num].gameObject.GetComponent<TileData>()._imageID;
+            _rope[num] = _panels[num].gameObject.GetComponent<TileData>()._isRope;
+            _turn[num] = _panels[num].gameObject.GetComponent<TileData>()._isTurnOver;
         }
        
-        _mapData = new MapData(mapMaxArray, _num);
+        _mapData = new MapData(mapMaxArray, _num,_rope,_turn);
          var json = JsonUtility.ToJson(_mapData, false); //必要な情報を与える
         File.WriteAllText(_filePath, json); //指定したファイルに情報を保存
         Debug.Log(_fileName + "はしっかり保存したよ");
@@ -91,7 +98,7 @@ public class JsonData : MonoBehaviour
             //タイルの枚数以上の読み込みがあった場合は終了
             if (count >= maxCount)  
                 break;
-            SetTileData(_panels[map.index].GetComponent<TileData>(), _mapPosCount,_mapData.Map[map.index].turnCount);
+            SetTileData(_panels[map.index].GetComponent<TileData>(), _mapPosCount, _mapData.Map[map.index].isRope);
             if (_mapPosCount.x <= _mapPos.x)
             {
                 map.mapChip.mapArray.x = _mapPosCount.x;
@@ -102,25 +109,30 @@ public class JsonData : MonoBehaviour
                 _mapPosCount.x = 0;
                 _mapPosCount.y++;
             }
-            _panels[count].GetComponent<TileData>().ImageID = map.mapChip.mapImageID;
+            _panels[count].GetComponent<TileData>()._imageID = map.mapChip.mapImageID;
+            _panels[count].GetComponent<TileData>()._isRope = map.mapChip.isRope;
+            _panels[count].GetComponent<TileData>()._isTurnOver = map.mapChip.isTurnOver;
             count++;
         }
     }
 
     /// <summary>生成されたタイルに情報を記入</summary>
-    private void SetTileData(TileData tileData, Vector2 pos, int turnCount)
+    private void SetTileData(TileData tileData, Vector2 pos, bool isRope)
     {
         //各値を代入
         tileData._arrayPos = pos;
-        tileData._turnCount = turnCount;
-        if(turnCount == 0 && !tileData._isTurnOver)
+        if (tileData._isRope != isRope)
         {
-            tileData._isTurnOver = true;
+            tileData._isRope = isRope; 
         }
-        else if(turnCount != 0 &&tileData._isTurnOver)
-        {
-            tileData._isTurnOver = false;
-        }
+        //if( !tileData._isTurnOver)
+        //{
+        //    tileData._isTurnOver = true;
+        //}
+        //else if(tileData._isTurnOver)
+        //{
+        //    tileData._isTurnOver = false;
+        //}
     }
 
     /// <summary>スクリプトが破棄されたときに登録したイベントを削除する</summary>

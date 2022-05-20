@@ -93,8 +93,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771881946393382
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -214,8 +214,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882201743524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -335,8 +335,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882203397941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -456,8 +456,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882232724096
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -577,8 +577,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882242859797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -698,8 +698,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882302355111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -819,8 +819,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882305525391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -940,8 +940,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882306518157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1061,8 +1061,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882315920983
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1182,8 +1182,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882342876586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1303,8 +1303,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882343566707
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1424,8 +1424,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882428049365
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1545,8 +1545,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882491856998
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1666,8 +1666,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882492460142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1787,8 +1787,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882616968072
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1908,8 +1908,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882619556933
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2029,8 +2029,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882702784243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2150,8 +2150,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882704744269
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2271,8 +2271,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882758904197
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2392,8 +2392,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882776412518
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2513,8 +2513,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882787013834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2634,8 +2634,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882803317921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2755,8 +2755,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882841168893
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2876,8 +2876,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882843817023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2997,8 +2997,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882862178398
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3118,8 +3118,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882882800393
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3239,8 +3239,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882887804049
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3360,8 +3360,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882895340580
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3481,8 +3481,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771882970669762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3602,8 +3602,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883005108275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3723,8 +3723,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883016489637
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3844,8 +3844,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883019263614
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3965,8 +3965,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883041782644
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4086,8 +4086,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883046824361
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4207,8 +4207,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883048171847
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4328,8 +4328,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883070872080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4449,8 +4449,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883176184126
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4570,8 +4570,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883196221399
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4691,8 +4691,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883359933258
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4812,8 +4812,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883390429422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4933,8 +4933,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883483370003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5054,8 +5054,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883484768632
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5175,8 +5175,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883487567368
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5296,8 +5296,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883508170104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5417,8 +5417,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 1
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883536970194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5538,8 +5538,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883581739856
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5659,8 +5659,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883661847717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5780,8 +5780,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883777045496
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5901,8 +5901,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883782266766
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6022,8 +6022,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883847350285
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6143,8 +6143,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883859378443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6264,8 +6264,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771883865089834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6502,8 +6502,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771884015938630
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6623,8 +6623,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771884061730719
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6744,8 +6744,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771884062847757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6865,8 +6865,8 @@ MonoBehaviour:
   _arrayPos: {x: 0, y: 0}
   _turnCount: 0
   _isTurnOver: 0
-  _isRope: 0
-  _imageID: 0
+  isRope: 0
+  imageID: 0
 --- !u!61 &4234771884063443845
 BoxCollider2D:
   m_ObjectHideFlags: 0

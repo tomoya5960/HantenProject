@@ -40,7 +40,7 @@ public class LoadOnlyJson : MonoBehaviour
             //タイルの枚数以上の読み込みがあった場合は終了
             if (count >= maxCount)
                 break;
-            SetTileData(_panels[map.index].GetComponent<TileData>(), _mapPosCount, _mapData.Map[map.index].turnCount);
+            SetTileData(_panels[map.index].GetComponent<TileData>(), _mapPosCount, _mapData.Map[map.index].isRope);
             if (_mapPosCount.x <= _mapPos.x)
             {
                 map.mapChip.mapArray.x = _mapPosCount.x;
@@ -51,21 +51,26 @@ public class LoadOnlyJson : MonoBehaviour
                 _mapPosCount.x = 0;
                 _mapPosCount.y++;
             }
-            _panels[count].GetComponent<TileData>().ImageID = map.mapChip.mapImageID;
+            _panels[count].GetComponent<TileData>()._imageID = map.mapChip.mapImageID;
+            _panels[count].GetComponent<TileData>()._isRope = map.mapChip.isRope;
+            _panels[count].GetComponent<TileData>()._isTurnOver = map.mapChip.isTurnOver;
             count++;
         }
     }
     /// <summary>生成されたタイルに情報を記入</summary>
-    private void SetTileData(TileData tileData, Vector2 pos, int turnCount)
+    private void SetTileData(TileData tileData, Vector2 pos, bool isRope)
     {
         //各値を代入
         tileData._arrayPos = pos;
-        tileData._turnCount = turnCount;
-        if (turnCount == 0 && !tileData._isTurnOver)
+        if (tileData._isRope != isRope)
+        {
+            tileData._isRope = isRope;
+        }
+        if (!tileData._isTurnOver)
         {
             tileData._isTurnOver = true;
         }
-        else if (turnCount != 0 && tileData._isTurnOver)
+        else if (tileData._isTurnOver)
         {
             tileData._isTurnOver = false;
         }

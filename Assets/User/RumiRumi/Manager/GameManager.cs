@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
         if(instance == null)    //もしゲームマネージャーがなかった場合に呼ぶよ
         {
             instance = this;    //こいつが世界に一つのマネージャーになるよ
-            DontDestroyOnLoad(this.gameObject); //俺のオブジェクトは消せねえ！ってするやつ
+            DontDestroyOnLoad(this.gameObject); //このオブジェクトは消せねえ！ってするやつ
         }
 
         soundManager = GetComponent<SoundManager>(); //SoundManagerを管理するぜ！！

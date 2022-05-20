@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692f8f0da02a8c84688651bdb607da72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadFileName: Stage1Test
+  loadFileName: TestMap
   _panels:
   - {fileID: 1720040625}
   - {fileID: 255999289}
