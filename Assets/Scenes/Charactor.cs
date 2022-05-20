@@ -5,16 +5,17 @@ using UnityEngine;
 public class Charactor : MonoBehaviour
 {
     public float speed = 1.0f;
+    public float speedwheel = 15f;
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow) || (Input.GetKey(KeyCode.W)))
+        if (Input.mouseScrollDelta.y>0 )
         {
-            transform.position += transform.up * speed * Time.deltaTime;
+            transform.position += transform.up * speedwheel * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.DownArrow) || (Input.GetKey(KeyCode.S)))
+        if (Input.mouseScrollDelta.y < 0)
         {
-            transform.position -= transform.up * speed * Time.deltaTime;
+            transform.position -= transform.up * speedwheel * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.RightArrow) || (Input.GetKey(KeyCode.D)))
         {
