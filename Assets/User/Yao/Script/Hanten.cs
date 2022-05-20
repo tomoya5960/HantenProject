@@ -15,7 +15,12 @@ public class Hanten : MonoBehaviour
 
     void Update()
     {
-        angle.eulerAngles = new Vector3(0, 180f, 0);
-        transform.rotation = angle;
+        // マウスの左ボタンドラッグして離したら反転
+        if (Input.GetMouseButtonDown(0))
+        {
+            angle.eulerAngles = new Vector3(0, 180f, 0);
+            transform.rotation = angle;
+        }
+       
     }
 }
