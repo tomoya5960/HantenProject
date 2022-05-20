@@ -7,8 +7,8 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
 
+	private Rigidbody2D rb = null;
 	public bool ItemGet = false;
-	[SerializeField] TileMapController TileMap;
 
 	Vector3 MOVEX = new Vector3(0.96f, 0, 0); // x軸方向に１マス移動するときの距離
 	Vector3 MOVEY = new Vector3(0, 0.96f, 0); // y軸方向に１マス移動するときの距離
@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
+		Rigidbody2DSetup();
+		//MoveForward1Space();
 		// ① 移動中かどうかの判定。移動中でなければ入力を受付
 		if (transform.position == target)
 		{
@@ -38,7 +39,14 @@ public class PlayerController : MonoBehaviour
 		}
 		Move();
 
-		TileMapController.instance.CheckCloseDoor(transform.position);
+		//TileMapController.instance.CheckCloseDoor(transform.position);
+	}
+	void Rigidbody2DSetup() //①Rigidbody2Dの初期化を行うメソッド
+	{
+		rb = this.GetComponent<Rigidbody2D>();
+		rb.gravityScale = 0;
+		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
 	}
 
 	// ② 入力に応じて移動後の位置を算出
@@ -49,39 +57,28 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.RightArrow))
 		{
-			if (TileMap.RightWall == false)
-            {
-				target = transform.position + MOVEX;
-				SetAnimationParam(1);
-				return;
-			}
+			target = transform.position + MOVEX;
+			SetAnimationParam(3);
+			return;
 		}
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
-			if(TileMap.LeftWall == false)
-            {
-				target = transform.position - MOVEX;
-				SetAnimationParam(2);
-				return;
-			}
+			target = transform.position - MOVEX;
+			SetAnimationParam(3);
+			return;
 		}
 		if (Input.GetKey(KeyCode.UpArrow))
 		{
-			if (TileMap.UpWall == false)
-			{
-				target = transform.position + MOVEY;
-				SetAnimationParam(3);
-				return;
-			}
+			target = transform.position + MOVEY;
+			SetAnimationParam(3);
+			return;
+
 		}
 		if (Input.GetKey(KeyCode.DownArrow))
 		{
-			if (TileMap.DownWall == false)
-			{
-				target = transform.position - MOVEY;
-				SetAnimationParam(4);
-				return;
-			}
+			target = transform.position - MOVEY;
+			SetAnimationParam(3);
+			return;
 		}
 	}
 
@@ -96,6 +93,29 @@ public class PlayerController : MonoBehaviour
 	{
 		transform.position = Vector3.MoveTowards(transform.position, target, step * Time.deltaTime);
 	}
+
+	/*
+	void MoveForward1Space() //③矢印キーの入力後、位置を整数値に置きなおすメソッド
+	{
+		Vector3 pos = this.transform.position;
+		float correction = 0.4f;
+
+		if (Input.GetKeyUp(KeyCode.RightArrow) | Input.GetKeyUp(KeyCode.UpArrow))
+		{
+			pos.x = Mathf.Round(pos.x + correction);
+			pos.y = Mathf.Round(pos.y + correction);
+			pos.z = Mathf.Round(pos.z + correction);
+		}
+		if (Input.GetKeyUp(KeyCode.LeftArrow) | Input.GetKeyUp(KeyCode.DownArrow))
+		{
+			pos.x = Mathf.Round(pos.x - correction);
+			pos.y = Mathf.Round(pos.y - correction);
+			pos.z = Mathf.Round(pos.z - correction);
+		}
+		transform.position = pos;
+	}
+	*/
+
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
