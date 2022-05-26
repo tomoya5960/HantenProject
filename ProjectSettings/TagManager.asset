@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MapTile
   - TileData
+  - Item
+  - Wall
   layers:
   - Default
   - TransparentFX

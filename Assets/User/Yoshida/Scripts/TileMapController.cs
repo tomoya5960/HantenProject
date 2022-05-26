@@ -5,10 +5,6 @@ using UnityEngine.Tilemaps;
 public class TileMapController : MonoBehaviour
 {
     public static TileMapController instance;
-    public bool UpWall = false;
-    public bool LeftWall = false;
-    public bool DownWall = false;
-    public bool RightWall = false;
     [SerializeField] Tilemap defaultTilemap;
     [SerializeField] Tilemap WallTilemap;
     [SerializeField] PlayerController Player;
@@ -31,10 +27,6 @@ public class TileMapController : MonoBehaviour
             Goal(playerCellPos - Vector3Int.down);
             Goal(playerCellPos - Vector3Int.right);
             Goal(playerCellPos - Vector3Int.left);
-            UpWallStop(playerCellPos - Vector3Int.up);
-            DownWallStop(playerCellPos - Vector3Int.down);
-            RightWallStop(playerCellPos - Vector3Int.right);
-            LeftWallStop(playerCellPos - Vector3Int.left);
 
             beforePlayerCellPos = playerCellPos;
         }
@@ -48,39 +40,6 @@ public class TileMapController : MonoBehaviour
             {
                 defaultTilemap.SetTile(cellPos, null);
             }               
-        }
-    }
-
-    private void UpWallStop(Vector3Int cellPos)
-    {
-        var tile = WallTilemap.GetTile(cellPos);
-        if (tile && tile.name == "Stone1")
-        {
-            UpWall = true;
-        }
-    }
-    private void DownWallStop(Vector3Int cellPos)
-    {
-        var tile = WallTilemap.GetTile(cellPos);
-        if (tile && tile.name == "Stone1")
-        {
-            DownWall = true;
-        }
-    }
-    private void RightWallStop(Vector3Int cellPos)
-    {
-        var tile = WallTilemap.GetTile(cellPos);
-        if (tile && tile.name == "Stone1")
-        {
-            RightWall = true;
-        }
-    }
-    private void LeftWallStop(Vector3Int cellPos)
-    {
-        var tile = WallTilemap.GetTile(cellPos);
-        if (tile && tile.name == "Stone1")
-        {
-            LeftWall = true;
         }
     }
 }

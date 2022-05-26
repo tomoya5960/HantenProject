@@ -7,6 +7,8 @@ public class Mouse : MonoBehaviour
     private GameObject clickedGameObject,ChildObject;   //選択したタイルと強調表示（選択中に表示されるオブジェクト）
     [SerializeField]
     private GameObject rope;    //ロープのプレハブを格納
+    [SerializeField]
+    private GameObject player;    //playerのプレハブを格納
     private Image image;
     [SerializeField]
     private TileData getTileData;   //セットするタイルのデータ
@@ -15,6 +17,7 @@ public class Mouse : MonoBehaviour
     private bool isChangeTile =false;  //右側のタイルを変更中に左側を選択できないようにするやつ
     [HideInInspector]
     public bool isRope = false;  //タイルの上にロープを置くか選択してね
+    public bool isPlayer = false;  //タイルの上にplayerを置くか選択してね
 
     private void Update()
     {

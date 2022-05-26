@@ -4,131 +4,53 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Vector2 lastPosition = default;
-    private Rigidbody2D rb = null;
+    public GameObject player;   //(操作)移動したいオブジェクトを設定
+    Vector3 movePosition;　//移動する距離を格納
+    public int speed = 5;　//1マス毎に移動するスピード
+    public Vector3 moveY = new Vector3(0, 1, 0);　//(1マス毎の)Y軸の移動距離
+    public Vector3 moveX = new Vector3(1, 0, 0);　//(1マス毎の)X軸の移動距離
+    bool moveButtonJudge; //移動中の判定
 
-    private bool col;
-    private bool lastCol;
-    private bool lastlastCol;
-
-    private bool moved = false;
-
-    /*
-    private Rigidbody2D rb = null;
-    public float speed = 5;
-
-    void FixedUpdate()
-    {
-        Rigidbody2DSetup();//①のメソッドを呼び出し
-        ArrowKeyMove(); //②のメソッドを呼び出し
-    }
-
-    void Update()
-    {
-        MoveForward1Space();//③のメソッドを呼び出し
-    }
-
-
-    //----------------メソッド----------------
-
-    void Rigidbody2DSetup() //①Rigidbody2Dの初期化を行うメソッド
-    {
-        rb = this.GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-    }
-
-    void ArrowKeyMove() //②矢印キーの入力を行うメソッド
-    {
-        float moveX = 0;
-        float moveY = 0;
-
-        if (Input.GetKey(KeyCode.RightArrow)) { moveX = speed; }
-        if (Input.GetKey(KeyCode.LeftArrow)) { moveX = -speed; }
-        if (Input.GetKey(KeyCode.UpArrow)) { moveY = speed; }
-        if (Input.GetKey(KeyCode.DownArrow)) { moveY = -speed; }
-        rb.velocity = new Vector2(moveX, moveY);
-    }
-
-    void MoveForward1Space()　//③矢印キーの入力後、位置を整数値に置きなおすメソッド
-    {
-        Vector3 pos = this.transform.position;
-        float correction = 0.4f;
-
-        if (Input.GetKeyUp(KeyCode.RightArrow) | Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            pos.x = Mathf.Round(pos.x + correction);
-            pos.y = Mathf.Round(pos.y + correction);
-            pos.z = Mathf.Round(pos.z + correction);
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) | Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            pos.x = Mathf.Round(pos.x - correction);
-            pos.y = Mathf.Round(pos.y - correction);
-            pos.z = Mathf.Round(pos.z - correction);
-        }
-        transform.position = pos;
-    }
-    */
     void Start()
     {
-        lastPosition = this.transform.localPosition;
-        rb = this.GetComponent<Rigidbody2D>();
+        moveButtonJudge = false; //⑤初期設定
     }
+
     void Update()
     {
-        MoveForward1Space();//③のメソッドを呼び出し
-
-        //3フレームぐらい、Colしてなければ、LastPositionを更新する
-
-        if (moved == false && col == false && lastCol == false && lastlastCol == false)
+        //移動場所設定
+        //キー入力を行うと、moveButtonJudge = true に変わり、一時的にキー入力を無効
+        if (moveButtonJudge == false)
         {
-            lastPosition = this.transform.localPosition;
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                movePosition = player.transform.position + moveY;  //movePositionに移動する距離を格納
+                moveButtonJudge = true;  //moveButtonJudge = trueにして、移動を制限する
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                movePosition = player.transform.position + -moveY;
+                moveButtonJudge = true;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                movePosition = player.transform.position + moveX;
+                moveButtonJudge = true;
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                movePosition = player.transform.position + -moveX;
+                moveButtonJudge = true;
+            }
         }
 
-        lastlastCol = lastCol;
-        lastCol = col;
+        player.transform.position = Vector3.MoveTowards(player.transform.position, movePosition, speed * Time.deltaTime);   //移動開始(playerオブジェクトが, 目的地に移動, 移動速度)
+
+
+
+        //指定した場所にオブジェクトが移動すると、再度移動が可能になる
+        if (player.transform.position == movePosition) moveButtonJudge = false;
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        this.transform.localPosition = lastPosition;
-        moved = false;
-        col = true;
-    }
 
-    private void OnTriggerExit2D(Collider2D other) 
-    {
-            
-        col = false;
-    } 
 
-    void MoveForward1Space()　//③矢印キーの入力後、位置を整数値に置きなおすメソッド
-    {
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            //右
-            this.transform.localPosition = new Vector2(this.transform.localPosition.x + 1, this.transform.localPosition.y);
-            moved = true;
-        }
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            //上
-            this.transform.localPosition = new Vector2(this.transform.localPosition.x, this.transform.localPosition.y + 1);
-            moved = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            //左
-            this.transform.localPosition = new Vector2(this.transform.localPosition.x - 1, this.transform.localPosition.y);
-            moved = true;
-        }
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            //下
-            this.transform.localPosition = new Vector2(this.transform.localPosition.x, this.transform.localPosition.y - 1);
-            moved = true;
-        }
-    }
-    //----------------メソッドここまで----------------
 }

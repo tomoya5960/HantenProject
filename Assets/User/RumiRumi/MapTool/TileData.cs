@@ -8,6 +8,7 @@ public class TileData : MonoBehaviour
     public bool _isTurnOver;    //タイルの反転可能かの有無
     [SerializeField]
     public bool isRope;     //ロープの有無
+
     [SerializeField]
     private int imageID;
     private int _objectCount;

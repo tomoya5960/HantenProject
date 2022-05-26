@@ -10,14 +10,16 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D rb = null;
 	public bool ItemGet = false;
 
-	Vector3 MOVEX = new Vector3(0.96f, 0, 0); // x²•ûŒü‚É‚Pƒ}ƒXˆÚ“®‚·‚é‚Æ‚«‚Ì‹——£
-	Vector3 MOVEY = new Vector3(0, 0.96f, 0); // y²•ûŒü‚É‚Pƒ}ƒXˆÚ“®‚·‚é‚Æ‚«‚Ì‹——£
+	int  speed = 50;
 
-	float step = 4f;     // ˆÚ“®‘¬“x
-	Vector3 target;      // “ü—Íó•tAˆÚ“®Œã‚ÌˆÊ’u‚ğZo‚µ‚Ä•Û‘¶ 
-	Vector3 prevPos;     // ‰½‚ç‚©‚Ì——R‚ÅˆÚ“®‚Å‚«‚È‚©‚Á‚½ê‡AŒ³‚ÌˆÊ’u‚É–ß‚·‚½‚ßˆÚ“®‘O‚ÌˆÊ’u‚ğ•Û‘¶
+	Vector3 MOVEX = new Vector3(100f, 0, 0); // xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É‚Pï¿½}ï¿½Xï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ì‹ï¿½ï¿½ï¿½
+	Vector3 MOVEY = new Vector3(0, 100f, 0); // yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É‚Pï¿½}ï¿½Xï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ì‹ï¿½ï¿½ï¿½
 
-	//Animator animator;   // ƒAƒjƒ[ƒVƒ‡ƒ“
+	float step = 4f;     // ï¿½Ú“ï¿½ï¿½ï¿½ï¿½x
+	Vector3 target;      // ï¿½ï¿½ï¿½Íï¿½tï¿½ï¿½ï¿½Aï¿½Ú“ï¿½ï¿½ï¿½ÌˆÊ’uï¿½ï¿½ï¿½Zï¿½oï¿½ï¿½ï¿½Ä•Û‘ï¿½ 
+	Vector3 prevPos;     // ï¿½ï¿½ï¿½ç‚©ï¿½Ì—ï¿½ï¿½Rï¿½ÅˆÚ“ï¿½ï¿½Å‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½Aï¿½ï¿½ï¿½ÌˆÊ’uï¿½É–ß‚ï¿½ï¿½ï¿½ï¿½ßˆÚ“ï¿½ï¿½Oï¿½ÌˆÊ’uï¿½ï¿½Û‘ï¿½
+
+	//Animator animator;   // ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½
 
 
 	// Use this for initialization
@@ -31,8 +33,7 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		Rigidbody2DSetup();
-		//MoveForward1Space();
-		// ‡@ ˆÚ“®’†‚©‚Ç‚¤‚©‚Ì”»’èBˆÚ“®’†‚Å‚È‚¯‚ê‚Î“ü—Í‚ğó•t
+		// ï¿½@ ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½Bï¿½Ú“ï¿½ï¿½ï¿½ï¿½Å‚È‚ï¿½ï¿½ï¿½Î“ï¿½ï¿½Í‚ï¿½ï¿½ï¿½t
 		if (transform.position == target)
 		{
 			SetTargetPosition();
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
 		//TileMapController.instance.CheckCloseDoor(transform.position);
 	}
-	void Rigidbody2DSetup() //‡@Rigidbody2D‚Ì‰Šú‰»‚ğs‚¤ƒƒ\ƒbƒh
+	void Rigidbody2DSetup() //ï¿½@Rigidbody2Dï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½bï¿½h
 	{
 		rb = this.GetComponent<Rigidbody2D>();
 		rb.gravityScale = 0;
@@ -49,11 +50,11 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	// ‡A “ü—Í‚É‰‚¶‚ÄˆÚ“®Œã‚ÌˆÊ’u‚ğZo
+	// ï¿½A ï¿½ï¿½ï¿½Í‚É‰ï¿½ï¿½ï¿½ï¿½ÄˆÚ“ï¿½ï¿½ï¿½ÌˆÊ’uï¿½ï¿½ï¿½Zï¿½o
 	void SetTargetPosition()
 	{
 
-		prevPos = target;
+		
 
 		if (Input.GetKey(KeyCode.RightArrow))
 		{
@@ -80,41 +81,21 @@ public class PlayerController : MonoBehaviour
 			SetAnimationParam(3);
 			return;
 		}
+
+		prevPos = target;
 	}
 
-	// WalkParam  0;‰ºˆÚ“®@1;‰EˆÚ“®@2:¶ˆÚ“®@3:ãˆÚ“®
+	// WalkParam  0;ï¿½ï¿½ï¿½Ú“ï¿½ï¿½@1;ï¿½Eï¿½Ú“ï¿½ï¿½@2:ï¿½ï¿½ï¿½Ú“ï¿½ï¿½@3:ï¿½ï¿½Ú“ï¿½
 	void SetAnimationParam(int param)
 	{
 		//animator.SetInteger("WalkParam", param);
 	}
 
-	// ‡B –Ú“I’n‚ÖˆÚ“®‚·‚é
+	// ï¿½B ï¿½Ú“Iï¿½nï¿½ÖˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½
 	void Move()
 	{
 		transform.position = Vector3.MoveTowards(transform.position, target, step * Time.deltaTime);
 	}
-
-	/*
-	void MoveForward1Space() //‡B–îˆóƒL[‚Ì“ü—ÍŒãAˆÊ’u‚ğ®”’l‚É’u‚«‚È‚¨‚·ƒƒ\ƒbƒh
-	{
-		Vector3 pos = this.transform.position;
-		float correction = 0.4f;
-
-		if (Input.GetKeyUp(KeyCode.RightArrow) | Input.GetKeyUp(KeyCode.UpArrow))
-		{
-			pos.x = Mathf.Round(pos.x + correction);
-			pos.y = Mathf.Round(pos.y + correction);
-			pos.z = Mathf.Round(pos.z + correction);
-		}
-		if (Input.GetKeyUp(KeyCode.LeftArrow) | Input.GetKeyUp(KeyCode.DownArrow))
-		{
-			pos.x = Mathf.Round(pos.x - correction);
-			pos.y = Mathf.Round(pos.y - correction);
-			pos.z = Mathf.Round(pos.z - correction);
-		}
-		transform.position = pos;
-	}
-	*/
 
 
 	void OnCollisionEnter2D(Collision2D collision)
