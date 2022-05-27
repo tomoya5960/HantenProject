@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI; //パネルのイメージを操作するのに必要
 using UnityEngine.SceneManagement;
 
-public class Fade : MonoBehaviour
+public class Blackout : MonoBehaviour
 {
     public bool isFadeOut = false; //フェードアウト処理の開始、完了を管理するフラグ
     public bool isFadeIn = true; //フェードイン処理の開始、完了を管理するフラグ
@@ -74,7 +74,7 @@ public class Fade : MonoBehaviour
     /// </summary>
     void SetAlpha()
     {
-        fadeImage.color = new Color(255, 255, 255, alfa);   //イメージのカラーを格納
+        fadeImage.color = new Color(0, 0, 0, alfa);   //イメージのカラーを格納
     }
 
     /// <summary>
