@@ -148,9 +148,10 @@ GameObject:
   m_Component:
   - component: {fileID: 44006707}
   - component: {fileID: 44006706}
-  - component: {fileID: 44006708}
   - component: {fileID: 44006710}
   - component: {fileID: 44006709}
+  - component: {fileID: 44006708}
+  - component: {fileID: 44006711}
   m_Layer: 0
   m_Name: Player_01
   m_TagString: Untagged
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemGet: 0
+  speed: 50
 --- !u!61 &44006709
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -285,6 +287,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &44006711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44006705}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee56f288652a0445aab4cb0b78a7a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 44006705}
+  speed: 5
+  moveY: {x: 0, y: 1, z: 0}
+  moveX: {x: 1, y: 0, z: 0}
 --- !u!1 &80392093 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4234771882970669820, guid: 1e2d5dc5fb02dab4e815489c1c38d262, type: 3}

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D rb = null;
 	public bool ItemGet = false;
 
-	int  speed = 50;
+	public int  speed = 50;
 
 	Vector3 MOVEX = new Vector3(100f, 0, 0); // x�������ɂP�}�X�ړ�����Ƃ��̋���
 	Vector3 MOVEY = new Vector3(0, 100f, 0); // y�������ɂP�}�X�ړ�����Ƃ��̋���
