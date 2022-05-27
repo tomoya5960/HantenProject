@@ -298,7 +298,6 @@ GameObject:
   - component: {fileID: 119046089}
   - component: {fileID: 119046091}
   - component: {fileID: 119046090}
-  - component: {fileID: 119046092}
   - component: {fileID: 119046093}
   - component: {fileID: 119046094}
   m_Layer: 5
@@ -371,18 +370,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119046088}
   m_CullTransparentMesh: 1
---- !u!114 &119046092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119046088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b1f836c92fa514d8ada28a46b923a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &119046093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,9 +414,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1935136252}
-        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: test
+      - m_Target: {fileID: 1773172402}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: isPush
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1211,7 +1198,6 @@ GameObject:
   - component: {fileID: 665022667}
   - component: {fileID: 665022669}
   - component: {fileID: 665022668}
-  - component: {fileID: 665022670}
   - component: {fileID: 665022671}
   m_Layer: 5
   m_Name: 'tutorial '
@@ -1283,19 +1269,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665022666}
   m_CullTransparentMesh: 1
---- !u!114 &665022670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665022666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04416f903c54f654a97d08639c59b341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stageNum: 0
 --- !u!114 &665022671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1340,9 +1313,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1935136252}
-        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: test
+      - m_Target: {fileID: 1773172402}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: isPush
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1930,7 +1903,6 @@ GameObject:
   - component: {fileID: 989461032}
   - component: {fileID: 989461034}
   - component: {fileID: 989461033}
-  - component: {fileID: 989461035}
   - component: {fileID: 989461036}
   m_Layer: 5
   m_Name: Level2
@@ -2002,18 +1974,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989461031}
   m_CullTransparentMesh: 1
---- !u!114 &989461035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989461031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 013ddc44cf38f694f898f10dfef5331e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &989461036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,9 +2018,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1935136252}
-        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: test
+      - m_Target: {fileID: 1773172402}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: isPush
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2081,7 +2041,6 @@ GameObject:
   - component: {fileID: 1168653489}
   - component: {fileID: 1168653491}
   - component: {fileID: 1168653490}
-  - component: {fileID: 1168653492}
   - component: {fileID: 1168653493}
   m_Layer: 5
   m_Name: Level3
@@ -2153,18 +2112,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168653488}
   m_CullTransparentMesh: 1
---- !u!114 &1168653492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168653488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea669ec14b63aa48aa0c337b51bf608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1168653493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,9 +2156,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1935136252}
-        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: test
+      - m_Target: {fileID: 1773172402}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: isPush
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2704,7 +2651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1773172401
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2737,10 +2684,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd2ca6102615354190e0799695805d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 0.003
-  onof: 0
   isFadeOut: 0
   isFadeIn: 1
+  _stageNum: 0
+  fadeSpeed: 0.003
 --- !u!114 &1773172403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2806,7 +2753,7 @@ RectTransform:
   m_GameObject: {fileID: 1858025443}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -7.779999}
-  m_LocalScale: {x: 1, y: -3, z: -3.44}
+  m_LocalScale: {x: 1, y: -3.5, z: -3.44}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1935136250}

@@ -1,51 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //パネルのイメージを操作するのに必要
 using UnityEngine.SceneManagement;
 
-
-
 public class Fade : MonoBehaviour
 {
-
-
-
-    public float fadeSpeed = 0.003f; //透明度が変わるスピードを管理
-    float red, green, blue, alfa; //パネルの色、不透明度を管理
-    [HideInInspector]
-    public bool onof = false;
-
     public bool isFadeOut = false; //フェードアウト処理の開始、完了を管理するフラグ
-
     public bool isFadeIn = true; //フェードイン処理の開始、完了を管理するフラグ
 
+    public int _stageNum;    //ステージ選択で使う変数
 
+    public  float fadeSpeed = 0.003f; //透明度が変わるスピードを管理
+    private float alfa; //パネルの色、不透明度を管理
 
-    Image fadeImage; //透明度を変更するパネルのイメージ
+    private Image fadeImage; //透明度を変更するパネルのイメージ
 
-
+    //Startよりも先に呼ばれるくん
+    private void Awake()
+    {
+        fadeImage = GetComponent<Image>();  //イメージをFadeImageに格納するよ
+    }
 
     void Start()
     {
-        fadeImage = GetComponent<Image>();
-        red = fadeImage.color.r;
-        green = fadeImage.color.g;
-        blue = fadeImage.color.b;
-        alfa = fadeImage.color.a;
+        alfa = fadeImage.color.a;   //アルファ値をいじれるようにするよ
     }
-
-
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+
+        if (isFadeIn)   //isFadeINがtrueだったら
         {
-            isFadeOut = true;
-        }
-        if (isFadeIn)
-        {
-            StartFadeIn();
+            StartFadeIn();  //フェードインする
         }
         if (isFadeOut)
         {
@@ -54,20 +39,24 @@ public class Fade : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// 最初にフェイドインする関数
+    /// </summary>
     void StartFadeIn()
     {
         alfa -= fadeSpeed; //a)不透明度を徐々に下げる
         SetAlpha(); //b)変更した不透明度パネルに反映する
         if (alfa <= 0)
-        { //c)完全に透明になったら処理を抜ける
+        { 
+            //c)完全に透明になったら処理を抜ける
             isFadeIn = false;
             fadeImage.enabled = false;//d)パネルの表示をオフにする
         }
     }
 
-
-
+    /// <summary>
+    /// 最初にフェイドアウトする関数
+    /// </summary>
     void StartFadeOut()
     {
         fadeImage.enabled = true; // a)パネルの表示をオンにする
@@ -76,13 +65,48 @@ public class Fade : MonoBehaviour
         if (alfa >= 1)
         { // d)完全に不透明になったら処理を抜ける
             isFadeOut = false;
+            SceneChange();
         }
     }
 
-
-
+    /// <summary>
+    /// アルファ値の設定
+    /// </summary>
     void SetAlpha()
     {
-        fadeImage.color = new Color(red, green, blue, alfa);
+        fadeImage.color = new Color(255, 255, 255, alfa);   //イメージのカラーを格納
+    }
+
+    /// <summary>
+    /// ステージ選択されたことを取得
+    /// </summary>
+    public void isPush()
+    {
+        isFadeOut = true;
+    }
+
+    /// <summary>
+    /// シーンの移動
+    /// </summary>
+    public void SceneChange()
+    {
+        switch (_stageNum)
+        {
+            case 0:
+                SceneManager.LoadScene("tutorial", LoadSceneMode.Single);
+                break;
+            case 1:
+                SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+                break;
+            case 2:
+                SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+                break;
+            case 3:
+                SceneManager.LoadScene("Level3", LoadSceneMode.Single);
+                break;
+            default:
+                Debug.Log("ステージ選択しろよー");
+                break;
+        }
     }
 }
