@@ -9,21 +9,39 @@ public class GameStage : MonoBehaviour
     public GameObject charactorPrefab;
     public GameObject ItemPrefab;
 
+    private static int[][] tileMap =
+        {
+            new int[] { 1, 1, 1, 1, 1, 1, 1, 1 },
+            new int[] { 1, 0, 0, 0, 0, 0, 0, 1 },
+            new int[] { 1, 0, 0, 0, 0, 0, 0, 1 },
+            new int[] { 1, 0, 0, 0, 0, 0, 0, 1 },
+            new int[] { 1, 0, 0, 0, 3, 0, 0, 1 },
+            new int[] { 1, 0, 2, 0, 0, 0, 1, 1 },
+            new int[] { 1, 0, 0, 0, 0, 0, 0, 1 },
+            new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }
+        };
+    public static int[][] TileMap => tileMap;
+
+    public static bool CheckCollision(int x, int y)
+    {
+        Debug.Log($"Collision Check {x}, {y}");
+        if (x < 0) return true;
+        if (y < 0) return true;
+        if (x > tileMap[0].Length - 1) return true;
+        if (y > tileMap.Length - 1) return true;
+
+        if (tileMap[y][x] == 1) return true;
+
+        return false;
+    }
+
+
     void Start()
     {
-        int[][] tileMap = //“ñŸŒ³”z—ñ‚É‚æ‚éƒ}ƒbƒvî•ñ
-        {
-            new int[] {1, 1, 1, 1, 1, 1, 1, 1},
-            new int[] {1, 0, 0, 0, 0, 0, 0, 1},
-            new int[] {1, 0, 0, 0, 0, 0, 0, 1},
-            new int[] {1, 0, 0, 0, 0, 0, 0, 1},
-            new int[] {1, 0, 0, 0, 3, 0, 0, 1},
-            new int[] {1, 0, 2, 0, 0, 0, 1, 1},
-            new int[] {1, 0, 0, 0, 0, 0, 0, 1},
-            new int[] {1, 1, 1, 1, 1, 1, 1, 1}
-        };
+        //FIXMEã€€TODOã€€Editoræ‹¡å¼µã§ä½œã£ãŸã‚²ãƒ¼ãƒ ã‚¹ãƒ†ãƒ¼ã‚¸ã‚’ã€ã“ã“ã§
+        //tileMapã«ã„ã‚Œã¦ã‚ã’ã‚‹
 
-        //For•¶‚Ì“ñdƒ‹[ƒv‚É‚æ‚éƒCƒ“ƒXƒ^ƒ“ƒX‚Ì¶¬
+        //Foræ–‡ã®äºŒé‡ãƒ«ãƒ¼ãƒ—ã«ã‚ˆã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ç”Ÿæˆ
         for (int i = 0; i < tileMap.Length; i++)
         {
             for (int j = 0; j < tileMap[i].Length; j++)
@@ -31,26 +49,28 @@ public class GameStage : MonoBehaviour
 
                 if (tileMap[i][j] == 0)
                 {
-                    //”wŒi‚ğ¶¬
+                    //èƒŒæ™¯ã‚’ç”Ÿæˆ
                     Instantiate(bgPrefab, new Vector3(j, tileMap.Length - i, 0), Quaternion.identity);
                 }
                 if (tileMap[i][j] == 1)
                 {
-                    //•Ç‚ğ¶¬
+                    //å£ã‚’ç”Ÿæˆ
                     Instantiate(blockPrefab, new Vector3(j, tileMap.Length - i, 0), Quaternion.identity);
                 }
                 if (tileMap[i][j] == 2)
                 {
-                    //ƒLƒƒƒ‰ƒNƒ^[‚ğ¶¬
+                    //è‡ªåˆ†ã®ç™ºç”Ÿä½ç½®ã‚’Playerã«æ•™ãˆã‚‹
+                    Player.SetPlayerPos(j, i);
+                    //ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚’ç”Ÿæˆ
                     Instantiate(charactorPrefab, new Vector3(j, tileMap.Length - i, 0), Quaternion.identity);
-                    //ƒLƒƒƒ‰ƒNƒ^[‚Æd‚È‚é•”•ª‚Ì”wŒi‚ğ¶¬
+                    //ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¨é‡ãªã‚‹éƒ¨åˆ†ã®èƒŒæ™¯ã‚’ç”Ÿæˆ
                     Instantiate(bgPrefab, new Vector3(j, tileMap.Length - i, 0), Quaternion.identity);
                 }
                 if (tileMap[i][j] == 3)
                 {
-                    //ƒAƒCƒeƒ€‚ğ¶¬
+                    //ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç”Ÿæˆ
                     Instantiate(ItemPrefab, new Vector3(j, tileMap.Length - i, 0), Quaternion.identity);
-                    //ƒLƒƒƒ‰ƒNƒ^[‚Æd‚È‚é•”•ª‚Ì”wŒi‚ğ¶¬
+                    //ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¨é‡ãªã‚‹éƒ¨åˆ†ã®èƒŒæ™¯ã‚’ç”Ÿæˆ
                     Instantiate(bgPrefab, new Vector3(j, tileMap.Length - i, 0), Quaternion.identity);
                 }
             }

@@ -7,50 +7,72 @@ public class Player : MonoBehaviour
     public GameObject player;   //(操作)移動したいオブジェクトを設定
     Vector3 movePosition;　//移動する距離を格納
     public int speed = 5;　//1マス毎に移動するスピード
-    public Vector3 moveY = new Vector3(0, 1, 0);　//(1マス毎の)Y軸の移動距離
-    public Vector3 moveX = new Vector3(1, 0, 0);　//(1マス毎の)X軸の移動距離
-    bool moveButtonJudge; //移動中の判定
+
+    //今自分がいる配列上の位置を保管
+    static private Vector2 nowPlayerPosition = Vector2.zero;
+
+    public static void SetPlayerPos(int x, int y)
+    {
+        nowPlayerPosition = new Vector2(x, y);
+        Debug.Log($"nowPlayerPosition x:{nowPlayerPosition.x} y;{nowPlayerPosition.y}");
+    }
 
     void Start()
     {
-        moveButtonJudge = false; //⑤初期設定
     }
 
     void Update()
     {
         //移動場所設定
         //キー入力を行うと、moveButtonJudge = true に変わり、一時的にキー入力を無効
-        if (moveButtonJudge == false)
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            var targetPos = new Vector2(player.transform.position.x, player.transform.position.y + 1);
+            var targetArrayIndex = new Vector2(nowPlayerPosition.x, nowPlayerPosition.y - 1);
+            if (GameStage.CheckCollision((int)targetArrayIndex.x, (int)targetArrayIndex.y) == false)
             {
-                movePosition = player.transform.position + moveY;  //movePositionに移動する距離を格納
-                moveButtonJudge = true;  //moveButtonJudge = trueにして、移動を制限する
+                player.transform.position = targetPos;
+                nowPlayerPosition = targetArrayIndex;
+                Debug.Log($"nowPlayerPosition x:{nowPlayerPosition.x} y;{nowPlayerPosition.y}");
             }
-            if (Input.GetKeyDown(KeyCode.S))
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+
+
+            var targetPos = new Vector2(player.transform.position.x, player.transform.position.y - 1);
+            var targetArrayIndex = new Vector2(nowPlayerPosition.x, nowPlayerPosition.y + 1);
+            if (GameStage.CheckCollision((int)targetArrayIndex.x, (int)targetArrayIndex.y) == false)
             {
-                movePosition = player.transform.position + -moveY;
-                moveButtonJudge = true;
+                player.transform.position = targetPos;
+                nowPlayerPosition = targetArrayIndex;
+                Debug.Log($"nowPlayerPosition x:{nowPlayerPosition.x} y;{nowPlayerPosition.y}");
             }
-            if (Input.GetKeyDown(KeyCode.D))
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+
+            var targetPos = new Vector2(player.transform.position.x + 1, player.transform.position.y);
+            var targetArrayIndex = new Vector2(nowPlayerPosition.x + 1, nowPlayerPosition.y);
+            if (GameStage.CheckCollision((int)targetArrayIndex.x, (int)targetArrayIndex.y) == false)
             {
-                movePosition = player.transform.position + moveX;
-                moveButtonJudge = true;
+                player.transform.position = targetPos;
+                nowPlayerPosition = targetArrayIndex;
+                Debug.Log($"nowPlayerPosition x:{nowPlayerPosition.x} y;{nowPlayerPosition.y}");
             }
-            if (Input.GetKeyDown(KeyCode.A))
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+
+            var targetPos = new Vector2(player.transform.position.x - 1, player.transform.position.y);
+            var targetArrayIndex = new Vector2(nowPlayerPosition.x - 1, nowPlayerPosition.y);
+            if (GameStage.CheckCollision((int)targetArrayIndex.x, (int)targetArrayIndex.y) == false)
             {
-                movePosition = player.transform.position + -moveX;
-                moveButtonJudge = true;
+                player.transform.position = targetPos;
+                nowPlayerPosition = targetArrayIndex;
+                Debug.Log($"nowPlayerPosition x:{nowPlayerPosition.x} y;{nowPlayerPosition.y}");
             }
         }
 
-        player.transform.position = Vector3.MoveTowards(player.transform.position, movePosition, speed * Time.deltaTime);   //移動開始(playerオブジェクトが, 目的地に移動, 移動速度)
-
-
-
-        //指定した場所にオブジェクトが移動すると、再度移動が可能になる
-        if (player.transform.position == movePosition) moveButtonJudge = false;
     }
-
-
 }
