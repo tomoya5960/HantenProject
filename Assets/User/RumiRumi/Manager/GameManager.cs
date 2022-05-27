@@ -1,26 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(SoundManager))]
-[RequireComponent(typeof(Dictionary))]
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;  //ã‚²ãƒ¼ãƒ ãƒãƒãƒ¼ã‚¸ãƒ£ã¯ä¸€ã¤ã—ã‹ãªã„ã‚ˆã£ã¦ã„ã†ã‚„ã¤
+    [Header("”½“]‰Â”\”")]
+    public int turnOverCount = 0;   //”½“]‚Å‚«‚éc‚è‚Ì‰ñ”
+    [SerializeField, Header("ƒXƒe[ƒW–¼")]
+    private  string stageName = ""; //JsonOnlyJson‚ÌƒXƒe[ƒW–¼‚ğŠi”[‚·‚é
+    private GameObject loadOnlyJsonObject;  //ƒXƒe[ƒW–¼‚ªŠi”[‚³‚ê‚Ä‚¢‚é‚½‚ßæ“¾‚·‚é‚½‚ß‚Ég‚¤‚â[‚Â
 
-    [HideInInspector]
-    public SoundManager soundManager;  //SoundManagerã‚’æ ¼ç´ã™ã‚‹ã‚„ã¤ã ï¼ï¼
-     [HideInInspector]
-    public Dictionary dictionary;  //Dictionaryã‚’æ ¼ç´ã™ã‚‹ã‚„ã¤ã ï¼ï¼ï¼
-    private void Awake()    //ã‚¹ã‚¿ãƒ¼ãƒˆã®å‰ã«å‘¼ã³å‡ºã™ã‚ˆ
+    #region MAP‚Ì“ñŸŒ³”z—ñ
+    public  MapPosition[] mapPosX = new MapPosition[7];
+    [System.Serializable]
+    public class MapPosition
     {
-        if(instance == null)    //ã‚‚ã—ã‚²ãƒ¼ãƒ ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ãŒãªã‹ã£ãŸå ´åˆã«å‘¼ã¶ã‚ˆ
-        {
-            instance = this;    //ã“ã„ã¤ãŒä¸–ç•Œã«ä¸€ã¤ã®ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã«ãªã‚‹ã‚ˆ
-            DontDestroyOnLoad(this.gameObject); //ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯æ¶ˆã›ã­ãˆï¼ã£ã¦ã™ã‚‹ã‚„ã¤
-        }
+        public GameObject[] mapPosY = new GameObject[8];
+    }
+    #endregion
 
-        soundManager = GetComponent<SoundManager>(); //SoundManagerã‚’ç®¡ç†ã™ã‚‹ãœï¼ï¼
-        dictionary = GetComponent<Dictionary>(); //Dictionaryã‚’ç®¡ç†ã™ã‚‹ãœï¼ï¼
+    private void Awake()
+    {
+        loadOnlyJsonObject = GameObject.Find("LoadData");
+    }
+    private void Start()
+    {
+        if (loadOnlyJsonObject != null)
+            stageName = loadOnlyJsonObject.GetComponent<LoadOnlyJson>().loadFileName;
+        else
+            stageName = "ƒGƒfƒBƒ^[‚Å•ÒW’†";
+    }
+
+    /// <summary>
+    /// ”½“]ˆ—
+    /// </summary>
+    public void TurnOver()
+    {
+        if (turnOverCount != 0) //”½“]‰ñ”‚ªc‚Á‚Ä‚¢‚½‚çc‚è‚Ìg—p‰ñ”‚ğŒ¸‚ç‚·
+        {
+            turnOverCount--;
+            Debug.Log("”½“]‚µ‚Ü‚µ‚½B");
+        }
+        else
+        {
+            Debug.Log("”½“]‚Å‚«‚Ü‚¹‚ñ");
+            return; //”½“]‚Å‚«‚é‰ñ”‚ªc‚Á‚Ä‚¢‚È‚¢ê‡‚Í‚»‚Ì‚Ü‚Ü•Ô‚·
+        }
     }
 }

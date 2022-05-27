@@ -1255,6 +1255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rope: {fileID: 6288651862350593474, guid: cfda3869152597248b64841c6e0371ae, type: 3}
+  getTileData: {fileID: 0}
+  setTileData: {fileID: 0}
   isRope: 0
 --- !u!1 &348261260 stripped
 GameObject:

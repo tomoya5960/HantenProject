@@ -1,0 +1,6 @@
+iは横、jは縦でijは仮である。※二次元配列のXとYは逆
+GeneralManager.instance.gameManager.mapPosX[j].mapPosY[i]
+で二次元配列の指定したオブジェクトにアクセスすることができる。
+
+各シーンに　User>RumiRumi の中にある　[LoadData]と　RumiRumi>Managerの中に入っているGenenalManagerを置くこと
+

@@ -79,7 +79,7 @@ public class TileData : MonoBehaviour
     /// <summary>画像の検索と差し替え</summary>
     public void SearchSetSprite(int imageID)
     {
-        string _name = GameManager.instance.dictionary.ImageName(imageID); //辞書から画像名を検索
+        string _name = GeneralManager.instance.dictionary.ImageName(imageID); //辞書から画像名を検索
         Sprite sprite = Resources.Load<Sprite>("Textures/" + _name) as Sprite;    //辞書から受け取った名前をもとにファイルを検索
         image.sprite = sprite;  //画像を差し替える
     }

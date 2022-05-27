@@ -82,6 +82,7 @@ public class JsonData : MonoBehaviour
         var json = File.ReadAllText(_filePath); // 指定したファイルにある情報を取り出す
         _mapData = JsonUtility.FromJson<MapData>(json); //取り出した情報を与える
         DrawMap(mapMaxArray);
+        SetTileArray();
         Debug.Log("データをロードしたよ");
     }
 
@@ -125,14 +126,18 @@ public class JsonData : MonoBehaviour
         {
             tileData._isRope = isRope; 
         }
-        //if( !tileData._isTurnOver)
-        //{
-        //    tileData._isTurnOver = true;
-        //}
-        //else if(tileData._isTurnOver)
-        //{
-        //    tileData._isTurnOver = false;
-        //}
+    }
+    void SetTileArray()
+    {
+        var count = 0;
+        for (int i = 0; i <= 7; i++)
+        {
+            for (int j = 0; j <= 6; j++)
+            {
+                GeneralManager.instance.gameManager.mapPosX[j].mapPosY[i] = _panels[count];
+                count++;
+            }
+        }
     }
 
     /// <summary>スクリプトが破棄されたときに登録したイベントを削除する</summary>
