@@ -134,7 +134,7 @@ public class JsonData : MonoBehaviour
         {
             for (int j = 0; j <= 6; j++)
             {
-                GeneralManager.instance.gameManager.mapPosX[j].mapPosY[i] = _panels[count];
+                GeneralManager.Instance.GameM.mapPosX[j].mapPosY[i] = _panels[count];
                 count++;
             }
         }

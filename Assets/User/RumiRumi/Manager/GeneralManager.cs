@@ -2,30 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(SoundManager))]
-[RequireComponent(typeof(Dictionary))]
+[RequireComponent(typeof(MapType))]
 [RequireComponent(typeof(GameManager))]
 
 
 public class GeneralManager : MonoBehaviour
 {
-    public static GeneralManager instance = null;  //ゲームマネージャは一つしかないよっていうやつ
+    public static GeneralManager Instance = null;  //ゲームマネージャは一つしかないよっていうやつ
 
     [HideInInspector]
-    public SoundManager soundManager;  //SoundManagerを格納するやつだ！！
+    public SoundManager SoundM;  //SoundManagerを格納するやつだ！！
      [HideInInspector]
-    public Dictionary dictionary;  //Dictionaryを格納するやつだ！！！
+    public MapType MapT;  //MapTypeを格納するやつだ！！！
     [HideInInspector]
-    public GameManager gameManager;
+    public GameManager GameM;
     private void Awake()    //スタートの前に呼び出すよ
     {
-        if(instance == null)    //もしゲームマネージャーがなかった場合に呼ぶよ
+        if(Instance == null)    //もしゲームマネージャーがなかった場合に呼ぶよ
         {
-            instance = this;    //こいつが世界に一つのマネージャーになるよ
+            Instance = this;    //こいつが世界に一つのマネージャーになるよ
             DontDestroyOnLoad(this.gameObject); //このオブジェクトは消せねえ！ってするやつ
         }
 
-        soundManager = GetComponent<SoundManager>(); //SoundManagerを管理するぜ！！
-        dictionary = GetComponent<Dictionary>(); //Dictionaryを管理するぜ！！
-        gameManager = GetComponent<GameManager>();
+        SoundM = GetComponent<SoundManager>(); //SoundManagerを管理するぜ！！
+        MapT = GetComponent<MapType>(); //MapTypeを管理するぜ！！
+        GameM = GetComponent<GameManager>();
     }
 }

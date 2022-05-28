@@ -59,6 +59,7 @@ public class LoadOnlyJson : MonoBehaviour
             _panels[count].GetComponent<TileData>()._imageID = map.mapChip.mapImageID;
             _panels[count].GetComponent<TileData>()._isRope = map.mapChip.isRope;
             _panels[count].GetComponent<TileData>()._isTurnOver = map.mapChip.isTurnOver;
+            //‚±‚±‚Åtestscript‚Ìinit‚ð‚æ‚×
             count++;
         }
     }
@@ -88,7 +89,7 @@ public class LoadOnlyJson : MonoBehaviour
         {
             for(int j = 0; j <= 7; j++)
             {
-                GeneralManager.instance.gameManager.mapPosX[i].mapPosY[j] = _panels[count];
+                GeneralManager.Instance.GameM.mapPosX[i].mapPosY[j] = _panels[count];
                 count++;
             }
         }

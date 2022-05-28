@@ -2593,6 +2593,7 @@ GameObject:
   - component: {fileID: 713312408}
   - component: {fileID: 713312407}
   - component: {fileID: 713312406}
+  - component: {fileID: 713312412}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2612,6 +2613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8417e1ecf3a3e6419cf47e2678c6e35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ImageId: 0
 --- !u!114 &713312407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2624,8 +2626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdabc8f614ce7464b8d194e12a22e391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 0}
-  dictionary: {fileID: 0}
+  SoundM: {fileID: 0}
+  MapT: {fileID: 0}
+  GameM: {fileID: 0}
 --- !u!114 &713312408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,6 +2684,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &713312412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713312405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8411cd05e1706459cf3e31f85934b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnOverCount: 0
+  stageName: 
+  mapPosX:
+  - mapPosY:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - mapPosY:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - mapPosY:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - mapPosY:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - mapPosY:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - mapPosY:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - mapPosY:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!1 &741333992 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4234771882305525385, guid: 1e2d5dc5fb02dab4e815489c1c38d262, type: 3}
