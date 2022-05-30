@@ -1,27 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Toggle : MonoBehaviour
 {
     [SerializeField]
-    private JsonData jsonData;
+    private JsonData _jsonData;
     [SerializeField]
-    private Mouse mouse;
+    private Mouse    _mouse;
 
     public void OnTggleChanged()
     {
-        if(jsonData.overWriteSave)
-            jsonData.overWriteSave=false;
+        if(_jsonData.overWriteSave)
+            _jsonData.overWriteSave=false;
         else
-            jsonData.overWriteSave=true;
+            _jsonData.overWriteSave=true;
     }
     public void OnRopeChanged()
     {
-        if (mouse.isRope)
-            mouse.isRope = false;
+        if (_mouse.isRope)
+            _mouse.isRope = false;
         else
-            mouse.isRope = true;
+            _mouse.isRope = true;
     }
 }

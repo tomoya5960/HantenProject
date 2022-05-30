@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapType : MonoBehaviour
 {
@@ -27,7 +26,7 @@ public class MapType : MonoBehaviour
         statue_13,
         statue_14,
     }
+
     [HideInInspector]
-    public ImageIdType ImageId;
-    
+    public ImageIdType imageName;
 }
