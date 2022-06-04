@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 572738654551244781}
   - component: {fileID: 572738654551244780}
   - component: {fileID: 572738654551244774}
+  - component: {fileID: 7617106600215490760}
   m_Layer: 0
   m_Name: GenenalManager
   m_TagString: Untagged
@@ -47,8 +48,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d70758b0ae0f7e4c901d3ecd18e9941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmClips: []
-  seClips: []
+  bgmClips:
+  - Name: 0
+    Volume: 0
+    BgmData: {fileID: 0}
+  - Name: 1
+    Volume: 0
+    BgmData: {fileID: 0}
+  seClips:
+  - Name: 0
+    Volume: 0
+    SeData: {fileID: 0}
+  - Name: 1
+    Volume: 0
+    SeData: {fileID: 0}
 --- !u!114 &572738654551244781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundManager: {fileID: 0}
   mapType: {fileID: 0}
+  idPack: {fileID: 0}
   stageManager: {fileID: 0}
 --- !u!114 &572738654551244780
 MonoBehaviour:
@@ -154,3 +168,18 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+--- !u!114 &7617106600215490760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572738654551244783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27837b8cc4f5c024d994167d1befe241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageIdType: 0
+  IsEnableProceed: 0
+  _idPackLists: []

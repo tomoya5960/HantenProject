@@ -10,20 +10,20 @@ public class ototest : MonoBehaviour
         //Ä¶
 
         if (Input.GetKeyDown(KeyCode.Q))
-            GeneralManager.Instance.soundManager.PlayBGM(0);    //BGM
+            GeneralManager.instance.soundManager.PlayBGM(0);    //BGM
         if (Input.GetKeyDown(KeyCode.W))
-            GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_02);   //SE
+            GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_02);   //SE
 
         //’â~
         if (Input.GetKeyDown(KeyCode.E))
-            GeneralManager.Instance.soundManager.StopBGM();
+            GeneralManager.instance.soundManager.StopBGM();
         if (Input.GetKeyDown(KeyCode.R))
-            GeneralManager.Instance.soundManager.StopSE();       //SE
+            GeneralManager.instance.soundManager.StopSE();       //SE
 
         //ˆê’â~/ÄŠJ
         if (Input.GetKeyDown(KeyCode.E))
-            GeneralManager.Instance.soundManager.MuteBGM();    //BGM ˆê’â~
+            GeneralManager.instance.soundManager.MuteBGM();    //BGM ˆê’â~
         if (Input.GetKeyDown(KeyCode.R))
-            GeneralManager.Instance.soundManager.ResumeBGM();  //BGM “¯‚¶BGMÄ¶
+            GeneralManager.instance.soundManager.ResumeBGM();  //BGM “¯‚¶BGMÄ¶
     }
 }

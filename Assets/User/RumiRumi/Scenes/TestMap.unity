@@ -711,25 +711,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 572738654551244770, guid: 21e878592465e10408877a3dad1dc914, type: 3}
-      propertyPath: seClips.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 572738654551244770, guid: 21e878592465e10408877a3dad1dc914, type: 3}
-      propertyPath: bgmClips.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 572738654551244770, guid: 21e878592465e10408877a3dad1dc914, type: 3}
-      propertyPath: seClips.Array.data[1].Name
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 572738654551244770, guid: 21e878592465e10408877a3dad1dc914, type: 3}
-      propertyPath: bgmClips.Array.data[1].Name
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 572738654551244783, guid: 21e878592465e10408877a3dad1dc914, type: 3}
       propertyPath: m_Name
       value: GenenalManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617106600215490760, guid: 21e878592465e10408877a3dad1dc914, type: 3}
+      propertyPath: ImageIdType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e878592465e10408877a3dad1dc914, type: 3}

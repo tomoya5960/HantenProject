@@ -17,7 +17,7 @@ public class TileMaster : MonoBehaviour
     private      Image        _mapImage     = null;
     private      TileData     _tileData;                              //自分のタイルデータを格納
     private      TurnFaceType _turnFaceType = TurnFaceType.Front;    //生成されたときに表の状態にするよ
-    private bool              _isEnableTurn = true;                  //現在のタイルが裏返せるか（trueは裏返せる）
+    private bool         _isEnableTurn = true;                  //現在のタイルが裏返せるか（trueは裏返せる）
     public  bool              isEnableTurn  => _isEnableTurn;        //読み取り専用
 
     [Header("プレイヤーの格納しているロープの仮、後で置き換えて")]
@@ -117,8 +117,8 @@ public class TileMaster : MonoBehaviour
     /// <param name="ImageID"></param>
     private void CommonFirstSpriteSearch(int ImageID)
     {
-        GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)ImageID;
-        string TileSpriteName = GeneralManager.Instance.mapType.imageName.ToString();
+        GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)ImageID;
+        string TileSpriteName = GeneralManager.instance.mapType.imageName.ToString();
         First = Resources.Load<Sprite>("Textures/" + TileSpriteName.ToString()) as Sprite;
     }
 
@@ -128,7 +128,7 @@ public class TileMaster : MonoBehaviour
     /// <param name="ImageID"></param>
     private void CommonSecondSpriteSearch()
     {
-        TileSpriteName = GeneralManager.Instance.mapType.imageName.ToString();
+        TileSpriteName = GeneralManager.instance.mapType.imageName.ToString();
         Second = Resources.Load<Sprite>("Textures/" + TileSpriteName.ToString()) as Sprite;
     }
 
@@ -143,59 +143,59 @@ public class TileMaster : MonoBehaviour
         {
             #region 道の場合
             case 1:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.wall_02;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.wall_02;
                 CommonSecondSpriteSearch();
                 break;
             case 3:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.wall_03;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.wall_03;
                 CommonSecondSpriteSearch();
                 break;
             #endregion
             #region 壁の場合
             case 4:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.aisle_02;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.aisle_02;
                 CommonSecondSpriteSearch();
                 break;
             case 5:
                 break;
             case 6:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.aisle_03;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.aisle_03;
                 CommonSecondSpriteSearch();
                 break;
             #endregion
             #region 石像の場合
             case 12:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_11;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_11;
                 CommonSecondSpriteSearch();
                 break;
             case 13:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_12;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_12;
                 CommonSecondSpriteSearch();
                 break;
             case 14:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_13;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_13;
                 CommonSecondSpriteSearch();
                 break;
             case 15:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_14;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_14;
                 CommonSecondSpriteSearch();
                 break;
             #endregion
             #region 壊れた石像の場合
             case 16:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_01;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_01;
                 CommonSecondSpriteSearch();
                 break;
             case 17:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_02;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_02;
                 CommonSecondSpriteSearch();
                 break;
             case 18:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_03;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_03;
                 CommonSecondSpriteSearch();
                 break;
             case 19:
-                GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_04;
+                GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.statue_04;
                 CommonSecondSpriteSearch();
                 break;
             #endregion
@@ -212,82 +212,54 @@ public class TileMaster : MonoBehaviour
     private void SetGoalSprite(int ImageID)
     {
         CommonFirstSpriteSearch(ImageID);
-        GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.goal_02;
+        GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.goal_02;
         CommonSecondSpriteSearch();
-        GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.goal_03;
-        TileSpriteName = GeneralManager.Instance.mapType.imageName.ToString();
+        GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)MapType.ImageIdType.goal_03;
+        TileSpriteName = GeneralManager.instance.mapType.imageName.ToString();
         Third = Resources.Load<Sprite>("Textures/" + TileSpriteName.ToString()) as Sprite;
     }
     #endregion
-
-
+    public class IdPack
+    {
+        public MapType.ImageIdType ImageIdType;
+        public bool IsEnableProceed;
+        public IdPack(MapType.ImageIdType imageIdType, bool isEnableProceed)
+        {
+            ImageIdType = imageIdType;
+            IsEnableProceed = isEnableProceed;
+        }
+    }
+    private List<IdPack> _packLists = new List<IdPack>()
+    {
+        new IdPack(MapType.ImageIdType.invisible,false),
+        new IdPack(MapType.ImageIdType.wall_02,false),
+        new IdPack(MapType.ImageIdType.invisible,false),
+        new IdPack(MapType.ImageIdType.wall_03,false),
+        new IdPack(MapType.ImageIdType.aisle_02,true),
+        new IdPack(MapType.ImageIdType.invisible,false),
+        new IdPack(MapType.ImageIdType.aisle_03,true),
+        new IdPack(MapType.ImageIdType.goal_02,false),
+        new IdPack(MapType.ImageIdType.goal_01,false),
+        new IdPack(MapType.ImageIdType.invisible,false),
+        new IdPack(MapType.ImageIdType.invisible,false),
+        new IdPack(MapType.ImageIdType.invisible,false),
+        new IdPack(MapType.ImageIdType.statue_11,false),
+        new IdPack(MapType.ImageIdType.statue_12,false),
+        new IdPack(MapType.ImageIdType.statue_13,false),
+        new IdPack(MapType.ImageIdType.statue_14,false),
+        new IdPack(MapType.ImageIdType.statue_01,false),
+        new IdPack(MapType.ImageIdType.statue_02,false),
+        new IdPack(MapType.ImageIdType.statue_03,false),
+        new IdPack(MapType.ImageIdType.statue_04,false),
+    };
     private void ChangeImageID()
     {
-        switch (_tileData.imageID)
-        {
-            case 1:
-                _tileData.imageID = (int)MapType.ImageIdType.wall_02;
-                _tileData.isEnableProceed = false;
-                break;
-            case 3:
-                _tileData.imageID = (int)MapType.ImageIdType.wall_03;
-                _tileData.isEnableProceed = false;
-                break;
-            case 4:
-                _tileData.imageID = (int)MapType.ImageIdType.aisle_02;
-                _tileData.isEnableProceed = true;
-                break;
-            case 6:
-                _tileData.imageID = (int)MapType.ImageIdType.aisle_03;
-                _tileData.isEnableProceed = true;
-                break;
-            case 7:
-                _tileData.imageID = (int)MapType.ImageIdType.goal_02;
-                _tileData.isEnableProceed = false;
-                break;
-            case 8:
-                _tileData.imageID = (int)MapType.ImageIdType.goal_01;
-                _tileData.isEnableProceed = false;
-                break;
-            case 12:
-                _tileData.imageID = (int)MapType.ImageIdType.statue_11;
-                _tileData.isEnableProceed = false;
-                break;
-            case 13:
-                _tileData.imageID = (int)MapType.ImageIdType.statue_12;
-                _tileData.isEnableProceed = false;
-                break;
-            case 14:
-                _tileData.imageID = (int)MapType.ImageIdType.statue_13;
-                _tileData.isEnableProceed = false;
-                break;
-            case 15:
-                _tileData.imageID = (int)MapType.ImageIdType.statue_14;
-                _tileData.isEnableProceed = false;
-                break;
-            case 16:
-                _tileData.imageID = (int)MapType.ImageIdType.statue_01;
-                _tileData.isEnableProceed = false;
-                break;
-            case 17:
-                _tileData.imageID = (int)MapType.ImageIdType.statue_02;
-                _tileData.isEnableProceed = false;
-                break;
-            case 18:
-                _tileData.imageID = (int)MapType.ImageIdType.statue_03;
-                _tileData.isEnableProceed = false;
-                break;
-            case 19:
-                _tileData.imageID = (int)MapType.ImageIdType.statue_04;
-                _tileData.isEnableProceed = false;
-                break;
-            default:
-                Debug.LogError("イメージID変更でエラーが起きてるぜ");
-                break;
-        }
+        _tileData.isEnableProceed = _packLists[_tileData.imageID].IsEnableProceed;
+        _tileData.imageID = (int)_packLists[_tileData.imageID].ImageIdType;
     }
 
     #region 生成時の関数（ゲーム中には触らないやつ）
+
     /// <summary>
     /// 共通初期化処理
     /// </summary>
@@ -330,3 +302,5 @@ public class TileMaster : MonoBehaviour
     }
     #endregion
 }
+
+

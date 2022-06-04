@@ -73,8 +73,8 @@ public class EdiotTileData : MonoBehaviour
     /// </summary>
     public void SearchSetSprite(int imageID)
     {
-        GeneralManager.Instance.mapType.imageName = (MapType.ImageIdType)imageID;
-        string _name = GeneralManager.Instance.mapType.imageName.ToString();
+        GeneralManager.instance.mapType.imageName = (MapType.ImageIdType)imageID;
+        string _name = GeneralManager.instance.mapType.imageName.ToString();
         Sprite sprite = Resources.Load<Sprite>("Textures/" + _name) as Sprite;    //辞書から受け取った名前をもとにファイルを検索
         image.sprite = sprite;  //画像を差し替える
     }
