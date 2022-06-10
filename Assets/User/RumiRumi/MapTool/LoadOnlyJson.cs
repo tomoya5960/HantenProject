@@ -20,11 +20,17 @@ public class LoadOnlyJson : MonoBehaviour
     public  string loadFileName = "";   //読み込むファイルの名前
     private string _filePath    = "";   //データの保存されているパス
     
-    public List<JsonData> _jsonList = new List<JsonData>();
+    public List<string> _jsonList = new List<string>();
     #endregion
 
     private void Awake()
     {
+        var JsonData = Resources.LoadAll<TextAsset>("MapData");
+        foreach(var json in JsonData)
+        {
+            _jsonList.Add(json.text);
+        }
+
         if (!GameObject.Find("Map"))
         {
             parentTiles = null;
