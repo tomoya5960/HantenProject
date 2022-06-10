@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(SoundManager))]
 [RequireComponent(typeof(MapType))]
-[RequireComponent(typeof(StageManager))]
+[RequireComponent(typeof(MapManager))]
 
 public class GeneralManager : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class GeneralManager : MonoBehaviour
     [HideInInspector]
     public        MapType        mapType;            //MapTypeを格納するやつだ！！！
     [HideInInspector]
-    public        StageManager   stageManager;
+    public        MapManager   stageManager;
     private void Awake()    //スタートの前に呼び出すよ
     {
         if(instance == null)    //もしゲームマネージャーがなかった場合に呼ぶよ
@@ -25,7 +25,7 @@ public class GeneralManager : MonoBehaviour
 
         soundManager = GetComponent<SoundManager>(); //SoundManagerを管理するぜ！！
         mapType = GetComponent<MapType>(); //MapTypeを管理するぜ！！
-        stageManager = GetComponent<StageManager>();
+        stageManager = GetComponent<MapManager>();
 
     }
 }

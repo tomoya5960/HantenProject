@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StageManager : MonoBehaviour
+public class MapManager : MonoBehaviour
 {
     #region　ステージで必須な物
     [Header("反転可能数")]
@@ -10,13 +10,16 @@ public class StageManager : MonoBehaviour
     private        GameObject _loadJson;      //_loadOnlyJson取得するために使うやーつ
     #endregion
 
-    #region MAPの二次元配列座標の割り当て
+    #region MAPに必要な物
+        #region マップの二次元配列
     public MapPosition[] mapPosX = new MapPosition[7];
     [System.Serializable]
     public class MapPosition
     {
         public GameObject[] mapPosY = new GameObject[8];
     }
+        #endregion
+    public int selectStageNum = 0;  //ステージ番号を格納
     #endregion
 
     private void Awake()

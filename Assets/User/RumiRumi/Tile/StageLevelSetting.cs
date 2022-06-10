@@ -17,7 +17,7 @@ public class StageLevelSetting : MonoBehaviour
 
     private void Start()
     {
-        GeneralManager.instance.stageManager = GameObject.Find("GenenalManager").GetComponent<StageManager>();
+        GeneralManager.instance.stageManager = GameObject.Find("GenenalManager").GetComponent<MapManager>();
         GeneralManager.instance.stageManager.stageTurnCount = stageTurnCount;
     }
     private void Update()

@@ -19,6 +19,8 @@ public class LoadOnlyJson : MonoBehaviour
     [HideInInspector]
     public  string loadFileName = "";   //読み込むファイルの名前
     private string _filePath    = "";   //データの保存されているパス
+    
+    public List<JsonData> _jsonList = new List<JsonData>();
     #endregion
 
     private void Awake()

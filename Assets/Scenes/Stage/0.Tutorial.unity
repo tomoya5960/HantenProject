@@ -719,7 +719,8 @@ PrefabInstance:
       propertyPath: ImageIdType
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7617106600215490760, guid: 21e878592465e10408877a3dad1dc914, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 21e878592465e10408877a3dad1dc914, type: 3}
 --- !u!1001 &3963419400797124319
 PrefabInstance:
