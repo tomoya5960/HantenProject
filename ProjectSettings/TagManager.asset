@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MapTile
   - TileData
+  - KYOUTYOUTIle
   layers:
   - Default
   - TransparentFX
