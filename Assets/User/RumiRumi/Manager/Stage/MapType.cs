@@ -30,4 +30,15 @@ public class MapType : MonoBehaviour
 
     [HideInInspector]
     public ImageIdType imageName;
+
+    public List<string> jsonList = new List<string>(); //JsonDataƒŠƒXƒg
+
+    private void Awake()
+    {
+        var JsonData = Resources.LoadAll<TextAsset>("MapData");
+        foreach (var json in JsonData)
+        {
+            jsonList.Add(json.text);
+        }
+    }
 }

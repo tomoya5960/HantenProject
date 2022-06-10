@@ -4,35 +4,42 @@ using UnityEngine.SceneManagement;
 public class MapManager : MonoBehaviour
 {
     #region　ステージで必須な物
+    [Header("ステージナンバー")]
+    public int selectStageNum = 0;  //ステージ番号を格納
     [Header("反転可能数")]
-    public  int               stageTurnCount      = 0;  //反転できる残りの回数
-    private string            _stageName          = ""; //JsonOnlyJsonのステージ名を格納する
-    private        GameObject _loadJson;      //_loadOnlyJson取得するために使うやーつ
+    public int stageTurnCount = 0;  //反転できる残りの回数
+    [SerializeField]
+    private Vector2 PlayerPos = Vector2.zero;
+    private GameObject _loadJson;      //_loadOnlyJson取得するために使うやーつ
     #endregion
 
     #region MAPに必要な物
-        #region マップの二次元配列
+
+
+    #region マップの二次元配列
     public MapPosition[] mapPosX = new MapPosition[7];
     [System.Serializable]
     public class MapPosition
     {
         public GameObject[] mapPosY = new GameObject[8];
     }
-        #endregion
-    public int selectStageNum = 0;  //ステージ番号を格納
+    #endregion
+
+    #region マップにあるギミックオブジェクトの二次元配列
+    public GimmickObjectPosition[] gimmickObjectPosX = new GimmickObjectPosition[7];
+    [System.Serializable]
+    public class GimmickObjectPosition
+    {
+        public GameObject[] gimmickObjectPosY = new GameObject[8];
+    }
+    #endregion
+
     #endregion
 
     private void Awake()
     {
         if (GameObject.Find("LoadData"))
             _loadJson = GameObject.Find("LoadData");
-        _stageName = SceneManager.GetActiveScene().name;
-        if (_loadJson != null)
-        {
-            _loadJson.GetComponent<LoadOnlyJson>().loadFileName = _stageName;
-        }
-        else
-            _stageName = "エディターで編集中";
     }
 
     private void Start()
@@ -42,6 +49,46 @@ public class MapManager : MonoBehaviour
             SetTileArray();
         }
     }
+
+    /// <summary>
+    /// プレイヤーの移動
+    /// </summary>
+    public bool Move(int vecTest)
+    {
+        var isMove = false;
+        switch(vecTest)
+        {
+            case 0: //上
+                if (mapPosX[(int)PlayerPos.x - 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableProceed)
+                    isMove =  true;
+                break;
+            case 1: //下
+                if (mapPosX[(int)PlayerPos.x + 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableProceed)
+                    isMove = true;
+                break;
+            case 2: //左
+                if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y - 1].GetComponent<TileData>().isEnableProceed)
+                    isMove = true;
+                break;
+            case 3: //右
+                if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y + 1].GetComponent<TileData>().isEnableProceed)
+                    isMove = true;
+                break;
+        }
+        return isMove;
+    }
+
+    /// <summary>
+    /// プレイヤーの下が氷床かどうかチェックする関数
+    /// </summary>
+    public bool IsIceFloor()
+    {
+        var isMove = false;
+        if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().imageID == (int)MapType.ImageIdType.aisle_03)
+            isMove = true;
+        return isMove;
+    }
+
     /// <summary>
     /// そのステージでの反転を使用した際に使う関数
     /// </summary>
@@ -53,9 +100,7 @@ public class MapManager : MonoBehaviour
             Debug.Log("反転しました。");
         }
         else
-        {
             Debug.Log("反転できません");
-        }
     }
 
     /// <summary>
