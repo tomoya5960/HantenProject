@@ -6,6 +6,7 @@ public class Button : MonoBehaviour
 {
     [SerializeField]
     private GameObject Scroll2;
+    internal object onClick;
 
     //上ボタンを押したらスクロール
     public void Up()
