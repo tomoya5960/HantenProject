@@ -21,7 +21,8 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
-        _loadJson = GameObject.Find("LoadData");
+        if (GameObject.Find("LoadData"))
+            _loadJson = GameObject.Find("LoadData");
         _stageName = SceneManager.GetActiveScene().name;
         if (_loadJson != null)
         {
@@ -33,8 +34,10 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name != "MapEditorScene")
+        if (_loadJson != null)
+        {
             SetTileArray();
+        }
     }
     /// <summary>
     /// そのステージでの反転を使用した際に使う関数
