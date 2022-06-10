@@ -23,18 +23,18 @@ public class SE : MonoBehaviour
         se_14,
     }
 
-    private AudioSource seSource;
-    public List<SeStatus> SeClips;
-    private int[] seNumber;   //SeNameの項目数の取得
+    private       AudioSource    seSource;
+    public        List<SeStatus> SeClips;
+    private int[]                seNumber;   //SeNameの項目数の取得
     [System.Serializable]
     public struct SeStatus  //リスト情報
     {
         [Header("名前")]
-        public SeName name;
+        public       SeName    name;
         [Header("音量"), Range(0, 1)]
-        public float volume;
+        public float           volume;
         [Header("SEデータ")]
-        public AudioClip seData; //BGM一覧
+        public       AudioClip seData; //BGM一覧
     }
 
     private void Awake()

@@ -35,7 +35,7 @@ public class Fade : MonoBehaviour
 		}
 		if (onof == true)
 		{
-			SceneManager.LoadScene("TestScene");
+			SceneManager.LoadScene("SelectStageScene");
 		}
 		if (isFadeIn)
 		{

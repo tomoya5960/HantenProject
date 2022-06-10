@@ -2,77 +2,86 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoadOnlyJson : MonoBehaviour
 {
-    private Vector2 mapMaxArray = new Vector2(8, 7);    //配列の最大値
-    [SerializeField]
-    private string loadFileName = "";   //読み込むファイル名
-    private string _filePath = "";      //データの保存されているパスを格納
-    public List<GameObject> _panels = new List<GameObject>();    //ここにタイルを保存
-    MapData _mapData;
-    private void Start()
-    {
-        if (loadFileName == "")
-            Debug.Log("読み込むデータの名前がないよ");
+    #region タイルデータ関係
+    [HideInInspector]
+    public List<GameObject>  tileDataList    = new List<GameObject>();  //ここにタイルを保存
+    private GameObject       parentTiles;                               //タイルオブジェクトの親を格納する
+    private MapData          _mapData        = new MapData();           //マップの実態を確保
+    private Vector2          mapTileMaxArray = new Vector2(8, 7);       //マップ配列の最大個数
+    #endregion
 
-        _filePath = Path.Combine(Application.dataPath, "MapData/" + loadFileName + ".json");   //入力したデータがあるか検索
-        if (!File.Exists(_filePath))
+    #region Json管理関係
+    [HideInInspector]
+    public  string loadFileName = "";   //読み込むファイルの名前
+    private string _filePath    = "";   //データの保存されているパス
+    
+    public List<JsonData> _jsonList = new List<JsonData>();
+    #endregion
+
+    private void Awake()
+    {
+        if (!GameObject.Find("Map"))
         {
-            Debug.Log($"<color=yellow>{_filePath} にJSONがないよ</color>");
+            parentTiles = null;
+            Debug.LogError($"<color=red>Map がないよ</color>");
+        }
+        else
+        {
+            parentTiles = GameObject.Find("Map");
+            SetTiles(parentTiles);
+        }
+        loadFileName = SceneManager.GetActiveScene().name;
+        OnDataLoad();
+        LoadTileData();
+    }
+
+    /// <summary>
+    /// リストにオブジェクトを格納する関数
+    /// </summary>
+    /// <param name="Parent">タイルの親オブジェクト</param>
+    private void SetTiles(GameObject Parent)
+    {
+        foreach (Transform childTransform in Parent.transform)
+        {
+            tileDataList.Add(childTransform.gameObject);
+        }
+    }
+
+    /// <summary> 
+    /// DataLoad ボタンが押されたら呼び出される
+    /// </summary>
+    private void OnDataLoad()
+    {
+        _filePath = Path.Combine(Application.dataPath, "MapData/" + loadFileName + ".json");   //入力したデータがあるか検索
+
+        if (!File.Exists(_filePath))    //ファイルパスに指定した名前のJsonファイルがない場合
+        {
+            Debug.LogError($"<color=yellow>{_filePath} にJSONがないよ</color>");
             return;
         }
-        var json = File.ReadAllText(_filePath); // 指定したファイルにある情報を取り出す
-        _mapData = JsonUtility.FromJson<MapData>(json); //取り出した情報を与える
-        DrawMap(mapMaxArray);
-        Debug.Log("データをロードしたよ");
+
+        var Json = File.ReadAllText(_filePath);         // Jsonファイルから情報を取り出す
+        _mapData = JsonUtility.FromJson<MapData>(Json); //取り出した情報を与える
+        LoadTileData();
+        Debug.Log($"<color=blue>{loadFileName} をロードしたよ</color>");
     }
-    private void DrawMap(Vector2 _mapPos)
+
+    /// <summary> 
+    /// 各タイルにJsonのデータを格納する関数
+    /// </summary>
+    private void LoadTileData()
     {
-        Vector2 _mapPosCount = new Vector2(0, 0);
-        var count = 0;  //エラー回避用
-        var maxCount = 0;   //タイルの数を記憶する　エラー回避用
-        maxCount = (int)(_mapPos.x * _mapPos.y);
         foreach (var map in _mapData.Map.Select((mapChip, index) => new { mapChip, index }))
         {
-            if (map == null) continue;
-            //タイルの枚数以上の読み込みがあった場合は終了
-            if (count >= maxCount)
-                break;
-            SetTileData(_panels[map.index].GetComponent<TileData>(), _mapPosCount, _mapData.Map[map.index].isRope);
-            if (_mapPosCount.x <= _mapPos.x)
-            {
-                map.mapChip.mapArray.x = _mapPosCount.x;
-                _mapPosCount.x++;    //配列の行を++
-            }
-            else
-            {
-                _mapPosCount.x = 0;
-                _mapPosCount.y++;
-            }
-            _panels[count].GetComponent<TileData>()._imageID = map.mapChip.mapImageID;
-            _panels[count].GetComponent<TileData>()._isRope = map.mapChip.isRope;
-            _panels[count].GetComponent<TileData>()._isTurnOver = map.mapChip.isTurnOver;
-            count++;
-        }
-    }
-    /// <summary>生成されたタイルに情報を記入</summary>
-    private void SetTileData(TileData tileData, Vector2 pos, bool isRope)
-    {
-        //各値を代入
-        tileData._arrayPos = pos;
-        if (tileData._isRope != isRope)
-        {
-            tileData._isRope = isRope;
-        }
-        if (!tileData._isTurnOver)
-        {
-            tileData._isTurnOver = true;
-        }
-        else if (tileData._isTurnOver)
-        {
-            tileData._isTurnOver = false;
+            var tileData = tileDataList[map.index].GetComponent<TileData>();
+            tileData.imageID = map.mapChip.mapImageID;
+            tileData.isEnableProceed = map.mapChip.isEnableProceed;
+            tileData.isEnableRope = map.mapChip.isEnableRope;
         }
     }
 }

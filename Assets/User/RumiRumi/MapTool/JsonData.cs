@@ -6,43 +6,48 @@ using UnityEngine.UI;
 
 public class JsonData : MonoBehaviour
 {
-    private Vector2 mapMaxArray = new Vector2(8, 7);    //配列の最大値
+    #region タイルデータ関係
     [SerializeField]
-    private Button _dataSave = null;    //データをセーブ
+    private List<GameObject> tileDataList    = new List<GameObject>();  //ここにタイルを保存
+    private MapData          _mapData        = new MapData();           //マップの実態を確保
+    private Vector2          mapTileMaxArray = new Vector2(8, 7);       //マップ配列の最大個数
+    #endregion
+
+    #region Json管理関係
+    [HideInInspector]
+    public  string        fileName      = "";   //保存するファイルの名前
+    private string        _filePath     = "";   //データの保存先
     [SerializeField]
-    private Button _dataLoad = null;    //データをロード
-    public List<GameObject> _panels = new List<GameObject>();    //ここにタイルを保存
-    private int[] _num;
-    private bool[] _rope;
-    private bool[] _turn;
-    MapData _mapData;
+    private        Button _dataSave     = null; //データをセーブ
+    [SerializeField]
+    private        Button _dataLoad     = null; //データをロード
     [HideInInspector]
-    public string _fileName = "";   //保存するファイルの名前
-    private string _filePath = "";      //データの保存先
-    [HideInInspector]
-    public bool overWriteSave = true;  //上書き保存しないかするか選択してね
-    private void Start()
+    public bool           overWriteSave = true; //上書き保存しないかするか選択してね
+    #endregion
+
+    private void Awake()
     {
         Debug.Assert(null != _dataSave, "_dataOutPut ボタンが設定されていません");
         Debug.Assert(null != _dataLoad, "_LoadData ボタンが設定されていません");
-        var listNum = 56;
-        _num = new int[listNum];
-        _rope = new bool[listNum];
-        _turn = new bool[listNum];
+
         //  ボタンを押したときのイベントを登録する
         _dataSave.onClick.AddListener(OnClickSave);
         _dataLoad.onClick.AddListener(OnClickLoad);
     }
 
-    /// <summary> DataSave ボタンが押されたら呼び出される</summary>
+    /// <summary> 
+    /// DataSave ボタンが押されたら呼び出される
+    /// </summary>
     private void OnClickSave()
     {
-        _filePath = Path.Combine(Application.dataPath, "MapData/" + _fileName + ".json");
-        string[] files = Directory.GetFiles("Assets/MapData/", "*.json", SearchOption.AllDirectories);
-        //名前が一致する場合は保存しない処理
-        foreach(string name in files)
+        _filePath = Path.Combine(Application.dataPath, "MapData/" + fileName + ".json");
+        
+        #region 名前が一致する場合は保存しない処理
+        string[] _files = Directory.GetFiles("Assets/MapData/", "*.json", SearchOption.AllDirectories);
+        
+        foreach(string FileName in _files)
         {
-            if(name == "Assets/MapData/" + _fileName + ".json")   //名前の被りがあったら保存しない
+            if(FileName == "Assets/MapData/" + fileName + ".json")   //名前の被りがあったら保存しない
             {
                 if (overWriteSave)   //上書き保存するか確認
                 {
@@ -56,86 +61,64 @@ public class JsonData : MonoBehaviour
                 } 
             }
         }
+        #endregion
 
-        foreach (int num in Enumerable.Range(0, _panels.Count))
-        {
-            _num[num] = _panels[num].gameObject.GetComponent<TileData>()._imageID;
-            _rope[num] = _panels[num].gameObject.GetComponent<TileData>()._isRope;
-            _turn[num] = _panels[num].gameObject.GetComponent<TileData>()._isTurnOver;
-        }
-       
-        _mapData = new MapData(mapMaxArray, _num,_rope,_turn);
-         var json = JsonUtility.ToJson(_mapData, false); //必要な情報を与える
-        File.WriteAllText(_filePath, json); //指定したファイルに情報を保存
-        Debug.Log(_fileName + "はしっかり保存したよ");
+        SaveTileData();
+        var Json = JsonUtility.ToJson(_mapData, false); //まとめた情報をJsonに保存
+        File.WriteAllText(_filePath, Json);             //Jsonを保存
+        Debug.Log($"<color=blue>{_filePath} に保存したよ</color>");
     }
 
-    /// <summary> DataLoad ボタンが押されたら呼び出される</summary>
+    /// <summary> 
+    /// DataLoad ボタンが押されたら呼び出される
+    /// </summary>
     private void OnClickLoad()
     {
-        _filePath = Path.Combine(Application.dataPath, "MapData/" + _fileName + ".json");   //入力したデータがあるか検索
-        if (!File.Exists(_filePath))
+        _filePath = Path.Combine(Application.dataPath, "MapData/" + fileName + ".json");   //入力したデータがあるか検索
+        
+        if (!File.Exists(_filePath))    //ファイルパスに指定した名前のJsonファイルがない場合
         {
-            Debug.Log($"<color=yellow>{_filePath} にJSONがないよ</color>");
+            Debug.LogError($"<color=yellow>{_filePath} にJSONがないよ</color>");
             return;
         }
-        var json = File.ReadAllText(_filePath); // 指定したファイルにある情報を取り出す
-        _mapData = JsonUtility.FromJson<MapData>(json); //取り出した情報を与える
-        DrawMap(mapMaxArray);
-        Debug.Log("データをロードしたよ");
+        
+        var Json = File.ReadAllText(_filePath);         // Jsonファイルから情報を取り出す
+        _mapData = JsonUtility.FromJson<MapData>(Json); //取り出した情報を与える
+        LoadTileData();
+        Debug.Log($"<color=blue>{_filePath} をロードしたよ</color>");
     }
 
-    /// <summary> タイルの情報を取得</summary>
-    private void DrawMap(Vector2 _mapPos)
+    /// <summary> 
+    /// 各タイルにJsonのデータを格納する関数
+    /// </summary>
+    private void LoadTileData()
     {
-        Vector2 _mapPosCount = new Vector2(0, 0);
-        var count = 0;  //エラー回避用
-        var maxCount = 0;   //タイルの数を記憶する　エラー回避用
-        maxCount = (int)(_mapPos.x * _mapPos.y);
         foreach (var map in _mapData.Map.Select((mapChip, index) => new { mapChip, index }))
         {
-            if (map == null) continue;
-            //タイルの枚数以上の読み込みがあった場合は終了
-            if (count >= maxCount)  
-                break;
-            SetTileData(_panels[map.index].GetComponent<TileData>(), _mapPosCount, _mapData.Map[map.index].isRope);
-            if (_mapPosCount.x <= _mapPos.x)
-            {
-                map.mapChip.mapArray.x = _mapPosCount.x;
-                _mapPosCount.x++;    //配列の行を++
-            }
-            else
-            {
-                _mapPosCount.x = 0;
-                _mapPosCount.y++;
-            }
-            _panels[count].GetComponent<TileData>()._imageID = map.mapChip.mapImageID;
-            _panels[count].GetComponent<TileData>()._isRope = map.mapChip.isRope;
-            _panels[count].GetComponent<TileData>()._isTurnOver = map.mapChip.isTurnOver;
-            count++;
+            var tileData = tileDataList[map.index].GetComponent<EdiotTileData>();
+            tileData.imageID = map.mapChip.mapImageID;
+            tileData.isEnableProceed = map.mapChip.isEnableProceed;
+            tileData._isEnableRope = map.mapChip.isEnableRope;
         }
     }
 
-    /// <summary>生成されたタイルに情報を記入</summary>
-    private void SetTileData(TileData tileData, Vector2 pos, bool isRope)
+    /// <summary> 
+    /// 各タイルをJsonのデータに格納する関数
+    /// </summary>
+    private void SaveTileData()
     {
-        //各値を代入
-        tileData._arrayPos = pos;
-        if (tileData._isRope != isRope)
+        foreach (var map in _mapData.Map.Select((mapChip, index) => new { mapChip, index }))
         {
-            tileData._isRope = isRope; 
+            var tileData = tileDataList[map.index].GetComponent<EdiotTileData>();
+            map.mapChip.mapImageID = tileData.imageID;
+            map.mapChip.isEnableProceed = tileData.isEnableProceed;
+            map.mapChip.isEnableRope = tileData._isEnableRope;
         }
-        //if( !tileData._isTurnOver)
-        //{
-        //    tileData._isTurnOver = true;
-        //}
-        //else if(tileData._isTurnOver)
-        //{
-        //    tileData._isTurnOver = false;
-        //}
     }
 
-    /// <summary>スクリプトが破棄されたときに登録したイベントを削除する</summary>
+    /// <summary>
+    /// スクリプトが破棄されたときに登録したイベントを削除する
+    /// </summary>
     private void OnDestroy()
     {
         _dataSave.onClick.RemoveAllListeners();
