@@ -1,124 +1,134 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Mouse : MonoBehaviour
 {
-    private GameObject clickedGameObject,ChildObject;   //選択したタイルと強調表示（選択中に表示されるオブジェクト）
-    [SerializeField]
-    private GameObject rope;    //ロープのプレハブを格納
-    [SerializeField]
-    private GameObject player;    //playerのプレハブを格納
-    private Image image;
-    [SerializeField]
-    private TileData getTileData;   //セットするタイルのデータ
-    [SerializeField]
-    private TileData setTileData;   //入れ替えるタイルのデータ（格納用）
-    private bool isChangeTile =false;  //右側のタイルを変更中に左側を選択できないようにするやつ
+    #region タイルデータ関連
+    private EdiotTileData _sample_tile_data;                //見本のタイルデータ
+    private EdiotTileData _mapTileData;                     //入れ替えるマップタイルデータ（格納用）
+    private GameObject _clickedGameObject,_childObject;     //選択したタイルと強調表示（選択中に表示されるオブジェクト）
+    private Image _image;
+    #endregion
+
+    #region 実際の操作関連
+    private bool            _isChangeTile =false;   //右側のタイルを変更中に左側を選択できないようにするやつ
+    private      GameObject _rope;                  //ロープのプレハブを格納
     [HideInInspector]
-    public bool isRope = false;  //タイルの上にロープを置くか選択してね
-    public bool isPlayer = false;  //タイルの上にplayerを置くか選択してね
+    public bool             isRope = false;         //タイルの上にロープを置くか選択してね
+    #endregion
+
+    private void Awake()
+    {
+        _rope = (GameObject)Resources.Load("Prefabs/Rope");
+    }
 
     private void Update()
     {
         if (Input.GetMouseButton(0))     //クリックした場所に選択するタイルがあるか
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
-            if (hit2d)
+            Ray Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D Hit2d = Physics2D.Raycast((Vector2)Ray.origin, (Vector2)Ray.direction);
+
+            if (Hit2d)
             {
-                if (hit2d.transform.gameObject.tag == "TileData")
+                if (Hit2d.transform.gameObject.tag == "TileData")
                 {
-                    if (ChildObject != null)
+                    if (_childObject != null)
                     {
-                        ChildObject.SetActive(false);   //ほかの選択状態の子オブジェクトがある場合はfalseにする
-                        ChildObject = null;
+                        _childObject.SetActive(false);   //ほかの選択状態の子オブジェクトがある場合はfalseにする
+                        _childObject = null;
                     }
-                    if (!isChangeTile)
+                    if (!_isChangeTile)
                     {
-                        clickedGameObject = hit2d.transform.gameObject; //タイルを格納
-                        ChildObject = clickedGameObject.transform.GetChild(0).gameObject;   //子オブジェクト（選択しているタイルを強調表示するためのオブジェクト）を格納
-                        ChildObject.SetActive(true);    //強調表示する
-                        getTileData = clickedGameObject.GetComponent<TileData>();   //タイルデータを読み込み
+                        _clickedGameObject = Hit2d.transform.gameObject; //タイルを格納
+                        _childObject = _clickedGameObject.transform.GetChild(0).gameObject;   //子オブジェクト（選択しているタイルを強調表示するためのオブジェクト）を格納
+                        _childObject.SetActive(true);    //強調表示する
+                        _sample_tile_data = _clickedGameObject.GetComponent<EdiotTileData>();   //タイルデータを読み込み
                     }
                 }
 
-                if (hit2d.transform.gameObject.tag == "MapTile" && clickedGameObject != null)
+                if (Hit2d.transform.gameObject.tag == "MapTile" && _clickedGameObject != null)
                 {
-                    if (hit2d.transform.gameObject.GetComponent<TileData>()._isRope == true)
+                    if (Hit2d.transform.gameObject.GetComponent<EdiotTileData>()._isEnableRope == true)
                     {
-                        if (!isChangeTile)
+                        if (!_isChangeTile)
                         {
-                            SetData(hit2d.transform.gameObject);  //置き換え
-                            CheckRope(hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
-                            isChangeTile = true;    //タイルを選択し、塗り始めている場合は他のタイルを選択できなくする
+                            SetData(Hit2d.transform.gameObject);  //置き換え
+                            CheckRope(Hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
+                            _isChangeTile = true;    //タイルを選択し、塗り始めている場合は他のタイルを選択できなくする
                         }
                         else
                         {
-                            SetData(hit2d.transform.gameObject);  //置き換え
-                            CheckRope(hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
+                            SetData(Hit2d.transform.gameObject);  //置き換え
+                            CheckRope(Hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
                         }
                     }
 
-                    if (!isChangeTile)
+                    if (!_isChangeTile)
                     {
-                        SetData(hit2d.transform.gameObject);  //置き換え
-                        CheckRope(hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
-                        isChangeTile = true;    //タイルを選択し、塗り始めている場合は他のタイルを選択できなくする
+                        SetData(Hit2d.transform.gameObject);  //置き換え
+                        CheckRope(Hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
+                        _isChangeTile = true;    //タイルを選択し、塗り始めている場合は他のタイルを選択できなくする
                     }
                     else
                     {
-                        image = hit2d.transform.gameObject.GetComponent<Image>();
-                        SetData(hit2d.transform.gameObject);  //置き換え
-                        CheckRope(hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
+                        _image = Hit2d.transform.gameObject.GetComponent<Image>();
+                        SetData(Hit2d.transform.gameObject);  //置き換え
+                        CheckRope(Hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
                     }
-
                 }
             }
         }
+
         if(Input.GetMouseButtonUp(0))
         {
-            if (isChangeTile)
-                isChangeTile = false;   //他のタイルを選択できなくする状態を解除
+            if (_isChangeTile)
+                _isChangeTile = false;   //他のタイルを選択できなくする状態を解除
         }
-        if (Input.GetMouseButtonDown(1))
+
+        if (Input.GetMouseButtonDown(1))    //選択をすべて解除
         {
-            //選択をすべて解除
-            clickedGameObject = null;   
+            
+            _clickedGameObject = null;   
             RisetData();
         }
     }
 
-    /// <summary> データの置き換え </summary>
+    /// <summary> 
+    /// データの置き換え 
+    /// </summary>
     private void SetData(GameObject _hit2d)
     {
-        setTileData = _hit2d.GetComponent<TileData>();
-        setTileData._imageID = getTileData._imageID;
-        if (setTileData._imageID == 2 || setTileData._imageID == 5|| setTileData._imageID == 3)
-            setTileData._isTurnOver = getTileData._isTurnOver;
-        setTileData._isRope = isRope;
+        _mapTileData = _hit2d.GetComponent<EdiotTileData>();
+        _mapTileData.imageID = _sample_tile_data.imageID;
+        if (_mapTileData.imageID == 2 || _mapTileData.imageID == 5|| _mapTileData.imageID == 3)
+            _mapTileData.isTurnOver = _sample_tile_data.isTurnOver;
+      
+        _mapTileData.isEnableProceed = _sample_tile_data.isEnableProceed;
+        _mapTileData._isEnableRope = isRope;
     }
 
     /// <summary> データのリセット </summary>
     private void RisetData()
     {
-        ChildObject.SetActive(false);
-        ChildObject = null;
-        getTileData = null;
-        setTileData = null;
+        _childObject.SetActive(false);
+        _childObject = null;
+        _sample_tile_data = null;
+        _mapTileData = null;
     }
 
     private void CheckRope(GameObject _hit2d)
     {
         if (isRope && _hit2d.gameObject.transform.childCount == 0 &&
-           (setTileData._imageID == 1 || setTileData._imageID == 2 || setTileData._imageID == 3))
+           _mapTileData.imageID == 2)
         {
-            var setChild = (GameObject)Instantiate(rope, new Vector3(0, 0, 0), Quaternion.identity, _hit2d.transform);
-            setChild.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+            var SetChild = (GameObject)Instantiate(_rope, new Vector3(0, 0, 0), Quaternion.identity, _hit2d.transform);
+            SetChild.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
         }
         else if (!isRope && _hit2d.gameObject.transform.childCount != 0)
         {
             Destroy(_hit2d.transform.GetChild(0).gameObject);
         }
     }
+
 }

@@ -1,0 +1,12 @@
+iは横、jは縦でijは仮である。※二次元配列のXとYは逆
+GeneralManager.instance.gameManager.mapPosX[j].mapPosY[i]
+で二次元配列の指定したオブジェクトにアクセスすることができる。
+
+各シーンに　GenenalManager,LoadData,StageStatsの三つを置くこと、TestMapシーンを複製してもらっても可（その方が間違いない）
+
+タイルにはTileDataとTileMasterが格納されていることを確認してください。
+
+TileMasterのTurnImage()を呼びだすと、反転のイメージ画像の変更が行われます。呼び出すだけでタイルごとに設定されているスプライトに変わります。
+TestRopeはプレイヤーを作っている人がプレイヤースクリプトにロープの取得を判断するBoolを作成し、TestRopeを変えてください。参照させるなりなんなりで～
+TestRopeはゴールタイルで使います。
+

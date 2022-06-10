@@ -14,19 +14,19 @@ public class BGM : MonoBehaviour
         Silent = 999,
     }
 
-    private AudioSource bgmSource;
-    public List<BgmStatus> BgmClips;
-    private int[] bgmNumber;   //BgmNameの項目数の取得
+    private       AudioSource     bgmSource;
+    public        List<BgmStatus> BgmClips;
+    private int[]                 bgmNumber;   //BgmNameの項目数の取得
 
     [System.Serializable]
     public struct BgmStatus  //リスト情報
     {
         [Header("名前")]
-        public BgmName name;
+        public       BgmName   name;
         [Header("音量"), Range(0, 1)]
-        public float volume;
+        public float           volume;
         [Header("BGMデータ")]
-        public AudioClip bgmData; //BGM一覧
+        public       AudioClip bgmData; //BGM一覧
     }
 
     private int currentBgmIndex = 999;  //現在選ばれているBGM番号
