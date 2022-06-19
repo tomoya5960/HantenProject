@@ -1,0 +1,727 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 11
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 10
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 0
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVRFilteringMode: 0
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
+  m_LightingDataAsset: {fileID: 0}
+  m_UseShadowmask: 0
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+<<<<<<<< HEAD:Assets/User/Yoshida/Scenes/StageScene.unity
+--- !u!1 &1246025449
+========
+--- !u!1 &834445564
+========
+--- !u!1 &486248254
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  - component: {fileID: 834445566}
+  - component: {fileID: 834445565}
+  m_Layer: 0
+  m_Name: GameObject
+========
+  - component: {fileID: 486248258}
+  - component: {fileID: 486248257}
+  - component: {fileID: 486248256}
+  - component: {fileID: 486248255}
+  m_Layer: 0
+  m_Name: EventSystem
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+--- !u!114 &834445565
+========
+--- !u!114 &486248255
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  m_GameObject: {fileID: 834445564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98f01c8840b117489b3a4a003962bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &834445566
+========
+  m_GameObject: {fileID: 486248254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ForceModuleActive: 0
+--- !u!114 &486248256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486248254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &486248257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486248254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &486248258
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  m_GameObject: {fileID: 834445564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -31.693483, y: -11.338127, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &931812089
+>>>>>>>> origin/RumiRumi:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+========
+  m_GameObject: {fileID: 486248254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &691654662
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+<<<<<<<< HEAD:Assets/User/Yoshida/Scenes/StageScene.unity
+  - component: {fileID: 1246025452}
+  - component: {fileID: 1246025451}
+  - component: {fileID: 1246025450}
+========
+  - component: {fileID: 931812093}
+  - component: {fileID: 931812092}
+  - component: {fileID: 931812091}
+  - component: {fileID: 931812090}
+  m_Layer: 5
+========
+  - component: {fileID: 691654663}
+  - component: {fileID: 691654665}
+  - component: {fileID: 691654664}
+  m_Layer: 0
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &691654663
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691654662}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 993643434}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+--- !u!1 &1686142360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1686142363}
+  - component: {fileID: 1686142362}
+  - component: {fileID: 1686142366}
+  - component: {fileID: 1686142365}
+  - component: {fileID: 1686142364}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1686142362
+========
+--- !u!114 &691654664
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  m_GameObject: {fileID: 1686142360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdabc8f614ce7464b8d194e12a22e391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
+--- !u!4 &1686142363
+Transform:
+========
+  m_GameObject: {fileID: 691654662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &691654665
+Canvas:
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  m_GameObject: {fileID: 1686142360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1686142364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686142360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d70758b0ae0f7e4c901d3ecd18e9941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 0}
+  se: {fileID: 0}
+--- !u!114 &1686142365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686142360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f98601860fffe940bf100a7384859e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BgmClips:
+  - name: 0
+    volume: 0
+    bgmData: {fileID: 0}
+  - name: 1
+    volume: 0
+    bgmData: {fileID: 0}
+  - name: 2
+    volume: 0
+    bgmData: {fileID: 0}
+  - name: 3
+    volume: 0
+    bgmData: {fileID: 0}
+--- !u!114 &1686142366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686142360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6e97fbd56ac334fb315a8ae1064acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SeClips:
+  - name: 0
+    volume: 0
+    seData: {fileID: 0}
+  - name: 1
+    volume: 0
+    seData: {fileID: 0}
+  - name: 2
+    volume: 0
+    seData: {fileID: 0}
+  - name: 3
+    volume: 0
+    seData: {fileID: 0}
+  - name: 4
+    volume: 0
+    seData: {fileID: 0}
+  - name: 5
+    volume: 0
+    seData: {fileID: 0}
+  - name: 6
+    volume: 0
+    seData: {fileID: 0}
+  - name: 7
+    volume: 0
+    seData: {fileID: 0}
+  - name: 8
+    volume: 0
+    seData: {fileID: 0}
+  - name: 8
+    volume: 0
+    seData: {fileID: 0}
+  - name: 9
+    volume: 0
+    seData: {fileID: 0}
+  - name: 10
+    volume: 0
+    seData: {fileID: 0}
+  - name: 11
+    volume: 0
+    seData: {fileID: 0}
+  - name: 12
+    volume: 0
+    seData: {fileID: 0}
+  - name: 13
+    volume: 0
+    seData: {fileID: 0}
+--- !u!1 &1868008743
+========
+  m_GameObject: {fileID: 691654662}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 1166195106}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!1 &993643432
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  - component: {fileID: 1868008746}
+  - component: {fileID: 1868008744}
+  - component: {fileID: 1868008745}
+>>>>>>>> origin/RumiRumi:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+========
+  - component: {fileID: 993643434}
+  - component: {fileID: 993643433}
+  m_Layer: 0
+  m_Name: 'Text Object #1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &993643433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993643432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2c5b59b6874405865e2616e4ec276a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 1
+  isStatic: 0
+--- !u!224 &993643434
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993643432}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 691654663}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 75}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1166195102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166195107}
+  - component: {fileID: 1166195106}
+  - component: {fileID: 1166195103}
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+--- !u!81 &1246025450
+========
+--- !u!81 &1166195103
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  m_GameObject: {fileID: 1246025449}
+  m_Enabled: 1
+--- !u!20 &1246025451
+========
+  m_GameObject: {fileID: 1166195102}
+  m_Enabled: 1
+--- !u!20 &1166195106
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  m_GameObject: {fileID: 1246025449}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+========
+  m_GameObject: {fileID: 1166195102}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_projectionMatrixMode: 1
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  orthographic size: 5
+========
+  orthographic size: 36
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+--- !u!4 &1246025452
+========
+--- !u!4 &1166195107
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  m_GameObject: {fileID: 1246025449}
+========
+  m_GameObject: {fileID: 1166195102}
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.5, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+<<<<<<<< HEAD:Assets/User/Yoshida/Scenes/StageScene.unity
+--- !u!1 &1391499840
+========
+--- !u!1 &1590754846
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  - component: {fileID: 1391499841}
+  - component: {fileID: 1391499842}
+  m_Layer: 0
+  m_Name: GameStage
+========
+  - component: {fileID: 1590754848}
+  - component: {fileID: 1590754847}
+  m_Layer: 0
+  m_Name: 'Text Object #2'
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+--- !u!4 &1391499841
+========
+--- !u!114 &1590754847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590754846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2c5b59b6874405865e2616e4ec276a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  isStatic: 0
+--- !u!4 &1590754848
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  m_GameObject: {fileID: 1391499840}
+========
+  m_GameObject: {fileID: 1590754846}
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -7.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+<<<<<<<< HEAD:Assets/User/RumiRumi/Scenes/RuminaScene.unity
+  m_RootOrder: 1
+========
+  m_RootOrder: 3
+>>>>>>>> origin/matumura:Assets/TextMesh Pro/Examples & Extras/Scenes/22 - Basic Scripting Example.unity
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1391499842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391499840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6755096ce7247643b405b7d8f74e1ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgPrefab: {fileID: 7854705358440279667, guid: 50a69f752f57eea41a8e89c94ad7e9b7, type: 3}
+  blockPrefab: {fileID: 390854599548779046, guid: 7033e379e5d3c6f47a23d3bde2114d18, type: 3}
+  charactorPrefab: {fileID: 6085952827088341705, guid: 3b7294f464c927942bdd981391b8b01f, type: 3}
+  ItemPrefab: {fileID: 4501304424931771924, guid: bb96b950c7000e742836d84c64eabeaf, type: 3}
+========
+>>>>>>>> origin/RumiRumi:Assets/User/RumiRumi/Scenes/RuminaScene.unity
