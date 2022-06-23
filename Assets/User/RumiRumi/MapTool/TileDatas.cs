@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TileData : MonoBehaviour
+public class TileDatas : MonoBehaviour
 {
     [HideInInspector]
     public Vector2 _arrayPos;   //タイルの配列座標

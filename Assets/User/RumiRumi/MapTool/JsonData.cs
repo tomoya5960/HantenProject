@@ -31,8 +31,8 @@ public class JsonData : MonoBehaviour
         Debug.Assert(null != _dataLoad, "_LoadData ボタンが設定されていません");
 
         //  ボタンを押したときのイベントを登録する
-        _dataSave.onClick.AddListener(OnClickSave);
-        _dataLoad.onClick.AddListener(OnClickLoad);
+       // _dataSave.onClick.AddListener(OnClickSave);
+       // _dataLoad.onClick.AddListener(OnClickLoad);
     }
 
     /// <summary> 
@@ -121,7 +121,7 @@ public class JsonData : MonoBehaviour
     /// </summary>
     private void OnDestroy()
     {
-        _dataSave.onClick.RemoveAllListeners();
-        _dataLoad.onClick.RemoveAllListeners();
+       // _dataSave.onClick.RemoveAllListeners();
+        //_dataLoad.onClick.RemoveAllListeners();
     }
 }

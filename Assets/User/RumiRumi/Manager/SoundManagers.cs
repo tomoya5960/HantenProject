@@ -1,7 +1,7 @@
 using UnityEngine;
 [RequireComponent(typeof(SE))]
 [RequireComponent(typeof(BGM))]
-public class SoundManager : MonoBehaviour
+public class SoundManagers : MonoBehaviour
 {
     [HideInInspector]
     public BGM bgm;  //BGMマネージャー格納
