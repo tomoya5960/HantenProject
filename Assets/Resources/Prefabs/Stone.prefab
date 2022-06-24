@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6288651862350593475}
   - component: {fileID: 6288651862350593478}
   - component: {fileID: 6288651862350593473}
-  m_Layer: 10
-  m_Name: Rope
-  m_TagString: Rope
+  m_Layer: 11
+  m_Name: Stone
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 19df00fe1a13719418e62fae6a810a0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cbfb078b26631947b06b0aeca894083, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -76,6 +76,7 @@ public class LoadOnlyJson : MonoBehaviour
             tileData.imageID = map.mapChip.mapImageID;
             tileData.isEnableProceed = map.mapChip.isEnableProceed;
             tileData.isEnableRope = map.mapChip.isEnableRope;
+            tileData.isEnableStone = map.mapChip.isEnableStone;
         }
     }
 }

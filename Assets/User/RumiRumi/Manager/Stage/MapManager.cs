@@ -25,15 +25,6 @@ public class MapManager : MonoBehaviour
     }
     #endregion
 
-    #region マップにあるギミックオブジェクトの二次元配列
-    public GimmickObjectPosition[] gimmickObjectPosX = new GimmickObjectPosition[7];
-    [System.Serializable]
-    public class GimmickObjectPosition
-    {
-        public GameObject[] gimmickObjectPosY = new GameObject[8];
-    }
-    #endregion
-
     #endregion
 
     private void Awake()
@@ -59,19 +50,27 @@ public class MapManager : MonoBehaviour
         switch(vecTest)
         {
             case 0: //上
-                if (mapPosX[(int)PlayerPos.x - 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableProceed)
+                if (mapPosX[(int)PlayerPos.x - 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableStone)
+                    isMove = false;
+                else if (mapPosX[(int)PlayerPos.x - 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableProceed)
                     isMove =  true;
                 break;
             case 1: //下
-                if (mapPosX[(int)PlayerPos.x + 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableProceed)
+                if (mapPosX[(int)PlayerPos.x + 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableStone)
+                    isMove = false;
+                else if (mapPosX[(int)PlayerPos.x + 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableProceed)
                     isMove = true;
                 break;
             case 2: //左
-                if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y - 1].GetComponent<TileData>().isEnableProceed)
+                if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y - 1].GetComponent<TileData>().isEnableStone)
+                    isMove = false;
+                else if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y - 1].GetComponent<TileData>().isEnableProceed)
                     isMove = true;
                 break;
             case 3: //右
-                if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y + 1].GetComponent<TileData>().isEnableProceed)
+                if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y + 1].GetComponent<TileData>().isEnableStone)
+                    isMove = false;
+                else if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y + 1].GetComponent<TileData>().isEnableProceed)
                     isMove = true;
                 break;
         }
