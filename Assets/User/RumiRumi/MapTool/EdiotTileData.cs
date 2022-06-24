@@ -92,7 +92,7 @@ public class EdiotTileData : MonoBehaviour
             Debug.LogError($"<color=yellow>Prefabs/Rope ‚ª‚È‚¢‚æ</color>");
             return;
         }
-        else
+        else if(this.gameObject.transform.childCount < 1)
         {
             GameObject prefab = (GameObject)Instantiate(prefabObj, transform.position, Quaternion.identity, transform);
             _child = prefab;
@@ -107,7 +107,7 @@ public class EdiotTileData : MonoBehaviour
             Debug.LogError($"<color=yellow>Prefabs/Stone ‚ª‚È‚¢‚æ</color>");
             return;
         }
-        else
+        else if (this.gameObject.transform.childCount < 1)
         {
             GameObject prefab = (GameObject)Instantiate(prefabObj, transform.position, Quaternion.identity, transform);
             _child = prefab;
