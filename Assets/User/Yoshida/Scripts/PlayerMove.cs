@@ -77,6 +77,10 @@ public class PlayerMove : MonoBehaviour
 }
 
 
+// MapManagerから壁かどうか見る判定を持ってくる
+// ゴール判定を作る
+// アニメーション組み込み
+
 
 
 
