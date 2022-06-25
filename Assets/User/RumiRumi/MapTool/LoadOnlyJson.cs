@@ -39,7 +39,6 @@ public class LoadOnlyJson : MonoBehaviour
     private void Start()
     {
         OnDataLoad();
-        LoadTileData();
         GeneralManager.instance.mapManager.SetTileArray();
     }
 

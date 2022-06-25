@@ -18,12 +18,13 @@ public class GeneralManager : MonoBehaviour
 
     private void Awake()    //スタートの前に呼び出すよ
     {
-        if(instance == null)    //もしゲームマネージャーがなかった場合に呼ぶよ
+        if (instance == null)    //もしゲームマネージャーがなかった場合に呼ぶよ
         {
             instance = this;    //こいつが世界に一つのマネージャーになるよ
             DontDestroyOnLoad(this.gameObject); //このオブジェクトは消せねえ！ってするやつ
         }
-
+        else
+            Destroy(this.gameObject);
         soundManager = GetComponent<SoundManager>(); //SoundManagerを管理するぜ！！
         mapType = GetComponent<MapType>(); //MapTypeを管理するぜ！！
         mapManager = GetComponent<MapManager>();

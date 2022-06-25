@@ -9,11 +9,10 @@ public class MapManager : MonoBehaviour
     [Header("反転可能数")]
     public int stageTurnCount = 0;  //反転できる残りの回数
     public Vector2 PlayerPos = Vector2.zero;
-    private GameObject _loadJson;      //_loadOnlyJson取得するために使うやーつ
+    private LoadOnlyJson _loadJson;      //_loadOnlyJson取得するために使うやーつ
     #endregion
 
     #region MAPに必要な物
-
 
     #region マップの二次元配列
     public MapPosition[] mapPosX = new MapPosition[7];
@@ -25,12 +24,6 @@ public class MapManager : MonoBehaviour
     #endregion
 
     #endregion
-
-    private void Awake()
-    {
-        if (GameObject.Find("LoadData"))
-            _loadJson = GameObject.Find("LoadData");
-    }
 
     /// <summary>
     /// プレイヤーの移動
@@ -98,13 +91,15 @@ public class MapManager : MonoBehaviour
     /// </summary>
     public void SetTileArray()
     {
+        if (GameObject.Find("LoadData"))
+            _loadJson = GameObject.Find("LoadData").GetComponent<LoadOnlyJson>();
+
         var TileNum = 0;
         for (int i = 0; i <= 6; i++)
         {
             for (int j = 0; j <= 7; j++)
             {
-
-                mapPosX[i].mapPosY[j] = _loadJson.GetComponent<LoadOnlyJson>().tileDataList[TileNum];
+                mapPosX[i].mapPosY[j] = _loadJson.tileDataList[TileNum];
                 mapPosX[i].mapPosY[j].GetComponent<TileData>().tilePos = new Vector2(i, j);
                 TileNum++;
             }
