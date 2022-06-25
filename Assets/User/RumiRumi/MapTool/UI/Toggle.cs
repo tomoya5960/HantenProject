@@ -27,4 +27,11 @@ public class Toggle : MonoBehaviour
         else
             _mouse.isStone=true;
     }
+    public void OnPlayerChanged()
+    {
+        if (_mouse.isPlayer)
+            _mouse.isPlayer = false;
+        else
+            _mouse.isPlayer = true;
+    }
 }

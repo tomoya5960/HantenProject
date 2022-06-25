@@ -100,6 +100,7 @@ public class JsonData : MonoBehaviour
             tileData.isEnableProceed = map.mapChip.isEnableProceed;
             tileData.isEnableRope = map.mapChip.isEnableRope;
             tileData.isEnableStone = map.mapChip.isEnableStone;
+            tileData.isEnablePlayer = map.mapChip.isEnablePlayer;
         }
     }
 
@@ -115,6 +116,7 @@ public class JsonData : MonoBehaviour
             map.mapChip.isEnableProceed = tileData.isEnableProceed;
             map.mapChip.isEnableRope = tileData.isEnableRope;
             map.mapChip.isEnableStone= tileData.isEnableStone;
+            map.mapChip.isEnablePlayer = tileData.isEnablePlayer;
         }
     }
 

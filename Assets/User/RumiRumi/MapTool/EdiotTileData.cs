@@ -8,8 +8,12 @@ public class EdiotTileData : MonoBehaviour
     [SerializeField]
     private int             _imageID        = 0;
     public  bool            isTurnOver      = true;    //タイルの反転可能かの有無
+    [SerializeField]
     private bool           _isEnableRope    = false;   //このタイルにロープが落ちているか
+    [SerializeField]
     private bool           _isEnableStone = false;
+    [SerializeField]
+    private bool            _isEnablePlayer = false;
     private  int            _childCount     = 0;       //子オブジェクトのがず
     public  bool            isEnableProceed = true;        //通ることができるか
     private      GameObject _child       = null;       //子オブジェクトの格納
@@ -35,6 +39,7 @@ public class EdiotTileData : MonoBehaviour
 
         }
     }
+
     public bool isEnableStone
     {
         get { return _isEnableStone; }
@@ -45,7 +50,16 @@ public class EdiotTileData : MonoBehaviour
                 SearchSetStone();
         }
     }
-
+    public bool isEnablePlayer
+    {
+        get { return _isEnablePlayer; }
+        set
+        {
+            _isEnablePlayer = value;
+            if (_isEnablePlayer && (_imageID == 1 || _imageID == 2 || _imageID == 3))
+                SearchSetPlayer();
+        }
+    }
 
     private void Awake()
     {
@@ -105,6 +119,21 @@ public class EdiotTileData : MonoBehaviour
         if (prefabObj == null)
         {
             Debug.LogError($"<color=yellow>Prefabs/Stone がないよ</color>");
+            return;
+        }
+        else if (this.gameObject.transform.childCount < 1)
+        {
+            GameObject prefab = (GameObject)Instantiate(prefabObj, transform.position, Quaternion.identity, transform);
+            _child = prefab;
+        }
+    }
+
+    public void SearchSetPlayer()
+    {
+        GameObject prefabObj = (GameObject)Resources.Load("Prefabs/Player");
+        if (prefabObj == null)
+        {
+            Debug.LogError($"<color=yellow>Prefabs/Player がないよ</color>");
             return;
         }
         else if (this.gameObject.transform.childCount < 1)

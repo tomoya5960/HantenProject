@@ -42,13 +42,11 @@ public class TileMaster : MonoBehaviour
         SearchSetSprite(GetComponent<TileData>().imageID);
         _tileData.childCount = transform.childCount;
         if (_tileData.isEnableRope)
-        {
             SearchSetRope();
-        }
         else if(_tileData.isEnableStone)
-        {
             SearchSetStone();
-        }
+        else if(_tileData.isEnablePlayer)
+            SearchSetPlayer();
         else if (_tileData.childCount != 0)
             _tileData.child = transform.GetChild(0).gameObject;
         else
@@ -286,7 +284,7 @@ public class TileMaster : MonoBehaviour
         _tileData.child = prefab;
     }
     /// <summary>
-    /// ロープが必要な場合は配置する関数
+    /// 岩が必要な場合は配置する関数
     /// </summary>
     public void SearchSetStone()
     {
@@ -295,6 +293,16 @@ public class TileMaster : MonoBehaviour
         _tileData.child = prefab;
     }
 
+    /// <summary>
+    /// プレイヤーが必要な場合は配置する関数
+    /// </summary>
+    public void SearchSetPlayer()
+    {
+        GameObject prefabObj = (GameObject)Resources.Load("Prefabs/Player");
+        GameObject prefab = (GameObject)Instantiate(prefabObj, transform.position, Quaternion.identity, transform);
+
+        _tileData.child = prefab;
+    }
 
     /// <summary>
     /// 画像の検索と差し替え

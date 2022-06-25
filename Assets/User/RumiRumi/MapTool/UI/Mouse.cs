@@ -14,16 +14,22 @@ public class Mouse : MonoBehaviour
     private bool            _isChangeTile =false;   //右側のタイルを変更中に左側を選択できないようにするやつ
     private      GameObject _rope;                  //ロープのプレハブを格納
     private      GameObject _stone;
+    private      GameObject _player;
+    [SerializeField]
+    public       GameObject beforePlayer;          //ひとつ前に置いたプレイヤーの親を格納
     [HideInInspector]
     public bool             isRope = false;         //タイルの上にロープを置くか選択してね
     [HideInInspector]
     public bool             isStone = false;         //タイルの上に岩を置くか選択してね
+    [HideInInspector]
+    public bool             isPlayer = false;        //プレイヤーを配置するか選択してね
     #endregion
 
     private void Awake()
     {
         _rope = (GameObject)Resources.Load("Prefabs/Rope");
         _stone = (GameObject)Resources.Load("Prefabs/Stone");
+        _player = (GameObject)Resources.Load("Prefabs/Player");
     }
 
     private void Update()
@@ -60,6 +66,7 @@ public class Mouse : MonoBehaviour
                             SetData(Hit2d.transform.gameObject);  //置き換え
                             CheckRope(Hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
                             CheckStone(Hit2d.transform.gameObject);
+                            CheckPlayer(Hit2d.transform.gameObject);
                             _isChangeTile = true;    //タイルを選択し、塗り始めている場合は他のタイルを選択できなくする
                         }
                         else
@@ -67,6 +74,7 @@ public class Mouse : MonoBehaviour
                             SetData(Hit2d.transform.gameObject);  //置き換え
                             CheckRope(Hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
                             CheckStone(Hit2d.transform.gameObject);
+                            CheckPlayer(Hit2d.transform.gameObject);
                         }
                     }
 
@@ -75,6 +83,7 @@ public class Mouse : MonoBehaviour
                         SetData(Hit2d.transform.gameObject);  //置き換え
                         CheckRope(Hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
                         CheckStone(Hit2d.transform.gameObject);
+                        CheckPlayer(Hit2d.transform.gameObject);
                         _isChangeTile = true;    //タイルを選択し、塗り始めている場合は他のタイルを選択できなくする
                     }
                     else
@@ -83,6 +92,7 @@ public class Mouse : MonoBehaviour
                         SetData(Hit2d.transform.gameObject);  //置き換え
                         CheckRope(Hit2d.transform.gameObject);  //ロープがあるか確認、なければ追加、いらなければ削除
                         CheckStone(Hit2d.transform.gameObject);
+                        CheckPlayer(Hit2d.transform.gameObject);
                     }
                 }
             }
@@ -113,8 +123,31 @@ public class Mouse : MonoBehaviour
             _mapTileData.isTurnOver = _sample_tile_data.isTurnOver;
       
         _mapTileData.isEnableProceed = _sample_tile_data.isEnableProceed;
-        _mapTileData.isEnableRope = isRope;
-        _mapTileData.isEnableStone = isStone;
+        if (isRope && _mapTileData.imageID == 2)
+            _mapTileData.isEnableRope = isRope;
+        else if (!isRope)
+            _mapTileData.isEnableRope = false;
+        if (isStone && (_mapTileData.imageID == 1 || _mapTileData.imageID == 2 || _mapTileData.imageID == 3))
+        {
+            _mapTileData.isEnableStone = isStone;
+            _mapTileData.isEnableProceed = false;   //岩がある場合は通れないようにする
+        }
+        else if (!isStone)
+            _mapTileData.isEnableStone = false;
+        if (isPlayer && (_mapTileData.imageID == 1 || _mapTileData.imageID == 2 || _mapTileData.imageID == 3))
+        {
+            _mapTileData.isEnablePlayer = isPlayer;
+            if (beforePlayer != null && beforePlayer != _hit2d && beforePlayer.transform.childCount > 0)
+            {
+                beforePlayer.GetComponent<EdiotTileData>().isEnablePlayer = false;
+                Destroy(beforePlayer.transform.GetChild(0).gameObject);
+                beforePlayer = null;
+            }
+            else
+                beforePlayer = _hit2d;
+        }
+        else if (!isPlayer)
+            _mapTileData.isEnablePlayer = false;
     }
 
     /// <summary> データのリセット </summary>
@@ -139,9 +172,9 @@ public class Mouse : MonoBehaviour
             {
                 if (_hit2d.transform.GetChild(num).gameObject.tag == "Stone")
                     Destroy(_hit2d.transform.GetChild(num).gameObject);
+                if (_hit2d.transform.GetChild(num).gameObject.tag == "Player")
+                    Destroy(_hit2d.transform.GetChild(num).gameObject);
             }
-            var SetChild = (GameObject)Instantiate(_rope, new Vector3(0, 0, 0), Quaternion.identity, _hit2d.transform);
-            SetChild.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
         }
         else if (!isRope|| _mapTileData.imageID != 2)
         {
@@ -165,15 +198,43 @@ public class Mouse : MonoBehaviour
             {
                 if (_hit2d.transform.GetChild(num).gameObject.tag == "Rope")
                     Destroy(_hit2d.transform.GetChild(num).gameObject);
+                if (_hit2d.transform.GetChild(num).gameObject.tag == "Player")
+                    Destroy(_hit2d.transform.GetChild(num).gameObject);
+
             }
-            var SetChild = (GameObject)Instantiate(_stone, new Vector3(0, 0, 0), Quaternion.identity, _hit2d.transform);
-            SetChild.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
         }
         else if (!isStone || !(_mapTileData.imageID == 1 || _mapTileData.imageID == 2 || _mapTileData.imageID == 3))
         {
             for (int num = 0; num < _hit2d.transform.childCount; num++)
             {
                 if (_hit2d.transform.GetChild(num).gameObject.tag == "Stone")
+                    Destroy(_hit2d.transform.GetChild(num).gameObject);
+            }
+        }
+    }
+
+    /// <summary>
+    /// プレイヤーを子に生成
+    /// </summary>
+    /// <param name="_hit2d"></param>
+    private void CheckPlayer(GameObject _hit2d)
+    {
+        if (isPlayer && _hit2d.gameObject.transform.childCount == 0 && (_mapTileData.imageID == 1 || _mapTileData.imageID == 2 || _mapTileData.imageID == 3))
+        {
+            for (int num = 0; num < _hit2d.transform.childCount; num++)
+            {
+                if (_hit2d.transform.GetChild(num).gameObject.tag == "Rope")
+                    Destroy(_hit2d.transform.GetChild(num).gameObject);
+                if (_hit2d.transform.GetChild(num).gameObject.tag == "Stone")
+                    Destroy(_hit2d.transform.GetChild(num).gameObject);
+            }
+
+        }
+        else if (!isPlayer || !(_mapTileData.imageID == 1 || _mapTileData.imageID == 2 || _mapTileData.imageID == 3))
+        {
+            for (int num = 0; num < _hit2d.transform.childCount; num++)
+            {
+                if (_hit2d.transform.GetChild(num).gameObject.tag == "Player")
                     Destroy(_hit2d.transform.GetChild(num).gameObject);
             }
         }

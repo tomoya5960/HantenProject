@@ -40,6 +40,7 @@ public class LoadOnlyJson : MonoBehaviour
     {
         OnDataLoad();
         LoadTileData();
+        GeneralManager.instance.mapManager.SetTileArray();
     }
 
     /// <summary>
@@ -77,6 +78,7 @@ public class LoadOnlyJson : MonoBehaviour
             tileData.isEnableProceed = map.mapChip.isEnableProceed;
             tileData.isEnableRope = map.mapChip.isEnableRope;
             tileData.isEnableStone = map.mapChip.isEnableStone;
+            tileData.isEnablePlayer = map.mapChip.isEnablePlayer;
         }
     }
 }

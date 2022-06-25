@@ -16,7 +16,8 @@ public class MapData
         public int      mapImageID;         //タイルのID
         public int      turnCount;          //反転した回数
         public bool     isEnableRope;       //このタイルにロープが落ちているか
-        public bool      isEnableStone;     //このタイルに岩が落ちているか
+        public bool     isEnableStone;     //このタイルに岩が落ちているか
+        public bool     isEnablePlayer;    //プレイヤーの初期位置だったらtrue
         public bool     isEnableProceed;    //通れるか
 
         public MapChip()   //初期化
@@ -25,6 +26,7 @@ public class MapData
             turnCount       = 0;
             isEnableRope    = false;
             isEnableStone = false;
+            isEnablePlayer = false; 
             isEnableProceed = true;
         }
     }

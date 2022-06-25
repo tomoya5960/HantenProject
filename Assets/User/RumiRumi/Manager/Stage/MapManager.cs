@@ -8,8 +8,7 @@ public class MapManager : MonoBehaviour
     public int selectStageNum = 0;  //ステージ番号を格納
     [Header("反転可能数")]
     public int stageTurnCount = 0;  //反転できる残りの回数
-    [SerializeField]
-    private Vector2 PlayerPos = Vector2.zero;
+    public Vector2 PlayerPos = Vector2.zero;
     private GameObject _loadJson;      //_loadOnlyJson取得するために使うやーつ
     #endregion
 
@@ -31,14 +30,6 @@ public class MapManager : MonoBehaviour
     {
         if (GameObject.Find("LoadData"))
             _loadJson = GameObject.Find("LoadData");
-    }
-
-    private void Start()
-    {
-        if (_loadJson != null)
-        {
-            SetTileArray();
-        }
     }
 
     /// <summary>
@@ -105,14 +96,16 @@ public class MapManager : MonoBehaviour
     /// <summary>
     /// tileDataListのオブジェクトを二次元配列に再整列する関数
     /// </summary>
-    private void SetTileArray()
+    public void SetTileArray()
     {
         var TileNum = 0;
         for (int i = 0; i <= 6; i++)
         {
             for (int j = 0; j <= 7; j++)
             {
+
                 mapPosX[i].mapPosY[j] = _loadJson.GetComponent<LoadOnlyJson>().tileDataList[TileNum];
+                mapPosX[i].mapPosY[j].GetComponent<TileData>().tilePos = new Vector2(i, j);
                 TileNum++;
             }
         }
