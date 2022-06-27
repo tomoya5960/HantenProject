@@ -12,15 +12,6 @@ EditorBuildSettings:
     path: Assets/User/matumura/Scenes/SelectStageScene.unity
     guid: bfac678b07d366c46a60cf89b43a5b4d
   - enabled: 1
-    path: Assets/Scenes/Stage/0.Tutorial.unity
-    guid: 234439546d50b6f46afbd8e6ba5ec6ec
-  - enabled: 1
-    path: Assets/User/matumura/Scenes/Level1.unity
-    guid: 85a15c49956f52c439ce8cad3da98ec9
-  - enabled: 1
-    path: Assets/User/matumura/Scenes/Level2.unity
-    guid: 89a2f79891d494c42a1706dc3d394865
-  - enabled: 1
-    path: Assets/User/matumura/Scenes/Level3.unity
-    guid: 2eb82dfe3db4dfe4a938369df035b18b
+    path: Assets/User/RumiRumi/Scenes/GameScene.unity
+    guid: e36356afe575fa0418a835849f897410
   m_configObjects: {}

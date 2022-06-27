@@ -40,10 +40,10 @@ public class JsonData : MonoBehaviour
     /// </summary>
     private void OnClickSave()
     {
-        _filePath = Path.Combine(Application.dataPath, "MapData/" + fileName + ".json");
+        _filePath = Path.Combine(Application.dataPath, "Resources/MapData/" + fileName + ".json");
         
         #region 名前が一致する場合は保存しない処理
-        string[] _files = Directory.GetFiles("Assets/MapData/", "*.json", SearchOption.AllDirectories);
+        string[] _files = Directory.GetFiles("Assets/Resources/MapData/", "*.json", SearchOption.AllDirectories);
         
         foreach(string FileName in _files)
         {
@@ -74,7 +74,7 @@ public class JsonData : MonoBehaviour
     /// </summary>
     private void OnClickLoad()
     {
-        _filePath = Path.Combine(Application.dataPath, "MapData/" + fileName + ".json");   //入力したデータがあるか検索
+        _filePath = Path.Combine(Application.dataPath, "Resources/MapData/" + fileName + ".json");   //入力したデータがあるか検索
         
         if (!File.Exists(_filePath))    //ファイルパスに指定した名前のJsonファイルがない場合
         {
@@ -98,7 +98,9 @@ public class JsonData : MonoBehaviour
             var tileData = tileDataList[map.index].GetComponent<EdiotTileData>();
             tileData.imageID = map.mapChip.mapImageID;
             tileData.isEnableProceed = map.mapChip.isEnableProceed;
-            tileData._isEnableRope = map.mapChip.isEnableRope;
+            tileData.isEnableRope = map.mapChip.isEnableRope;
+            tileData.isEnableStone = map.mapChip.isEnableStone;
+            tileData.isEnablePlayer = map.mapChip.isEnablePlayer;
         }
     }
 
@@ -112,7 +114,9 @@ public class JsonData : MonoBehaviour
             var tileData = tileDataList[map.index].GetComponent<EdiotTileData>();
             map.mapChip.mapImageID = tileData.imageID;
             map.mapChip.isEnableProceed = tileData.isEnableProceed;
-            map.mapChip.isEnableRope = tileData._isEnableRope;
+            map.mapChip.isEnableRope = tileData.isEnableRope;
+            map.mapChip.isEnableStone= tileData.isEnableStone;
+            map.mapChip.isEnablePlayer = tileData.isEnablePlayer;
         }
     }
 

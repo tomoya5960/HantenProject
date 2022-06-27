@@ -12,15 +12,13 @@ public class LoadOnlyJson : MonoBehaviour
     public List<GameObject>  tileDataList    = new List<GameObject>();  //ここにタイルを保存
     private GameObject       parentTiles;                               //タイルオブジェクトの親を格納する
     private MapData          _mapData        = new MapData();           //マップの実態を確保
-    private Vector2          mapTileMaxArray = new Vector2(8, 7);       //マップ配列の最大個数
+    
     #endregion
 
     #region Json管理関係
     [HideInInspector]
     public  string loadFileName = "";   //読み込むファイルの名前
-    private string _filePath    = "";   //データの保存されているパス
-    
-    public List<JsonData> _jsonList = new List<JsonData>();
+    private string _filePath    = "";   //データの保存されているパス 
     #endregion
 
     private void Awake()
@@ -36,8 +34,12 @@ public class LoadOnlyJson : MonoBehaviour
             SetTiles(parentTiles);
         }
         loadFileName = SceneManager.GetActiveScene().name;
+    }
+
+    private void Start()
+    {
         OnDataLoad();
-        LoadTileData();
+        GeneralManager.instance.mapManager.SetTileArray();
     }
 
     /// <summary>
@@ -53,22 +55,14 @@ public class LoadOnlyJson : MonoBehaviour
     }
 
     /// <summary> 
-    /// DataLoad ボタンが押されたら呼び出される
+    /// 開始時にステージのJsonDataを呼び出す
     /// </summary>
     private void OnDataLoad()
     {
-        _filePath = Path.Combine(Application.dataPath, "MapData/" + loadFileName + ".json");   //入力したデータがあるか検索
-
-        if (!File.Exists(_filePath))    //ファイルパスに指定した名前のJsonファイルがない場合
-        {
-            Debug.LogError($"<color=yellow>{_filePath} にJSONがないよ</color>");
-            return;
-        }
-
-        var Json = File.ReadAllText(_filePath);         // Jsonファイルから情報を取り出す
-        _mapData = JsonUtility.FromJson<MapData>(Json); //取り出した情報を与える
+        _mapData = JsonUtility.FromJson<MapData>(GeneralManager.instance.mapType.jsonList
+                                                [GeneralManager.instance.mapManager.selectStageNum]);
         LoadTileData();
-        Debug.Log($"<color=blue>{loadFileName} をロードしたよ</color>");
+        Debug.Log($"<color=blue>データをロードしたよ</color>");
     }
 
     /// <summary> 
@@ -82,6 +76,8 @@ public class LoadOnlyJson : MonoBehaviour
             tileData.imageID = map.mapChip.mapImageID;
             tileData.isEnableProceed = map.mapChip.isEnableProceed;
             tileData.isEnableRope = map.mapChip.isEnableRope;
+            tileData.isEnableStone = map.mapChip.isEnableStone;
+            tileData.isEnablePlayer = map.mapChip.isEnablePlayer;
         }
     }
 }

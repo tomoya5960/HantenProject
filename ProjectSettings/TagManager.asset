@@ -6,8 +6,8 @@ TagManager:
   tags:
   - MapTile
   - TileData
-  - Item
-  - Wall
+  - Rope
+  - Stone
   layers:
   - Default
   - TransparentFX
@@ -20,7 +20,7 @@ TagManager:
   - 
   - 
   - Rope
-  - 
+  - Stone
   - 
   - 
   - 

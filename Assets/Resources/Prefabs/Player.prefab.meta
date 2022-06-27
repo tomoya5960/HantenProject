@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: f6ac3a8a80d386e4b977c5360a1be43e
+<<<<<<<< HEAD:Assets/Scenes/Stage/0.Tutorial.unity.meta
+guid: 3f76638d136aba74cb8440b563acf252
+DefaultImporter:
+========
+guid: a9af70d80c30bf8409c977e6d5f546a9
 PrefabImporter:
+>>>>>>>> origin/RumiRumi:Assets/Resources/Prefabs/Player.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

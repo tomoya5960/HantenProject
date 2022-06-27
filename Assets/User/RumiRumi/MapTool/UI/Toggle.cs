@@ -6,7 +6,6 @@ public class Toggle : MonoBehaviour
     private JsonData _jsonData;
     [SerializeField]
     private Mouse    _mouse;
-
     public void OnTggleChanged()
     {
         if(_jsonData.overWriteSave)
@@ -20,5 +19,19 @@ public class Toggle : MonoBehaviour
             _mouse.isRope = false;
         else
             _mouse.isRope = true;
+    }
+    public void OnStoneChanged()
+    {
+        if(_mouse.isStone)
+            _mouse.isStone =false;
+        else
+            _mouse.isStone=true;
+    }
+    public void OnPlayerChanged()
+    {
+        if (_mouse.isPlayer)
+            _mouse.isPlayer = false;
+        else
+            _mouse.isPlayer = true;
     }
 }
