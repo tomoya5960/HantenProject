@@ -15,8 +15,7 @@ public class Mouse : MonoBehaviour
     private      GameObject _rope;                  //ロープのプレハブを格納
     private      GameObject _stone;
     private      GameObject _player;
-    [SerializeField]
-    public       GameObject beforePlayer;          //ひとつ前に置いたプレイヤーの親を格納
+    private      GameObject beforePlayer;          //ひとつ前に置いたプレイヤーの親を格納
     [HideInInspector]
     public bool             isRope = false;         //タイルの上にロープを置くか選択してね
     [HideInInspector]
@@ -125,7 +124,7 @@ public class Mouse : MonoBehaviour
         _mapTileData.isEnableProceed = _sample_tile_data.isEnableProceed;
         if (isRope && _mapTileData.imageID == 2)
             _mapTileData.isEnableRope = isRope;
-        else if (!isRope)
+        else if (!isRope || _mapTileData.imageID != 2)
             _mapTileData.isEnableRope = false;
         if (isStone && (_mapTileData.imageID == 1 || _mapTileData.imageID == 2 || _mapTileData.imageID == 3))
         {
