@@ -14,7 +14,7 @@ public class Logo : MonoBehaviour
     public Sprite Image4;
     public Sprite Image5;
     public Sprite Image6;
-    [HideInInspector]
+    [SerializeReference]
     public Image logo;
     public Transform startMarker; //åªç›ÇÃà íu
     public Transform endMarker;
