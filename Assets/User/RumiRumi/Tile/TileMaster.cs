@@ -20,8 +20,6 @@ public class TileMaster : MonoBehaviour
     private bool         _isEnableTurn = true;                  //現在のタイルが裏返せるか（trueは裏返せる）
     public  bool              isEnableTurn  => _isEnableTurn;        //読み取り専用
 
-    [Header("プレイヤーの格納しているロープの仮、後で置き換えて")]
-    public  bool              testRope;//testRopeをプレイヤーのロープに変更するべし
     #region タイルのスプライト生成系関数
     private        Sprite First  = null;
     private        Sprite Second = null;
@@ -51,6 +49,10 @@ public class TileMaster : MonoBehaviour
             _tileData.child = transform.GetChild(0).gameObject;
         else
             _tileData.child = null;
+
+        //ゴールだった場合はMapManagerのGoalPosにゴール座標を格納
+        if (_tileData.imageID == (int)MapType.ImageIdType.goal_01)
+            GeneralManager.instance.mapManager.GoalPos = _tileData.tilePos;
     }
 
     /// <summary>
@@ -71,14 +73,16 @@ public class TileMaster : MonoBehaviour
     /// <summary>
     /// 反転した時のイメージ変更
     /// </summary>
-    public void TurnImage()
+    public void TurnImage(bool rope = false)
     {
         if (_spriteLists.Count < 2)
             return;
         else
         {
-            if (TurnFaceType.Front == _turnFaceType && _spriteLists[(int)TurnFaceType.Back].name == "goal_02" && _turnFaceType != TurnFaceType.Goal && testRope)    //testRopeをプレイヤーのロープに変更するべし
+            if (TurnFaceType.Front == _turnFaceType && _spriteLists[(int)TurnFaceType.Back].name == "goal_02" && _turnFaceType != TurnFaceType.Goal && rope)    //testRopeをプレイヤーのロープに変更するべし
+            {
                 ChangeClearGool();
+            }
             else if (_isEnableTurn)   //反転することが出来る場合
             {
                 _mapImage.sprite = _spriteLists[(int)TurnFaceType.Back];    //現在のイメージを裏の画像にする
@@ -86,7 +90,7 @@ public class TileMaster : MonoBehaviour
                 _isEnableTurn = false;  //反転できなくする
                 ChangeImageID();
             }
-            else if (TurnFaceType.Back == _turnFaceType &&_spriteLists[(int)TurnFaceType.Front].name == "goal_01" && _turnFaceType != TurnFaceType.Goal)
+            else if (TurnFaceType.Back == _turnFaceType && _spriteLists[(int)TurnFaceType.Front].name == "goal_01" && _turnFaceType != TurnFaceType.Goal)
             {
                 _mapImage.sprite = _spriteLists[(int)TurnFaceType.Front];
                 _turnFaceType = TurnFaceType.Front;
@@ -108,6 +112,7 @@ public class TileMaster : MonoBehaviour
             {
                 _mapImage.sprite = _spriteLists[(int)TurnFaceType.Goal];    //現在のイメージをクリア条件を満たしたゴールの画像にする
                 _turnFaceType = TurnFaceType.Goal;
+                _tileData.isEnableProceed = true;   //通れるようにする
             }
         }
     }
@@ -283,6 +288,7 @@ public class TileMaster : MonoBehaviour
         GameObject prefab = (GameObject)Instantiate(prefabObj, transform.position, Quaternion.identity, transform);
         _tileData.child = prefab;
     }
+
     /// <summary>
     /// 岩が必要な場合は配置する関数
     /// </summary>
@@ -324,5 +330,3 @@ public class TileMaster : MonoBehaviour
     }
     #endregion
 }
-
-

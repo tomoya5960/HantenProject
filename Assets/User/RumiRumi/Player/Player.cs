@@ -1,48 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private enum direction  //ˆÚ“®‚·‚é•ûŒü
     {
-        up = 0,
-        down,
-        left,
-        right,
+        Up = 0,
+        Down,
+        Left,
+        Right,
+        Default,
     }
-    private PlayerManager playerManager;
+    private PlayerManager _playerManager;
 
     private void Awake()
     {
-        playerManager = gameObject.GetComponent<PlayerManager>();
+        _playerManager = gameObject.GetComponent<PlayerManager>();
     }
 
     void Update()
     {
         #region ˆÚ“®
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if(!playerManager.isPlayerMove)
-                playerManager.SearchMove((int)direction.up);
+            do
+            {
+                _playerManager.SetPlayerPos((int)direction.Up);
+                if (!_playerManager.isHaveRope)
+                    _playerManager.isHaveRope = GeneralManager.instance.mapManager.isUnderRope();
+            } while (GeneralManager.instance.mapManager.IsIceFloor((int)direction.Up));
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (!playerManager.isPlayerMove)
-                playerManager.SearchMove((int)direction.down);
+            do
+            {
+                _playerManager.SetPlayerPos((int)direction.Down);
+                if (!_playerManager.isHaveRope)
+                    _playerManager.isHaveRope = GeneralManager.instance.mapManager.isUnderRope();
+            } while (GeneralManager.instance.mapManager.IsIceFloor((int)direction.Down));
+
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (!playerManager.isPlayerMove)
-                playerManager.SearchMove((int)direction.left);
+            do
+            {
+                _playerManager.SetPlayerPos((int)direction.Left);
+                if (!_playerManager.isHaveRope)
+                    _playerManager.isHaveRope = GeneralManager.instance.mapManager.isUnderRope();
+            } while (GeneralManager.instance.mapManager.IsIceFloor((int)direction.Left));
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (!playerManager.isPlayerMove)
-                playerManager.SearchMove((int)direction.right);
+            do
+            {
+                _playerManager.SetPlayerPos((int)direction.Right);
+                if (!_playerManager.isHaveRope)
+                    _playerManager.isHaveRope = GeneralManager.instance.mapManager.isUnderRope();
+            } while (GeneralManager.instance.mapManager.IsIceFloor((int)direction.Right));
         }
         #endregion
-
-
     }
 }

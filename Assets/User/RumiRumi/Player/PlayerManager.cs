@@ -3,29 +3,41 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-    private bool _isHaveRope = false;    //ロープを持っているか
-    [SerializeField]
-    private      Vector2 _isPlayerPos = Vector2.zero;
-    [SerializeField]
-    private int playerSpeed = 2;
-    public  bool isPlayerMove = false;  //プレイヤーが動いているか
+    private Canvas canvas;
+    [HideInInspector]
+    public bool isHaveRope = false;    //ロープを持っているか
+    [HideInInspector]
+    public Vector2 isPlayerPos = Vector2.zero;
+    public float playerSpeed = 2;
+    public bool isPlayerMove = false;  //プレイヤーが動いているか
+
+    private void Awake()
+    {
+        canvas = GameObject.Find("Canvas").gameObject.GetComponent<Canvas>();
+    }
     void Start()
     {
 
         //マップツールで生成されたプレイヤーを動かないようにする
         if (SceneManager.GetActiveScene().name == "MapEditorScene")
         {
+            //マップツールで読み込みを行った際にBeforePlayerに読み込まれたマップにあるPlayerを格納する。これをすることで読み込みを行った際のPlayerが重複することを防ぐ
+            GameObject.Find("MapTool").gameObject.GetComponent<Mouse>().beforePlayer = gameObject.transform.parent.gameObject;
             gameObject.GetComponent<Player>().enabled = false;
             gameObject.GetComponent<PlayerManager>().enabled = false;
         }
         else
         {
-            GeneralManager.instance.mapManager.PlayerPos = transform.parent.gameObject.GetComponent<TileData>().tilePos;
-            _isPlayerPos = GeneralManager.instance.mapManager.PlayerPos;
+            GeneralManager.instance.mapManager.PlayerPos = gameObject.transform.parent.GetComponent<TileData>().tilePos;
+            isPlayerPos = GeneralManager.instance.mapManager.PlayerPos;    //プレイヤーのスタート位置を格納
         }
     }
 
-    public void SearchMove(int direction)
+    /// <summary>
+    /// Playerの座標情報の書き換え
+    /// </summary>
+    /// <param name="direction"></param>
+    public void SetPlayerPos(int direction)
     {
         switch (direction)
         {
@@ -33,63 +45,79 @@ public class PlayerManager : MonoBehaviour
                 if (GeneralManager.instance.mapManager.Move(0))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(-1, 0);
-                    _isPlayerPos += new Vector2(-1, 0);
-                    PlayerMove(0);
+                    isPlayerPos += new Vector2(-1, 0);
+                    gameObject.transform.Translate(0, 130, 0);
                 }
+                else
+                    CheckGoal(0);
                 break;
             case 1:
                 if (GeneralManager.instance.mapManager.Move(1))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(1, 0);
-                    _isPlayerPos += new Vector2(1, 0);
-                    PlayerMove(1);
+                    isPlayerPos += new Vector2(1, 0);
+                    gameObject.transform.Translate(0, -130, 0);
                 }
+                else
+                    CheckGoal(1);
                 break;
             case 2:
                 if (GeneralManager.instance.mapManager.Move(2))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(0, -1);
-                    _isPlayerPos += new Vector2(0, -1);
-                    PlayerMove(2);
+                    isPlayerPos += new Vector2(0, -1);
+                    gameObject.transform.Translate(-130, 0, 0);
                 }
+                else
+                    CheckGoal(2);
                 break;
             case 3:
                 if (GeneralManager.instance.mapManager.Move(3))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(0, 1);
-                    _isPlayerPos += new Vector2(0, 1);
-                    PlayerMove(3);
+                    isPlayerPos += new Vector2(0, 1);
+                    gameObject.transform.Translate(130, 0, 0);
                 }
+                else
+                    CheckGoal(3);
                 break;
             default:
                 Debug.Log("移動可能か検索するところで変な指示出してんじゃねえよ");
                 break;
-
         }
-
+        GeneralManager.instance.mapManager.IsCheckClear();
     }
 
-    public void PlayerMove(int direction)
+    /// <summary>
+    /// 移動先がゴールで、ロープを持っていたらゴールできるようにする
+    /// </summary>
+    /// <param name="direction"></param>
+    public void CheckGoal(int direction)
     {
+        GameObject obj;
         switch (direction)
         {
-            case 0: //上
-
+            case 0:
+                obj = GeneralManager.instance.mapManager.mapPosX[(int)isPlayerPos.x - 1].mapPosY[(int)isPlayerPos.y].gameObject;
                 break;
-            case 1: //下
-
+            case 1:
+                obj = GeneralManager.instance.mapManager.mapPosX[(int)isPlayerPos.x + 1].mapPosY[(int)isPlayerPos.y].gameObject;
                 break;
-            case 2: //左
-
+            case 2:
+                obj = GeneralManager.instance.mapManager.mapPosX[(int)isPlayerPos.x].mapPosY[(int)isPlayerPos.y - 1].gameObject;
                 break;
-            case 3: //右
-
+            case 3:
+                obj = GeneralManager.instance.mapManager.mapPosX[(int)isPlayerPos.x].mapPosY[(int)isPlayerPos.y + 1].gameObject;
                 break;
             default:
-                Debug.Log("移動で変な指示出してんじゃねえよ");
-                break;
-
+                Debug.Log("移動可能か検索するところで変な指示出してんじゃねえよ");
+                return;
         }
-        
+        //ゴールだったら
+        if (obj.GetComponent<TileData>().imageID == (int)MapType.ImageIdType.goal_01 && isHaveRope)
+        {
+            obj.GetComponent<TileMaster>().TurnImage(isHaveRope);
+            isHaveRope = false;
+        }
     }
 }

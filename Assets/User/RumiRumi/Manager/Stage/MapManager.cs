@@ -8,7 +8,10 @@ public class MapManager : MonoBehaviour
     public int selectStageNum = 0;  //ステージ番号を格納
     [Header("反転可能数")]
     public int stageTurnCount = 0;  //反転できる残りの回数
+    [HideInInspector]
     public Vector2 PlayerPos = Vector2.zero;
+    [HideInInspector]
+    public Vector2 GoalPos = Vector2.zero;
     private LoadOnlyJson _loadJson;      //_loadOnlyJson取得するために使うやーつ
     #endregion
 
@@ -20,6 +23,15 @@ public class MapManager : MonoBehaviour
     public class MapPosition
     {
         public GameObject[] mapPosY = new GameObject[8];
+    }
+    #endregion
+
+    #region アイテムの二次元配列
+    public ItemPosition[] itemPosX = new ItemPosition[7];
+    [System.Serializable]
+    public class ItemPosition
+    {
+        public GameObject[] itemPosY = new GameObject[8];
     }
     #endregion
 
@@ -64,13 +76,62 @@ public class MapManager : MonoBehaviour
     /// <summary>
     /// プレイヤーの下が氷床かどうかチェックする関数
     /// </summary>
-    public bool IsIceFloor()
+    public bool IsIceFloor(int direction)
     {
         var isMove = false;
         if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().imageID == (int)MapType.ImageIdType.aisle_03)
-            isMove = true;
+        {
+            switch (direction)
+            {
+                case 0://上
+                    if(mapPosX[(int)PlayerPos.x - 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableProceed)
+                        isMove = true;
+                    break;
+                case 1://下
+                    if (mapPosX[(int)PlayerPos.x + 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableProceed)
+                        isMove = true;
+                    break;
+                case 2://左
+                    if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y - 1].GetComponent<TileData>().isEnableProceed)
+                        isMove = true;
+                    break;
+                case 3://右
+                    if (mapPosX[(int)PlayerPos.x].mapPosY[(int)PlayerPos.y + 1].GetComponent<TileData>().isEnableProceed)
+                        isMove = true;
+                    break;
+            }
+        }
         return isMove;
     }
+
+    /// <summary>
+    /// プレイヤーの移動後に自分とおなじ場所のタイルに何らかの物が落ちているか
+    /// </summary>
+    public bool isUnderRope()
+    {
+        if (itemPosX[(int)PlayerPos.x].itemPosY[(int)PlayerPos.y].gameObject != null)
+        {
+            if (itemPosX[(int)PlayerPos.x].itemPosY[(int)PlayerPos.y].gameObject.tag == "Rope")
+            {
+                itemPosX[(int)PlayerPos.x].itemPosY[(int)PlayerPos.y].gameObject.SetActive(false);
+                Debug.Log($"<color=green>ロープを取りました</color>");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// クリアしたか判定するよ。
+    /// </summary>
+    public void IsCheckClear()
+    {
+        if (PlayerPos == GoalPos)
+        {
+            Debug.Log("ゴールしたよ");
+        }
+    }
+
 
     /// <summary>
     /// そのステージでの反転を使用した際に使う関数

@@ -15,7 +15,8 @@ public class Mouse : MonoBehaviour
     private      GameObject _rope;                  //ロープのプレハブを格納
     private      GameObject _stone;
     private      GameObject _player;
-    private      GameObject beforePlayer;          //ひとつ前に置いたプレイヤーの親を格納
+    [HideInInspector]
+    public      GameObject beforePlayer;          //ひとつ前に置いたプレイヤーの親を格納
     [HideInInspector]
     public bool             isRope = false;         //タイルの上にロープを置くか選択してね
     [HideInInspector]
