@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +10,10 @@ public class PlayerManager : MonoBehaviour
     public bool isHaveRope = false;    //ロープを持っているか
     [HideInInspector]
     public Vector2 isPlayerPos = Vector2.zero;
-    public float playerSpeed = 2;
+    [SerializeField]
+    private float _playerSpeed = 2;
     public bool isPlayerMove = false;  //プレイヤーが動いているか
-
+    private int _playerdis = 130;
     private void Awake()
     {
         canvas = GameObject.Find("Canvas").gameObject.GetComponent<Canvas>();
@@ -46,53 +49,52 @@ public class PlayerManager : MonoBehaviour
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(-1, 0);
                     isPlayerPos += new Vector2(-1, 0);
-                    gameObject.transform.Translate(0, 130, 0);
+                    StartCoroutine(PlayerMove(direction));
                 }
                 else
-                    CheckGoal(0);
+                    CheckGoalSetRope(0);
                 break;
             case 1:
                 if (GeneralManager.instance.mapManager.Move(1))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(1, 0);
                     isPlayerPos += new Vector2(1, 0);
-                    gameObject.transform.Translate(0, -130, 0);
+                    StartCoroutine(PlayerMove(direction));
                 }
                 else
-                    CheckGoal(1);
+                    CheckGoalSetRope(1);
                 break;
             case 2:
                 if (GeneralManager.instance.mapManager.Move(2))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(0, -1);
                     isPlayerPos += new Vector2(0, -1);
-                    gameObject.transform.Translate(-130, 0, 0);
+                    StartCoroutine(PlayerMove(direction));
                 }
                 else
-                    CheckGoal(2);
+                    CheckGoalSetRope(2);
                 break;
             case 3:
                 if (GeneralManager.instance.mapManager.Move(3))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(0, 1);
                     isPlayerPos += new Vector2(0, 1);
-                    gameObject.transform.Translate(130, 0, 0);
+                    StartCoroutine(PlayerMove(direction));
                 }
                 else
-                    CheckGoal(3);
+                    CheckGoalSetRope(3);
                 break;
             default:
                 Debug.Log("移動可能か検索するところで変な指示出してんじゃねえよ");
                 break;
         }
-        GeneralManager.instance.mapManager.IsCheckClear();
     }
 
     /// <summary>
     /// 移動先がゴールで、ロープを持っていたらゴールできるようにする
     /// </summary>
     /// <param name="direction"></param>
-    public void CheckGoal(int direction)
+    public void CheckGoalSetRope(int direction)
     {
         GameObject obj;
         switch (direction)
@@ -119,5 +121,51 @@ public class PlayerManager : MonoBehaviour
             obj.GetComponent<TileMaster>().TurnImage(isHaveRope);
             isHaveRope = false;
         }
+    }
+
+    /// <summary>
+    /// プレイヤーの移動
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <returns></returns>
+    IEnumerator PlayerMove(int direction)
+    {
+        float moveDis = 0;
+        Vector3 movePos = new Vector3();
+        isPlayerMove = true;
+
+        switch (direction)
+        {
+            case 0:
+                movePos = new Vector3(0, _playerSpeed, 0);
+                break;
+            case 1:
+                movePos = new Vector3(0, -_playerSpeed, 0);
+                break;
+            case 2:
+                movePos = new Vector3(-_playerSpeed, 0, 0);
+                break;
+            case 3:
+                movePos = new Vector3(_playerSpeed, 0, 0);
+                break;
+            default:
+                Debug.Log("移動可能か検索するところで変な指示出してんじゃねえよ");
+                break;
+        }
+        while (true)    //移動
+        {
+            transform.Translate(movePos);
+            moveDis += _playerSpeed;
+            if (moveDis >= _playerdis)
+            {
+                isPlayerMove = false;
+                if (!isHaveRope)
+                    isHaveRope = GeneralManager.instance.mapManager.isUnderRope();
+                GeneralManager.instance.mapManager.IsCheckClear();
+                break;
+            }
+            yield return null;
+        }
+        yield break;
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class LoadOnlyJson : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class LoadOnlyJson : MonoBehaviour
     {
         OnDataLoad();
         GeneralManager.instance.mapManager.SetTileArray();
+        GeneralManager.instance.mapManager.TurnNum = 0;
     }
 
     /// <summary>

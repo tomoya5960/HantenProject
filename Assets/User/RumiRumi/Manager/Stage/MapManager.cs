@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,14 +6,17 @@ public class MapManager : MonoBehaviour
 {
     #region　ステージで必須な物
     [Header("ステージナンバー")]
-    public int selectStageNum = 0;  //ステージ番号を格納
+    public int                       selectStageNum = 0;  //ステージ番号を格納
     [Header("反転可能数")]
-    public int stageTurnCount = 0;  //反転できる残りの回数
+    public int                       stageTurnCount = 0;  //反転できる残りの回数
     [HideInInspector]
-    public Vector2 PlayerPos = Vector2.zero;
+    public 　　Vector2          PlayerPos = Vector2.zero;
     [HideInInspector]
-    public Vector2 GoalPos = Vector2.zero;
-    private LoadOnlyJson _loadJson;      //_loadOnlyJson取得するために使うやーつ
+    public 　　Vector2          GoalPos = Vector2.zero;
+    private 　  LoadOnlyJson _loadJson;      //_loadOnlyJson取得するために使うやーつ
+    [Header("経過したターン数")]
+    public int                        TurnNum; //経過したターン数
+    public GameObject[,] test = new GameObject[7,8];
     #endregion
 
     #region MAPに必要な物
@@ -34,6 +38,8 @@ public class MapManager : MonoBehaviour
         public GameObject[] itemPosY = new GameObject[8];
     }
     #endregion
+
+    public List<GameObject[,][]> stageBeforeObject = new List<GameObject[,][]>();
 
     #endregion
 
@@ -129,6 +135,7 @@ public class MapManager : MonoBehaviour
         if (PlayerPos == GoalPos)
         {
             Debug.Log("ゴールしたよ");
+            SceneManager.LoadScene("Result");
         }
     }
 
@@ -164,6 +171,29 @@ public class MapManager : MonoBehaviour
                 mapPosX[i].mapPosY[j].GetComponent<TileData>().tilePos = new Vector2(i, j);
                 TileNum++;
             }
+        }
+    }
+
+    /// <summary>
+    /// 1つ前に戻る処理
+    /// </summary>
+    public void SetBeforeStageData()
+    {
+        if (TurnNum< 0)
+            return;
+        else
+        {
+
+        }
+        TurnNum++;
+    }
+    public void LoadBeforeStageData()
+    {
+        if (TurnNum - 1 < 0)
+            return;
+        else
+        {
+            TurnNum--;
         }
     }
 }

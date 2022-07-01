@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private Vector3 _beforePos;
     private enum direction  //à⁄ìÆÇ∑ÇÈï˚å¸
     {
         Up = 0,
@@ -20,44 +21,40 @@ public class Player : MonoBehaviour
     void Update()
     {
         #region à⁄ìÆ
-
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (!_playerManager.isPlayerMove)
         {
-            do
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                _playerManager.SetPlayerPos((int)direction.Up);
-                if (!_playerManager.isHaveRope)
-                    _playerManager.isHaveRope = GeneralManager.instance.mapManager.isUnderRope();
-            } while (GeneralManager.instance.mapManager.IsIceFloor((int)direction.Up));
-        }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            do
+                Move(direction.Up);
+            }
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                _playerManager.SetPlayerPos((int)direction.Down);
-                if (!_playerManager.isHaveRope)
-                    _playerManager.isHaveRope = GeneralManager.instance.mapManager.isUnderRope();
-            } while (GeneralManager.instance.mapManager.IsIceFloor((int)direction.Down));
-
-        }
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            do
+                Move(direction.Down);
+            }
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                _playerManager.SetPlayerPos((int)direction.Left);
-                if (!_playerManager.isHaveRope)
-                    _playerManager.isHaveRope = GeneralManager.instance.mapManager.isUnderRope();
-            } while (GeneralManager.instance.mapManager.IsIceFloor((int)direction.Left));
-        }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            do
+                Move(direction.Left);
+            }
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                _playerManager.SetPlayerPos((int)direction.Right);
-                if (!_playerManager.isHaveRope)
-                    _playerManager.isHaveRope = GeneralManager.instance.mapManager.isUnderRope();
-            } while (GeneralManager.instance.mapManager.IsIceFloor((int)direction.Right));
+                Move(direction.Right);
+            }
         }
         #endregion
+    }
+
+    /// <summary>
+    /// äeà⁄ìÆèàóùÇÃî≠ìÆ
+    /// </summary>
+    /// <param name="dic">êiÇﬁï˚å¸</param>
+    private void Move(direction dic)
+    {
+        _beforePos = transform.position;
+        do
+        {
+            _playerManager.SetPlayerPos((int)dic);
+        } while (GeneralManager.instance.mapManager.IsIceFloor((int)dic));
+        if (_beforePos != transform.position)
+            GeneralManager.instance.mapManager.SetBeforeStageData();
     }
 }
