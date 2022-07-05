@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Vector3 _beforePos;
+    
     private enum direction  //à⁄ìÆÇ∑ÇÈï˚å¸
     {
         Up = 0,
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _playerManager = gameObject.GetComponent<PlayerManager>();
+        GeneralManager.instance.mapManager.player = GetComponent<PlayerManager>();
     }
 
     void Update()
@@ -26,18 +27,22 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 Move(direction.Up);
+                
             }
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 Move(direction.Down);
+                
             }
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 Move(direction.Left);
+                
             }
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 Move(direction.Right);
+                
             }
         }
         #endregion
@@ -49,12 +54,10 @@ public class Player : MonoBehaviour
     /// <param name="dic">êiÇﬁï˚å¸</param>
     private void Move(direction dic)
     {
-        _beforePos = transform.position;
         do
         {
             _playerManager.SetPlayerPos((int)dic);
         } while (GeneralManager.instance.mapManager.IsIceFloor((int)dic));
-        if (_beforePos != transform.position)
-            GeneralManager.instance.mapManager.SetBeforeStageData();
+        GeneralManager.instance.mapManager.SetBeforeStageData();
     }
 }

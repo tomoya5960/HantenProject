@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 630732347}
   - component: {fileID: 630732346}
   m_Layer: 5
-  m_Name: rwe
+  m_Name: testButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,6 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f2b3a1539419a4c9651c39813e89ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
 --- !u!114 &630732347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,6 +535,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3963419401788431514, guid: 1e2d5dc5fb02dab4e815489c1c38d262, type: 3}
   m_PrefabInstance: {fileID: 3963419400797124319}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1268719471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6348455197533893222, guid: e4975c3f580d31848a93760cde1e473c, type: 3}
+  m_PrefabInstance: {fileID: 6348455197465433428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1268719474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268719471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a8aadd36e9e6f4a8e23479c1e97dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1271778404 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3963419401791388347, guid: 1e2d5dc5fb02dab4e815489c1c38d262, type: 3}
@@ -943,6 +961,10 @@ PrefabInstance:
       propertyPath: stageEnum
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 572738654551244774, guid: 21e878592465e10408877a3dad1dc914, type: 3}
+      propertyPath: scriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c1e036665f66ef4ea11109f0fce5cb3, type: 2}
     - target: {fileID: 572738654551244774, guid: 21e878592465e10408877a3dad1dc914, type: 3}
       propertyPath: selectStageNum
       value: 3

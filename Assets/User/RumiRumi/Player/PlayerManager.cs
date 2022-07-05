@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     private Canvas canvas;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isHaveRope = false;    //ロープを持っているか
     [HideInInspector]
-    public Vector2 isPlayerPos = Vector2.zero;
+    public Vector2 playerPos = Vector2.zero;
+    public Vector2 nowPos;
     [SerializeField]
     private float _playerSpeed = 2;
     public bool isPlayerMove = false;  //プレイヤーが動いているか
@@ -32,7 +33,9 @@ public class PlayerManager : MonoBehaviour
         else
         {
             GeneralManager.instance.mapManager.PlayerPos = gameObject.transform.parent.GetComponent<TileData>().tilePos;
-            isPlayerPos = GeneralManager.instance.mapManager.PlayerPos;    //プレイヤーのスタート位置を格納
+            playerPos = GeneralManager.instance.mapManager.PlayerPos;    //プレイヤーのスタート位置を格納
+            GeneralManager.instance.mapManager.SetBeforeStageData();
+            GameObject.Find("testButton").GetComponent<BeforeBack>().manager = GetComponent<PlayerManager>();
         }
     }
 
@@ -48,7 +51,8 @@ public class PlayerManager : MonoBehaviour
                 if (GeneralManager.instance.mapManager.Move(0))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(-1, 0);
-                    isPlayerPos += new Vector2(-1, 0);
+                    playerPos += new Vector2(-1, 0);
+                    nowPos += new Vector2Int(0, _playerdis);
                     StartCoroutine(PlayerMove(direction));
                 }
                 else
@@ -58,7 +62,8 @@ public class PlayerManager : MonoBehaviour
                 if (GeneralManager.instance.mapManager.Move(1))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(1, 0);
-                    isPlayerPos += new Vector2(1, 0);
+                    playerPos += new Vector2(1, 0);
+                    nowPos += new Vector2Int(0, -_playerdis);
                     StartCoroutine(PlayerMove(direction));
                 }
                 else
@@ -68,7 +73,8 @@ public class PlayerManager : MonoBehaviour
                 if (GeneralManager.instance.mapManager.Move(2))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(0, -1);
-                    isPlayerPos += new Vector2(0, -1);
+                    playerPos += new Vector2(0, -1);
+                    nowPos += new Vector2Int(-_playerdis, 0);
                     StartCoroutine(PlayerMove(direction));
                 }
                 else
@@ -78,7 +84,8 @@ public class PlayerManager : MonoBehaviour
                 if (GeneralManager.instance.mapManager.Move(3))
                 {
                     GeneralManager.instance.mapManager.PlayerPos += new Vector2(0, 1);
-                    isPlayerPos += new Vector2(0, 1);
+                    playerPos += new Vector2(0, 1);
+                    nowPos += new Vector2Int(_playerdis, 0);
                     StartCoroutine(PlayerMove(direction));
                 }
                 else
@@ -100,16 +107,16 @@ public class PlayerManager : MonoBehaviour
         switch (direction)
         {
             case 0:
-                obj = GeneralManager.instance.mapManager.mapPosX[(int)isPlayerPos.x - 1].mapPosY[(int)isPlayerPos.y].gameObject;
+                obj = GeneralManager.instance.mapManager.mapPosX[(int)playerPos.x - 1].mapPosY[(int)playerPos.y].gameObject;
                 break;
             case 1:
-                obj = GeneralManager.instance.mapManager.mapPosX[(int)isPlayerPos.x + 1].mapPosY[(int)isPlayerPos.y].gameObject;
+                obj = GeneralManager.instance.mapManager.mapPosX[(int)playerPos.x + 1].mapPosY[(int)playerPos.y].gameObject;
                 break;
             case 2:
-                obj = GeneralManager.instance.mapManager.mapPosX[(int)isPlayerPos.x].mapPosY[(int)isPlayerPos.y - 1].gameObject;
+                obj = GeneralManager.instance.mapManager.mapPosX[(int)playerPos.x].mapPosY[(int)playerPos.y - 1].gameObject;
                 break;
             case 3:
-                obj = GeneralManager.instance.mapManager.mapPosX[(int)isPlayerPos.x].mapPosY[(int)isPlayerPos.y + 1].gameObject;
+                obj = GeneralManager.instance.mapManager.mapPosX[(int)playerPos.x].mapPosY[(int)playerPos.y + 1].gameObject;
                 break;
             default:
                 Debug.Log("移動可能か検索するところで変な指示出してんじゃねえよ");

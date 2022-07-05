@@ -9,10 +9,11 @@ using System;
 public class LoadOnlyJson : MonoBehaviour
 {
     #region タイルデータ関係
-    [HideInInspector]
+    //[HideInInspector]
     public List<GameObject>  tileDataList    = new List<GameObject>();  //ここにタイルを保存
     private GameObject       parentTiles;                               //タイルオブジェクトの親を格納する
-    private MapData          _mapData        = new MapData();           //マップの実態を確保
+    [HideInInspector]
+    public MapData          _mapData        = new MapData();           //マップの実態を確保
     
     #endregion
 
@@ -41,7 +42,6 @@ public class LoadOnlyJson : MonoBehaviour
     {
         OnDataLoad();
         GeneralManager.instance.mapManager.SetTileArray();
-        GeneralManager.instance.mapManager.TurnNum = 0;
     }
 
     /// <summary>

@@ -13,9 +13,9 @@ public class MapManager : MonoBehaviour
     public 　　Vector2          PlayerPos = Vector2.zero;
     [HideInInspector]
     public 　　Vector2          GoalPos = Vector2.zero;
-    private 　  LoadOnlyJson _loadJson;      //_loadOnlyJson取得するために使うやーつ
+    private 　  GameObject _jsonDatas;      //_loadOnlyJson取得するために使うやーつ
     [Header("経過したターン数")]
-    public int                        TurnNum; //経過したターン数
+    public int                        TurnNum = 0; //経過したターン数
     public GameObject[,] test = new GameObject[7,8];
     #endregion
 
@@ -39,8 +39,13 @@ public class MapManager : MonoBehaviour
     }
     #endregion
 
-    public List<GameObject[,][]> stageBeforeObject = new List<GameObject[,][]>();
-
+    private List<Vector2> playerVecList = new List<Vector2>();
+    private List<Vector2> playerPosList = new List<Vector2>();
+    private List<bool> isplayerRopeList = new List<bool>();
+    [HideInInspector]
+    public List<string> stageData = new List<string>();
+    [HideInInspector]
+    public PlayerManager player;
     #endregion
 
     /// <summary>
@@ -119,6 +124,7 @@ public class MapManager : MonoBehaviour
         {
             if (itemPosX[(int)PlayerPos.x].itemPosY[(int)PlayerPos.y].gameObject.tag == "Rope")
             {
+                itemPosX[(int)PlayerPos.x].itemPosY[(int)PlayerPos.y].gameObject.transform.parent.GetComponent<TileData>().isactiveself = false;
                 itemPosX[(int)PlayerPos.x].itemPosY[(int)PlayerPos.y].gameObject.SetActive(false);
                 Debug.Log($"<color=green>ロープを取りました</color>");
                 return true;
@@ -160,14 +166,14 @@ public class MapManager : MonoBehaviour
     public void SetTileArray()
     {
         if (GameObject.Find("LoadData"))
-            _loadJson = GameObject.Find("LoadData").GetComponent<LoadOnlyJson>();
-
+            _jsonDatas = GameObject.Find("LoadData");
+        var datas = _jsonDatas.GetComponent<LoadOnlyJson>();
         var TileNum = 0;
         for (int i = 0; i <= 6; i++)
         {
             for (int j = 0; j <= 7; j++)
             {
-                mapPosX[i].mapPosY[j] = _loadJson.tileDataList[TileNum];
+                mapPosX[i].mapPosY[j] = datas.tileDataList[TileNum];
                 mapPosX[i].mapPosY[j].GetComponent<TileData>().tilePos = new Vector2(i, j);
                 TileNum++;
             }
@@ -179,21 +185,41 @@ public class MapManager : MonoBehaviour
     /// </summary>
     public void SetBeforeStageData()
     {
-        if (TurnNum< 0)
+        if (TurnNum < 0)
             return;
         else
         {
-
+            TurnNum++;
+            if (TurnNum < playerVecList.Count)
+            {
+                for (int num = playerVecList.Count; num >= TurnNum; num--)
+                {
+                    playerVecList.Remove(playerVecList[num-1]);
+                    playerPosList.Remove(playerPosList[num-1]);
+                    isplayerRopeList.Remove(isplayerRopeList[num - 1]);
+                    stageData.Remove(stageData[num - 1]);
+                }
+            }
+            _jsonDatas.GetComponent<StageSave>().SaveTile();
+            playerVecList.Add(player.nowPos);
+            playerPosList.Add(PlayerPos);
+            isplayerRopeList.Add(player.isHaveRope);
+            
         }
-        TurnNum++;
     }
     public void LoadBeforeStageData()
     {
-        if (TurnNum - 1 < 0)
+        if (TurnNum <= 1)
             return;
         else
         {
             TurnNum--;
+            _jsonDatas.GetComponent<StageSave>().OnLoad();
+            player.nowPos = playerVecList[TurnNum-1];
+            player.transform.localPosition = playerVecList[TurnNum - 1];
+            PlayerPos = playerPosList[TurnNum-1];
+            player.isHaveRope = isplayerRopeList[TurnNum - 1];
+            player.playerPos = playerPosList[TurnNum-1];
         }
     }
 }
