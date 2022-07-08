@@ -19,7 +19,7 @@ public class TileMaster : MonoBehaviour
     private      TileData     _tileData;                              //自分のタイルデータを格納
     //[HideInInspector]
     public      TurnFaceType _turnFaceType = TurnFaceType.Front;    //生成されたときに表の状態にするよ
-    [HideInInspector]
+    //[HideInInspector]
     public bool         _isEnableTurn = true;                  //現在のタイルが裏返せるか（trueは裏返せる）
     public  bool              isEnableTurn  => _isEnableTurn;        //読み取り専用
 
@@ -78,17 +78,15 @@ public class TileMaster : MonoBehaviour
     /// </summary>
     public void TurnImage(bool rope = false)
     {
+        Debug.Log("b");
         if (spriteLists.Count < 2)
             return;
         else
         {
             if (TurnFaceType.Front == _turnFaceType && spriteLists[(int)TurnFaceType.Back].name == "goal_02" && rope) 
             {
-                if (_turnFaceType != TurnFaceType.Goal)
-                {
-                    ChangeClearGoal();
-                    GeneralManager.instance.mapManager.TurnObjectSetList();
-                }
+                ChangeClearGoal();
+                GeneralManager.instance.mapManager.TurnObjectSetList();
             }
             else if (_isEnableTurn)   //反転することが出来る場合
             {
@@ -105,10 +103,6 @@ public class TileMaster : MonoBehaviour
                 _tileData.imageID = (int)MapType.ImageIdType.goal_03;
                 GeneralManager.instance.mapManager.TurnObjectSetList();
             }
-            else
-            {
-                return;
-            }
         }
     }
 
@@ -117,7 +111,6 @@ public class TileMaster : MonoBehaviour
     /// </summary>
     private void ChangeClearGoal()
     {
-        Debug.Log("a");
         if (TurnFaceType.Front == _turnFaceType)    //表だった場合のみ読み込む　すでにクリア条件を満たしたゴールだった場合もよばない
         {
             if (spriteLists[(int)TurnFaceType.Goal] == null) //クリア条件を満たしたゴールが画像がない場合
