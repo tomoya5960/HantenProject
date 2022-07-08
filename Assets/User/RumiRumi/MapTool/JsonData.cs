@@ -93,6 +93,14 @@ public class JsonData : MonoBehaviour
     /// </summary>
     private void LoadTileData()
     {
+        foreach(var obj in tileDataList)
+        {
+            if(obj.transform.childCount > 0)
+            {
+                Destroy(obj.transform.GetChild(0).gameObject);
+            }
+        }
+
         foreach (var map in _mapData.Map.Select((mapChip, index) => new { mapChip, index }))
         {
             var tileData = tileDataList[map.index].GetComponent<EdiotTileData>();

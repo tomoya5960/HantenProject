@@ -42,7 +42,7 @@ public class MapManager : MonoBehaviour
     private List<Vector2> playerVecList = new List<Vector2>();
     private List<Vector2> playerPosList = new List<Vector2>();
     private List<bool> isplayerRopeList = new List<bool>();
-    [HideInInspector]
+    //[HideInInspector]
     public List<string> stageData = new List<string>();
     [HideInInspector]
     public PlayerManager player;

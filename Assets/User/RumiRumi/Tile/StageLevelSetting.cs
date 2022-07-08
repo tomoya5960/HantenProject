@@ -24,29 +24,35 @@ public class StageLevelSetting : MonoBehaviour
     {
 
         #region 仮テスト用　適当に消してくれーい
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             test.GetComponent<TileMaster>().TurnImage();
+            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             test2.GetComponent<TileMaster>().TurnImage();
+            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             test3.GetComponent<TileMaster>().TurnImage();
+            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             test4.GetComponent<TileMaster>().TurnImage();
+            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             test5.GetComponent<TileMaster>().TurnImage();
+            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             test6.GetComponent<TileMaster>().TurnImage();
+            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
         #endregion
     }
