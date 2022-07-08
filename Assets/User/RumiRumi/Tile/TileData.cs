@@ -1,25 +1,45 @@
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TileData : MonoBehaviour
 {
-    [Header("‚±‚Ìƒ^ƒCƒ‹‚ÌƒCƒ[ƒWID")]
+    [Header("ï¿½ï¿½ï¿½Ìƒ^ï¿½Cï¿½ï¿½ï¿½ÌƒCï¿½ï¿½ï¿½[ï¿½WID")]
     public  int              imageID;
-    //[HideInInspector]
+    [HideInInspector]
     public Vector2 tilePos;
-    [Header("”½“]‚Å‚«‚é‚©")]
-    public  bool             isTurnOver;        //ƒ^ƒCƒ‹‚Ì”½“]‰Â”\‚©‚Ì—L–³
-    [Header("ƒ[ƒv‚ª—Ž‚¿‚Ä‚¢‚é‚©")]
-    public  bool             isEnableRope;      //‚±‚Ìƒ^ƒCƒ‹‚Éƒ[ƒv‚ª—Ž‚¿‚Ä‚¢‚é‚©
-    [Header("Šâ‚ª‚ ‚é‚©")]
+    [Header("ï¿½ï¿½ï¿½]ï¿½Å‚ï¿½ï¿½é‚©")]
+    public  bool             isTurnOver;        //ï¿½^ï¿½Cï¿½ï¿½ï¿½Ì”ï¿½ï¿½]ï¿½Â”\ï¿½ï¿½ï¿½Ì—Lï¿½ï¿½
+    [HideInInspector]
+    public  bool             isEnableRope;      //ï¿½ï¿½ï¿½Ìƒ^ï¿½Cï¿½ï¿½ï¿½Éƒï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©
+    [Header("ï¿½â‚ªï¿½ï¿½ï¿½é‚©")]
     public bool              isEnableStone;
-    [Header("ƒvƒŒƒCƒ„[‚Ì‰Šú‚©")]
+    [HideInInspector]
     public bool isEnablePlayer;
-    [Header("’Ê‚é‚±‚Æ‚Í‚Å‚«‚é‚©")]
-    public  bool             isEnableProceed;   //’Ê‚é‚±‚Æ‚ª‚Å‚«‚é‚©
+    [Header("ï¿½Ê‚é‚±ï¿½Æ‚Í‚Å‚ï¿½ï¿½é‚©")]
+    public  bool             isEnableProceed;   //ï¿½Ê‚é‚±ï¿½Æ‚ï¿½ï¿½Å‚ï¿½ï¿½é‚©
     [HideInInspector]
     public int               childCount;
     [HideInInspector]
-    public       GameObject  child;         //ŽqƒIƒuƒWƒFƒNƒg‚ÌŠi”[
+    public       GameObject  child;         //ï¿½qï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ÌŠiï¿½[
+    private bool _isactiveself = true;
+    [HideInInspector]
+    public bool isactiveself
+    {
+        get { return _isactiveself; }
+        set
+        {
+            if (gameObject.transform.childCount > 0)
+            {
+                _isactiveself = value;
+                transform.GetChild(0).gameObject.SetActive(_isactiveself);
+            }
+            else
+                return;
+        }
+    }
 
+    //---------------------------------------------------------------------------------
+    public TileMaster.TurnFaceType _turnFaceType;
+    public bool isEnableTurn;
 }

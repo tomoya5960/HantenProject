@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/User/RumiRumi/Scenes/GameScene.unity
     guid: e36356afe575fa0418a835849f897410
+  - enabled: 1
+    path: Assets/User/Maxcoffee/Scenes/Result.unity
+    guid: 1abc98d499fe5434e99f29027035e54f
   m_configObjects: {}

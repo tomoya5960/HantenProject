@@ -5,23 +5,24 @@ using UnityEngine.UI;
 
 public class TileMaster : MonoBehaviour
 {
-    private enum TurnFaceType   //現在のタイルの状態（表裏）
+    [HideInInspector]
+    public enum TurnFaceType   //現在のタイルの状態（表裏）
     {
         Front = 0,
         Back,
         Goal
     }
 
-    [SerializeField]
-    private      List<Sprite> _spriteLists  = new List<Sprite>();    //タイルのイメージ画像（表裏）
-    private      Image        _mapImage     = null;
+    public      List<Sprite> spriteLists  = new List<Sprite>();    //タイルのイメージ画像（表裏）
+    [HideInInspector]
+    public      Image        mapImage     = null;
     private      TileData     _tileData;                              //自分のタイルデータを格納
-    private      TurnFaceType _turnFaceType = TurnFaceType.Front;    //生成されたときに表の状態にするよ
-    private bool         _isEnableTurn = true;                  //現在のタイルが裏返せるか（trueは裏返せる）
+    [HideInInspector]
+    public      TurnFaceType _turnFaceType = TurnFaceType.Front;    //生成されたときに表の状態にするよ
+    [HideInInspector]
+    public bool         _isEnableTurn = true;                  //現在のタイルが裏返せるか（trueは裏返せる）
     public  bool              isEnableTurn  => _isEnableTurn;        //読み取り専用
 
-    [Header("プレイヤーの格納しているロープの仮、後で置き換えて")]
-    public  bool              testRope;//testRopeをプレイヤーのロープに変更するべし
     #region タイルのスプライト生成系関数
     private        Sprite First  = null;
     private        Sprite Second = null;
@@ -32,7 +33,7 @@ public class TileMaster : MonoBehaviour
 
     private void Awake()
     {
-        _mapImage = GetComponent<Image>();
+        mapImage = GetComponent<Image>();
         _tileData = GetComponent<TileData>();
     }
 
@@ -51,6 +52,10 @@ public class TileMaster : MonoBehaviour
             _tileData.child = transform.GetChild(0).gameObject;
         else
             _tileData.child = null;
+
+        //ゴールだった場合はMapManagerのGoalPosにゴール座標を格納
+        if (_tileData.imageID == (int)MapType.ImageIdType.goal_01)
+            GeneralManager.instance.mapManager.GoalPos = _tileData.tilePos;
     }
 
     /// <summary>
@@ -60,35 +65,37 @@ public class TileMaster : MonoBehaviour
     /// <param name="second">裏の画像</param>
     public void InitSprite(Sprite first, Sprite second = null, Sprite third = null) //引数に = null があるのはなくても大丈夫なように！
     {
-        _spriteLists.Add(first);    //表の画像を格納
+        spriteLists.Add(first);    //表の画像を格納
         if (null != second) //表がinvisibleではなく裏がある場合
-            _spriteLists.Add(second);
+            spriteLists.Add(second);
         if (null != third) //ゴールがある場合
-            _spriteLists.Add(third);
-        _mapImage.sprite = _spriteLists[(int)TurnFaceType.Front];   //表の画像をイメージを表示
+            spriteLists.Add(third);
+        mapImage.sprite = spriteLists[(int)TurnFaceType.Front];   //表の画像をイメージを表示
     }
 
     /// <summary>
     /// 反転した時のイメージ変更
     /// </summary>
-    public void TurnImage()
+    public void TurnImage(bool rope = false)
     {
-        if (_spriteLists.Count < 2)
+        if (spriteLists.Count < 2)
             return;
         else
         {
-            if (TurnFaceType.Front == _turnFaceType && _spriteLists[(int)TurnFaceType.Back].name == "goal_02" && _turnFaceType != TurnFaceType.Goal && testRope)    //testRopeをプレイヤーのロープに変更するべし
-                ChangeClearGool();
+            if (TurnFaceType.Front == _turnFaceType && spriteLists[(int)TurnFaceType.Back].name == "goal_02" && _turnFaceType != TurnFaceType.Goal && rope) 
+            {
+                ChangeClearGoal();
+            }
             else if (_isEnableTurn)   //反転することが出来る場合
             {
-                _mapImage.sprite = _spriteLists[(int)TurnFaceType.Back];    //現在のイメージを裏の画像にする
+                mapImage.sprite = spriteLists[(int)TurnFaceType.Back];    //現在のイメージを裏の画像にする
                 _turnFaceType = TurnFaceType.Back;  //現在の状態を裏にする
                 _isEnableTurn = false;  //反転できなくする
                 ChangeImageID();
             }
-            else if (TurnFaceType.Back == _turnFaceType &&_spriteLists[(int)TurnFaceType.Front].name == "goal_01" && _turnFaceType != TurnFaceType.Goal)
+            else if (TurnFaceType.Back == _turnFaceType && spriteLists[(int)TurnFaceType.Front].name == "goal_01" && _turnFaceType != TurnFaceType.Goal)
             {
-                _mapImage.sprite = _spriteLists[(int)TurnFaceType.Front];
+                mapImage.sprite = spriteLists[(int)TurnFaceType.Front];
                 _turnFaceType = TurnFaceType.Front;
                 _tileData.imageID = (int)MapType.ImageIdType.goal_03;
             }
@@ -98,16 +105,17 @@ public class TileMaster : MonoBehaviour
     /// <summary>
     /// clear条件を満たしたゴールに変更する関数
     /// </summary>
-    private void ChangeClearGool()
+    private void ChangeClearGoal()
     {
         if (TurnFaceType.Front == _turnFaceType)    //表だった場合のみ読み込む　すでにクリア条件を満たしたゴールだった場合もよばない
         {
-            if (_spriteLists[(int)TurnFaceType.Goal] == null) //クリア条件を満たしたゴールが画像がない場合
+            if (spriteLists[(int)TurnFaceType.Goal] == null) //クリア条件を満たしたゴールが画像がない場合
                 return;
             else
             {
-                _mapImage.sprite = _spriteLists[(int)TurnFaceType.Goal];    //現在のイメージをクリア条件を満たしたゴールの画像にする
+                mapImage.sprite = spriteLists[(int)TurnFaceType.Goal];    //現在のイメージをクリア条件を満たしたゴールの画像にする
                 _turnFaceType = TurnFaceType.Goal;
+                _tileData.isEnableProceed = true;   //通れるようにする
             }
         }
     }
@@ -283,6 +291,7 @@ public class TileMaster : MonoBehaviour
         GameObject prefab = (GameObject)Instantiate(prefabObj, transform.position, Quaternion.identity, transform);
         _tileData.child = prefab;
     }
+
     /// <summary>
     /// 岩が必要な場合は配置する関数
     /// </summary>
@@ -324,5 +333,3 @@ public class TileMaster : MonoBehaviour
     }
     #endregion
 }
-
-

@@ -19,6 +19,9 @@ public class MapData
         public bool     isEnableStone;     //このタイルに岩が落ちているか
         public bool     isEnablePlayer;    //プレイヤーの初期位置だったらtrue
         public bool     isEnableProceed;    //通れるか
+        public bool     isSetAcctive;
+        public TileMaster.TurnFaceType _turnFaceType;
+        public bool isEnableTurn;
 
         public MapChip()   //初期化
         {
@@ -28,6 +31,7 @@ public class MapData
             isEnableStone = false;
             isEnablePlayer = false; 
             isEnableProceed = true;
+            isSetAcctive = true;
         }
     }
 
