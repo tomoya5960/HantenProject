@@ -39,10 +39,11 @@ public class MapManager : MonoBehaviour
     }
     #endregion
 
-    private List<Vector2> playerVecList = new List<Vector2>();
-    private List<Vector2> playerPosList = new List<Vector2>();
-    private List<bool> isplayerRopeList = new List<bool>();
-    //[HideInInspector]
+    private List<Vector2> _playerVecList = new List<Vector2>();
+    private List<Vector2> _playerPosList = new List<Vector2>();
+    private List<int> _playerRoteSpriteNumList = new List<int>();
+    private List<bool> _isplayerRopeList = new List<bool>();
+    [HideInInspector]
     public List<string> stageData = new List<string>();
     [HideInInspector]
     public PlayerManager player;
@@ -145,7 +146,6 @@ public class MapManager : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// そのステージでの反転を使用した際に使う関数
     /// </summary>
@@ -181,31 +181,52 @@ public class MapManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 1つ前に戻る処理
+    /// 1つ前に戻る/セーブする処理
     /// </summary>
-    public void SetBeforeStageData()
+    public void TurnObjectSetList()
     {
         if (TurnNum < 0)
             return;
         else
         {
             TurnNum++;
-            if (TurnNum < playerVecList.Count)
-            {
-                for (int num = playerVecList.Count; num >= TurnNum; num--)
-                {
-                    playerVecList.Remove(playerVecList[num-1]);
-                    playerPosList.Remove(playerPosList[num-1]);
-                    isplayerRopeList.Remove(isplayerRopeList[num - 1]);
-                    stageData.Remove(stageData[num - 1]);
-                }
-            }
-            _jsonDatas.GetComponent<StageSave>().SaveTile();
-            playerVecList.Add(player.nowPos);
-            playerPosList.Add(PlayerPos);
-            isplayerRopeList.Add(player.isHaveRope);
-            
+            SetList();
         }
+    }
+    public void SetBeforeStageData()
+    {
+        if (TurnNum < 0)
+            return;
+        else
+        {
+            if(PlayerPos == _playerPosList[TurnNum -1])
+            {
+                return;
+            }
+            else
+            {
+                TurnNum++;
+                SetList();
+            }
+        }
+    }
+    public void SetList()
+    {
+        if (TurnNum < _playerVecList.Count)
+        {
+            for (int num = _playerVecList.Count; num >= TurnNum; num--)
+            {
+                _playerVecList.Remove(_playerVecList[num - 1]);
+                _playerPosList.Remove(_playerPosList[num - 1]);
+                _isplayerRopeList.Remove(_isplayerRopeList[num - 1]);
+                stageData.Remove(stageData[num - 1]);
+            }
+        }
+        _jsonDatas.GetComponent<StageSave>().SaveTile();
+        _playerVecList.Add(player.nowPos);
+        _playerPosList.Add(PlayerPos);
+        _isplayerRopeList.Add(player.isHaveRope);
+        _playerRoteSpriteNumList.Add((int)player.GetComponent<Player>().dic);
     }
     public void LoadBeforeStageData()
     {
@@ -214,12 +235,14 @@ public class MapManager : MonoBehaviour
         else
         {
             TurnNum--;
+            var roadTurnData = TurnNum - 1;
             _jsonDatas.GetComponent<StageSave>().OnLoad();
-            player.nowPos = playerVecList[TurnNum-1];
-            player.transform.localPosition = playerVecList[TurnNum - 1];
-            PlayerPos = playerPosList[TurnNum-1];
-            player.isHaveRope = isplayerRopeList[TurnNum - 1];
-            player.playerPos = playerPosList[TurnNum-1];
+            player.nowPos = _playerVecList[roadTurnData];
+            player.transform.localPosition = _playerVecList[roadTurnData];
+            PlayerPos = _playerPosList[roadTurnData];
+            player.isHaveRope = _isplayerRopeList[roadTurnData];
+            player.playerPos = _playerPosList[roadTurnData];
+            player.GetComponent<Player>().ChangePlayerSprite((Player.direction)_playerRoteSpriteNumList[roadTurnData]);
         }
     }
 }

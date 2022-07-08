@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageLevelSetting : MonoBehaviour
 {
-    public int stageTurnCount;
+    public List<int> stageTurnCount = new List<int>();
 
     //仮テスト用　適当に消してくれーい
     public GameObject test;
@@ -18,8 +18,9 @@ public class StageLevelSetting : MonoBehaviour
     private void Start()
     {
         GeneralManager.instance.mapManager = GameObject.Find("GenenalManager").GetComponent<MapManager>();
-        GeneralManager.instance.mapManager.stageTurnCount = stageTurnCount;
+        GeneralManager.instance.mapManager.stageTurnCount = stageTurnCount[GeneralManager.instance.mapManager.selectStageNum];
     }
+
     private void Update()
     {
 
@@ -27,32 +28,26 @@ public class StageLevelSetting : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             test.GetComponent<TileMaster>().TurnImage();
-            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
             test2.GetComponent<TileMaster>().TurnImage();
-            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
             test3.GetComponent<TileMaster>().TurnImage();
-            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
         if (Input.GetKeyDown(KeyCode.V))
         {
             test4.GetComponent<TileMaster>().TurnImage();
-            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
             test5.GetComponent<TileMaster>().TurnImage();
-            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
             test6.GetComponent<TileMaster>().TurnImage();
-            GeneralManager.instance.mapManager.SetBeforeStageData();
         }
         #endregion
     }

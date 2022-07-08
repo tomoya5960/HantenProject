@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
         {
             GeneralManager.instance.mapManager.PlayerPos = gameObject.transform.parent.GetComponent<TileData>().tilePos;
             playerPos = GeneralManager.instance.mapManager.PlayerPos;    //プレイヤーのスタート位置を格納
-            GeneralManager.instance.mapManager.SetBeforeStageData();
+            GeneralManager.instance.mapManager.TurnObjectSetList();
             GameObject.Find("testButton").GetComponent<BeforeBack>().manager = GetComponent<PlayerManager>();
         }
     }

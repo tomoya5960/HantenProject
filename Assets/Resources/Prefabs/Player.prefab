@@ -98,6 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b0a1eeaecffb949bf2e32da510ae8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteLists:
+  - {fileID: 1248820244, guid: 6f8191863f857564b9fdf278c22409f4, type: 3}
+  - {fileID: 206222409, guid: 6f8191863f857564b9fdf278c22409f4, type: 3}
+  - {fileID: -685718070, guid: 6f8191863f857564b9fdf278c22409f4, type: 3}
+  - {fileID: -2102677065, guid: 6f8191863f857564b9fdf278c22409f4, type: 3}
 --- !u!114 &666952136106319726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHaveRope: 0
-  isPlayerPos: {x: 0, y: 0}
+  playerPos: {x: 0, y: 0}
+  nowPos: {x: 0, y: 0}
   _playerSpeed: 0.5
   isPlayerMove: 0

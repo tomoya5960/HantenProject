@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ce07d70fc0f9a4c82d4e7d399ed265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageTurnCount: 0
-  test: {fileID: 2019337410}
+  stageTurnCount: 05000000050000000500000005000000050000000500000005000000050000000500000005000000
+  test: {fileID: 1609834942}
   test2: {fileID: 1271778404}
   test3: {fileID: 1108943137}
   test4: {fileID: 138316801}
@@ -1139,7 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 5c1e036665f66ef4ea11109f0fce5cb3, type: 2}
     - target: {fileID: 572738654551244774, guid: 21e878592465e10408877a3dad1dc914, type: 3}
       propertyPath: selectStageNum
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 572738654551244783, guid: 21e878592465e10408877a3dad1dc914, type: 3}
       propertyPath: m_Name
