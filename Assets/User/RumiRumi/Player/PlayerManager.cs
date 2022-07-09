@@ -108,29 +108,15 @@ public class PlayerManager : MonoBehaviour
         {
             case 0:
                 obj = GeneralManager.instance.mapManager.mapPosX[(int)playerPos.x - 1].mapPosY[(int)playerPos.y].gameObject;
-                if (obj.GetComponent<TileData>().imageID == (int)MapType.ImageIdType.goal_01)
-                    return;
-                else
                     break;
             case 1:
                 obj = GeneralManager.instance.mapManager.mapPosX[(int)playerPos.x + 1].mapPosY[(int)playerPos.y].gameObject;
-                if (obj.GetComponent<TileData>().imageID == (int)MapType.ImageIdType.goal_01)
-                    return;
-                else
                     break;
-
             case 2:
                 obj = GeneralManager.instance.mapManager.mapPosX[(int)playerPos.x].mapPosY[(int)playerPos.y - 1].gameObject;
-                if (obj.GetComponent<TileData>().imageID == (int)MapType.ImageIdType.goal_01)
-                    return;
-                else
                     break;
-
             case 3:
                 obj = GeneralManager.instance.mapManager.mapPosX[(int)playerPos.x].mapPosY[(int)playerPos.y + 1].gameObject;
-                if (obj.GetComponent<TileData>().imageID == (int)MapType.ImageIdType.goal_01)
-                    return;
-                else
                     break;
             default:
                 Debug.Log("à⁄ìÆâ¬î\Ç©åüçıÇ∑ÇÈÇ∆Ç±ÇÎÇ≈ïœÇ»éwé¶èoÇµÇƒÇÒÇ∂Ç·ÇÀÇ¶ÇÊ");

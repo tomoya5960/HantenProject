@@ -78,7 +78,6 @@ public class TileMaster : MonoBehaviour
     /// </summary>
     public void TurnImage(bool rope = false)
     {
-        Debug.Log("b");
         if (spriteLists.Count < 2)
             return;
         else
@@ -120,6 +119,7 @@ public class TileMaster : MonoBehaviour
                 mapImage.sprite = spriteLists[(int)TurnFaceType.Goal];    //現在のイメージをクリア条件を満たしたゴールの画像にする
                 _turnFaceType = TurnFaceType.Goal;
                 _tileData.isEnableProceed = true;   //通れるようにする
+                _isEnableTurn = false;
             }
         }
     }
