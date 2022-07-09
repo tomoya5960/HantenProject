@@ -391,6 +391,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 557230253}
     m_Modifications:
+    - target: {fileID: 8535773374760474336, guid: 688dbc0e707cf204fbd4d7385fcd79bd, type: 3}
+      propertyPath: Image1
+      value: 
+      objectReference: {fileID: 21300000, guid: dae9355569501d54aa29a7d41d15caf9, type: 3}
+    - target: {fileID: 8535773374760474336, guid: 688dbc0e707cf204fbd4d7385fcd79bd, type: 3}
+      propertyPath: Image2
+      value: 
+      objectReference: {fileID: 21300000, guid: 536b5b77a4b3a0f44a827b0dca2e2448, type: 3}
+    - target: {fileID: 8535773374760474336, guid: 688dbc0e707cf204fbd4d7385fcd79bd, type: 3}
+      propertyPath: Image3
+      value: 
+      objectReference: {fileID: 21300000, guid: fe7caf44eecc9634aa1f5317c8961afe, type: 3}
+    - target: {fileID: 8535773374760474336, guid: 688dbc0e707cf204fbd4d7385fcd79bd, type: 3}
+      propertyPath: Image4
+      value: 
+      objectReference: {fileID: 21300000, guid: 740bb17c28003ed46a48de5641994d01, type: 3}
+    - target: {fileID: 8535773374760474336, guid: 688dbc0e707cf204fbd4d7385fcd79bd, type: 3}
+      propertyPath: Image5
+      value: 
+      objectReference: {fileID: 21300000, guid: 0df3953be3ddf084dba6ed08bbfbcd84, type: 3}
     - target: {fileID: 8535773374760474337, guid: 688dbc0e707cf204fbd4d7385fcd79bd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -475,6 +495,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8535773374760474339, guid: 688dbc0e707cf204fbd4d7385fcd79bd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dae9355569501d54aa29a7d41d15caf9, type: 3}
     - target: {fileID: 8535773374760474342, guid: 688dbc0e707cf204fbd4d7385fcd79bd, type: 3}
       propertyPath: m_Name
       value: Up Fire

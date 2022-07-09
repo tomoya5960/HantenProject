@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6f5f467ee0c77224687c87dca06ddbaf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dae9355569501d54aa29a7d41d15caf9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,9 +90,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fps: 0.1
-  Image1: {fileID: 21300000, guid: 6f5f467ee0c77224687c87dca06ddbaf, type: 3}
-  Image2: {fileID: 21300000, guid: eb6bb45ca0fef4545854052d404571b7, type: 3}
-  Image3: {fileID: 21300000, guid: 0d4ea803dde1ef045a4d319ad7390255, type: 3}
-  Image4: {fileID: 21300000, guid: 31fb561bd66d5ad409532bc52a7c5e1a, type: 3}
-  Image5: {fileID: 21300000, guid: a767dfbe534bd284ab359135f2931d7b, type: 3}
+  Image1: {fileID: 21300000, guid: dae9355569501d54aa29a7d41d15caf9, type: 3}
+  Image2: {fileID: 21300000, guid: 536b5b77a4b3a0f44a827b0dca2e2448, type: 3}
+  Image3: {fileID: 21300000, guid: fe7caf44eecc9634aa1f5317c8961afe, type: 3}
+  Image4: {fileID: 21300000, guid: 740bb17c28003ed46a48de5641994d01, type: 3}
+  Image5: {fileID: 21300000, guid: 0df3953be3ddf084dba6ed08bbfbcd84, type: 3}
   image: {fileID: 0}
