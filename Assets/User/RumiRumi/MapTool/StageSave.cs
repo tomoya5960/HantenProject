@@ -8,7 +8,6 @@ public class StageSave : MonoBehaviour
     LoadOnlyJson loj;
     private void Start()
     {
-        GeneralManager.instance.mapManager.stageData.Clear();
         loj = GetComponent<LoadOnlyJson>();
     }
 
