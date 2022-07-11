@@ -25,29 +25,55 @@ public class StageLevelSetting : MonoBehaviour
     {
 
         #region 仮テスト用　適当に消してくれーい
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            test.GetComponent<TileMaster>().TurnImage();
+            if (GeneralManager.instance.mapManager.stageTurnCount > 0)
+            {
+                test.GetComponent<TileMaster>().TurnImage();
+                GeneralManager.instance.mapManager.stageTurnCount--;
+            }
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            test2.GetComponent<TileMaster>().TurnImage();
+            if (GeneralManager.instance.mapManager.stageTurnCount > 0)
+            {
+                test2.GetComponent<TileMaster>().TurnImage();
+                GeneralManager.instance.mapManager.stageTurnCount--;
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            test3.GetComponent<TileMaster>().TurnImage();
+            if (GeneralManager.instance.mapManager.stageTurnCount > 0)
+            {
+                test3.GetComponent<TileMaster>().TurnImage();
+                GeneralManager.instance.mapManager.stageTurnCount--;
+            }
         }
         if (Input.GetKeyDown(KeyCode.V))
         {
-            test4.GetComponent<TileMaster>().TurnImage();
+            if (GeneralManager.instance.mapManager.stageTurnCount > 0)
+            {
+                test4.GetComponent<TileMaster>().TurnImage();
+                GeneralManager.instance.mapManager.stageTurnCount--;
+            }
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            test5.GetComponent<TileMaster>().TurnImage();
+            if (GeneralManager.instance.mapManager.stageTurnCount > 0)
+            {
+                test5.GetComponent<TileMaster>().TurnImage();
+                GeneralManager.instance.mapManager.stageTurnCount--;
+            }
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            test6.GetComponent<TileMaster>().TurnImage();
+            if (GeneralManager.instance.mapManager.stageTurnCount > 0)
+            {
+                test6.GetComponent<TileMaster>().TurnImage();
+                GeneralManager.instance.mapManager.stageTurnCount--;
+            }
         }
         #endregion
     }

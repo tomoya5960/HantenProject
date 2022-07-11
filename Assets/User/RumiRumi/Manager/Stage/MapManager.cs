@@ -43,6 +43,7 @@ public class MapManager : MonoBehaviour
     private List<Vector2> _playerPosList = new List<Vector2>();
     private List<int> _playerRoteSpriteNumList = new List<int>();
     private List<bool> _isplayerRopeList = new List<bool>();
+    private List<int> _stageTurnContList = new List<int>();
     [HideInInspector]
     public List<string> stageData = new List<string>();
     [HideInInspector]
@@ -220,6 +221,7 @@ public class MapManager : MonoBehaviour
                 _playerPosList.Remove(_playerPosList[num - 1]);
                 _isplayerRopeList.Remove(_isplayerRopeList[num - 1]);
                 stageData.Remove(stageData[num - 1]);
+                _stageTurnContList.Remove(_stageTurnContList[num - 1]);
             }
         }
         _jsonDatas.GetComponent<StageSave>().SaveTile();
@@ -227,6 +229,7 @@ public class MapManager : MonoBehaviour
         _playerPosList.Add(PlayerPos);
         _isplayerRopeList.Add(player.isHaveRope);
         _playerRoteSpriteNumList.Add((int)player.GetComponent<Player>().dic);
+        _stageTurnContList.Add(stageTurnCount);
     }
     public void LoadBeforeStageData()
     {
@@ -243,6 +246,7 @@ public class MapManager : MonoBehaviour
             player.isHaveRope = _isplayerRopeList[roadTurnData];
             player.playerPos = _playerPosList[roadTurnData];
             player.GetComponent<Player>().ChangePlayerSprite((Player.direction)_playerRoteSpriteNumList[roadTurnData]);
+            stageTurnCount = _stageTurnContList[roadTurnData];
         }
     }
 }
