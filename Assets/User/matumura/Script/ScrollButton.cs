@@ -11,14 +11,14 @@ public class ScrollButton : MonoBehaviour
     public void Up()
     {
         GeneralManager.instance.mapManager.selectStageNum--;
-        //Scroll2.GetComponent<Scroll>()._count--;
+        Scroll2.GetComponent<Scroll>()._count--;
     }
 
     //下ボタンを押したらスクロール
     public void Down()
     {
         GeneralManager.instance.mapManager.selectStageNum++;
-        //Scroll2.GetComponent<Scroll>()._count++;
+        Scroll2.GetComponent<Scroll>()._count++;
     }
 
 }
