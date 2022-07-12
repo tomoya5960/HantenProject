@@ -29,11 +29,25 @@ public class Scroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region ゲーム終了
+        if (Input.GetKey(KeyCode.Escape))
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+        }
+        #endregion
+
+
 
         float step = speed * Time.deltaTime;
 
+
         //マウスホイール動作
         var wh = Input.GetAxis("Mouse ScrollWheel") * 10;
+
         _count -= (int)wh;
 
         //ストッパー

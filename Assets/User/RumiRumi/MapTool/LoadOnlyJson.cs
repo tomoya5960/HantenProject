@@ -9,7 +9,7 @@ using System;
 public class LoadOnlyJson : MonoBehaviour
 {
     #region タイルデータ関係
-    //[HideInInspector]
+    [HideInInspector]
     public List<GameObject>  tileDataList    = new List<GameObject>();  //ここにタイルを保存
     private GameObject       parentTiles;                               //タイルオブジェクトの親を格納する
     [HideInInspector]

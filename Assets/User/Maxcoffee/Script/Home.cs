@@ -32,6 +32,7 @@ public class Home : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			isFadeOut = true;
+			GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_02);
 		}
 		//if (onof == true)
 		//{
@@ -78,7 +79,15 @@ public class Home : MonoBehaviour
 	
 	public void ChengeNextStageScene()
     {
-		GeneralManager.instance.mapManager.selectStageNum++;
-		SceneManager.LoadScene("GameScene");
+		if (GeneralManager.instance.mapManager.selectStageNum > 3)
+        {
+			SceneManager.LoadScene("MaxcoffeeScene");
+		}
+        else
+        {
+			GeneralManager.instance.mapManager.selectStageNum++;
+			SceneManager.LoadScene("GameScene");
+		}
+
 	}
 }

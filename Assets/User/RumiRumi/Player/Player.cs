@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         #region ˆÚ“®
-        if (!_playerManager.isPlayerMove)
+        if (!_playerManager.isPlayerMove && GeneralManager.instance.isEnablePlay)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
     /// <param name="playerDic">i‚Ş•ûŒü</param>
     private void Move(direction playerDic)
     {
+        GeneralManager.instance.isEnablePlay = false;
         do
         {
             if (dic != playerDic)
@@ -70,6 +71,7 @@ public class Player : MonoBehaviour
             _playerManager.SetPlayerPos((int)playerDic);
         } while (GeneralManager.instance.mapManager.IsIceFloor((int)playerDic));
         GeneralManager.instance.mapManager.SetBeforeStageData();
+        GeneralManager.instance.isEnablePlay = true;
     }
 
     public void ChangePlayerSprite(direction playerDic)

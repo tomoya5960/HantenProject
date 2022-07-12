@@ -17,9 +17,9 @@ public class TileMaster : MonoBehaviour
     [HideInInspector]
     public      Image        mapImage     = null;
     private      TileData     _tileData;                              //自分のタイルデータを格納
-    //[HideInInspector]
+    [HideInInspector]
     public      TurnFaceType _turnFaceType = TurnFaceType.Front;    //生成されたときに表の状態にするよ
-    //[HideInInspector]
+    [HideInInspector]
     public bool         _isEnableTurn = true;                  //現在のタイルが裏返せるか（trueは裏返せる）
     public  bool              isEnableTurn  => _isEnableTurn;        //読み取り専用
 
@@ -85,7 +85,6 @@ public class TileMaster : MonoBehaviour
             if (TurnFaceType.Front == _turnFaceType && spriteLists[(int)TurnFaceType.Back].name == "goal_02" && rope) 
             {
                 ChangeClearGoal();
-                GeneralManager.instance.mapManager.TurnObjectSetList();
             }
             else if (_isEnableTurn)   //反転することが出来る場合
             {
@@ -93,14 +92,12 @@ public class TileMaster : MonoBehaviour
                 _turnFaceType = TurnFaceType.Back;  //現在の状態を裏にする
                 _isEnableTurn = false;  //反転できなくする
                 ChangeImageID();
-                GeneralManager.instance.mapManager.TurnObjectSetList();
             }
             else if (TurnFaceType.Back == _turnFaceType && spriteLists[(int)TurnFaceType.Front].name == "goal_01" && _turnFaceType != TurnFaceType.Goal)
             {
                 mapImage.sprite = spriteLists[(int)TurnFaceType.Front];
                 _turnFaceType = TurnFaceType.Front;
                 _tileData.imageID = (int)MapType.ImageIdType.goal_03;
-                GeneralManager.instance.mapManager.TurnObjectSetList();
             }
         }
     }
@@ -266,6 +263,7 @@ public class TileMaster : MonoBehaviour
         new IdPack(MapType.ImageIdType.statue_03,false),
         new IdPack(MapType.ImageIdType.statue_04,false),
     };
+
     private void ChangeImageID()
     {
         _tileData.isEnableProceed = _packLists[_tileData.imageID].IsEnableProceed;

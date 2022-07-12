@@ -8,7 +8,8 @@ using UnityEngine;
 public class GeneralManager : MonoBehaviour
 {
     public static GeneralManager instance = null;   //ゲームマネージャは一つしかないよっていうやつ
-
+    [HideInInspector]
+    public bool isEnablePlay = true;  //行動できるかどうか
     [HideInInspector]
     public        SoundManager   soundManager;       //SoundManagerを格納するやつだ！！
     [HideInInspector]

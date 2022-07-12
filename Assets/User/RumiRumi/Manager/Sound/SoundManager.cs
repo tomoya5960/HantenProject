@@ -10,9 +10,12 @@ public class SoundManager : MonoBehaviour
         //ˆÈŒã’Ç‰Á
         bgm_01 = 0,
         bgm_02,
+        bgm_03,
+        bgm_04,
         Silent = 999,
     }
-
+    [HideInInspector]
+    public BgmName bgm;
     private       AudioSource     _bgmSource;
     public        List<BgmStatus> bgmClips;
     private int[]                 _bgmNumber;   //BgmName‚Ì€–Ú”‚Ìæ“¾
@@ -37,6 +40,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="bgmName">‘I‘ğ‚µ‚½BGM</param>
     public void PlayBGM(BgmName bgmName, bool loopFlg = true)
     {
+        StopBGM();
         int index = (int)bgmName;    //‘I‘ğ‚³‚ê‚½BGM”Ô†‚ğŠi”[
         _currentBgmIndex = index;    //‘I‘ğ‚³‚ê‚½BGM”Ô†‚ğÄ¶‚·‚éˆ×‚Ì•Ï”‚ÉŠi”[
         if (index == 999) //–³‰¹‚É‚·‚é‚Æ‚«‚Ì‚â‚Â
@@ -99,7 +103,20 @@ public class SoundManager : MonoBehaviour
     public enum SeName
     {
         se_01 = 0,
-        se_02
+        se_01_2,
+        se_02,
+        se_03,
+        se_04,
+        se_05,
+        se_06,
+        se_07,
+        se_08,
+        se_09,
+        se_10,
+        se_11,
+        se_12,
+        se_13,
+        se_14
     }
 
     private       AudioSource    _seSource;
@@ -151,15 +168,11 @@ public class SoundManager : MonoBehaviour
     {
         _bgmSource = gameObject.AddComponent<AudioSource>();
         _seSource = gameObject.AddComponent<AudioSource>();
-    }
 
-    private void Start()
-    {
         string[] BGM = System.Enum.GetNames(typeof(BgmName));    //string[]¨int[]‚É•ÏŠ·
         _bgmNumber = new int[BGM.Length];    //int‚É•ÏŠ·
 
         string[] SE = System.Enum.GetNames(typeof(SeName));    //string[]¨int[]‚É•ÏŠ·
         _seNumber = new int[SE.Length];    //int‚É•ÏŠ·
-
     }
 }

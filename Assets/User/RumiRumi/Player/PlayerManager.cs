@@ -6,8 +6,20 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     private Canvas canvas;
-    //[HideInInspector]
-    public bool isHaveRope = false;    //ロープを持っているか
+    private bool _isHaveRope = false;
+    [HideInInspector]
+    public bool isHaveRope    //ロープを持っているか
+    {
+        get { return _isHaveRope; }
+        set
+        {
+            _isHaveRope = value;
+            if (_isHaveRope)
+                GameObject.Find("RopeUI").gameObject.GetComponent<RopeUI>().isHaveRope = true;
+            else
+                GameObject.Find("RopeUI").gameObject.GetComponent<RopeUI>().isHaveRope = false;
+        }
+    }
     [HideInInspector]
     public Vector2 playerPos = Vector2.zero;
     public Vector2 nowPos;
@@ -35,7 +47,6 @@ public class PlayerManager : MonoBehaviour
             GeneralManager.instance.mapManager.PlayerPos = gameObject.transform.parent.GetComponent<TileData>().tilePos;
             playerPos = GeneralManager.instance.mapManager.PlayerPos;    //プレイヤーのスタート位置を格納
             GeneralManager.instance.mapManager.TurnObjectSetList();
-            GameObject.Find("testButton").GetComponent<BeforeBack>().manager = GetComponent<PlayerManager>();
         }
     }
 

@@ -22,17 +22,17 @@ public class TileData : MonoBehaviour
     public int               childCount;
     [HideInInspector]
     public       GameObject  child;         //�q�I�u�W�F�N�g�̊i�[
-    private bool _isactiveself = true;
+    private bool _isActiveself = true;
     [HideInInspector]
-    public bool isactiveself
+    public bool isActiveself
     {
-        get { return _isactiveself; }
+        get { return _isActiveself; }
         set
         {
-            if (gameObject.transform.childCount > 0)
+            if (gameObject.transform.childCount > 1)
             {
-                _isactiveself = value;
-                transform.GetChild(0).gameObject.SetActive(_isactiveself);
+                _isActiveself = value;
+                transform.GetChild(1).gameObject.SetActive(_isActiveself);
             }
             else
                 return;

@@ -22,7 +22,7 @@ public class StageSave : MonoBehaviour
             map.mapChip.isEnableRope = tileData.isEnableRope;
             map.mapChip.isEnableStone = tileData.isEnableStone;
             map.mapChip.isEnablePlayer = tileData.isEnablePlayer;
-            map.mapChip.isSetAcctive = tileData.isactiveself;
+            map.mapChip.isSetAcctive = tileData.isActiveself;
             map.mapChip._turnFaceType = tileMaster._turnFaceType;
             map.mapChip.isEnableTurn = tileMaster.isEnableTurn;
         }
@@ -49,9 +49,9 @@ public class StageSave : MonoBehaviour
             tileData.isEnableStone = map.mapChip.isEnableStone;
             tileData.isEnablePlayer = map.mapChip.isEnablePlayer;
             Transform children = tileData.gameObject.transform.parent.GetComponentInChildren<Transform>();
-            if (children.childCount != 0)
+            if (children.childCount > 1)
             {
-                tileData.isactiveself = map.mapChip.isSetAcctive;
+                tileData.isActiveself = map.mapChip.isSetAcctive;
             }
             tileMaster._turnFaceType = map.mapChip._turnFaceType;
             tileMaster.mapImage.sprite = tileMaster.spriteLists[(int)tileMaster._turnFaceType];
