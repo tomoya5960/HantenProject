@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class BeforeBack : MonoBehaviour
 {
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-            onBack();
-    }
     public void onBack()
     {
         if (GeneralManager.instance.isEnablePlay)

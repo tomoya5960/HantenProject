@@ -75,6 +75,7 @@ public class Next : MonoBehaviour
 
 	public void ChengeSelectStageScene()
 	{
+		GeneralManager.instance.soundManager.StopBGM();
 		SceneManager.LoadScene("SelectStageScene");
 	}
 }

@@ -66,7 +66,7 @@ public class MapManager : MonoBehaviour
     public List<bool> _isplayerRopeList = new List<bool>();
     [HideInInspector]
     public List<int> _stageTurnContList = new List<int>();
-    //[HideInInspector]
+    [HideInInspector]
     public List<string> stageData = new List<string>();
     [HideInInspector]
     public PlayerManager player;

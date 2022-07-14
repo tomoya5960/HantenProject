@@ -15,6 +15,7 @@ public class StartBGM : MonoBehaviour
 {
     [SerializeField]
     private BgmName bgm;
+
     void Start()
     {
         GeneralManager.instance.soundManager.PlayBGM((SoundManager.BgmName)bgm);

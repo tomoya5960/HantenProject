@@ -40,7 +40,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="bgmName">‘I‘ğ‚µ‚½BGM</param>
     public void PlayBGM(BgmName bgmName, bool loopFlg = true)
     {
-        StopBGM();
+        
         int index = (int)bgmName;    //‘I‘ğ‚³‚ê‚½BGM”Ô†‚ğŠi”[
         _currentBgmIndex = index;    //‘I‘ğ‚³‚ê‚½BGM”Ô†‚ğÄ¶‚·‚éˆ×‚Ì•Ï”‚ÉŠi”[
         if (index == 999) //–³‰¹‚É‚·‚é‚Æ‚«‚Ì‚â‚Â
@@ -59,6 +59,7 @@ public class SoundManager : MonoBehaviour
         {
 
             Debug.LogWarning("BGM‚ª“¯‚¶‚¾‚Á‚½‚æ");
+            _bgmSource.Play();
             return;
         }
         #endregion
@@ -69,6 +70,7 @@ public class SoundManager : MonoBehaviour
             _bgmSource.Play();    //Ä¶‚·‚é‚æ[
             return;
         }
+        StopBGM();
     }
 
     /// <summary>

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(SoundManager))]
 [RequireComponent(typeof(MapType))]
 [RequireComponent(typeof(MapManager))]
@@ -8,7 +9,7 @@ using UnityEngine;
 public class GeneralManager : MonoBehaviour
 {
     public static GeneralManager instance = null;   //ゲームマネージャは一つしかないよっていうやつ
-    [HideInInspector]
+    //[HideInInspector]
     public bool isEnablePlay = true;  //行動できるかどうか
     [HideInInspector]
     public        SoundManager   soundManager;       //SoundManagerを格納するやつだ！！
@@ -30,5 +31,22 @@ public class GeneralManager : MonoBehaviour
         mapType = GetComponent<MapType>(); //MapTypeを管理するぜ！！
         mapManager = GetComponent<MapManager>();
 
+    }
+    private void Update()
+    {
+        #region ゲームのtitle移動/終了
+        if (Input.GetKey(KeyCode.Escape))
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+        }
+        if(Input.GetKey(KeyCode.Tab))
+#if UNITY_EDITOR
+            SceneManager.LoadScene("MaxcoffeeScene");
+#endif
+        #endregion
     }
 }

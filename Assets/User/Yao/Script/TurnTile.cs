@@ -14,7 +14,9 @@ public class TurnTile : MonoBehaviour
     {
         if (Input.GetMouseButton(0))     //クリックした場所に選択するタイルがあるか
         {
-            if (GeneralManager.instance.mapManager.stageTurnCount > 0)
+            if(TurnTileList.Count > 0)
+                GeneralManager.instance.isEnablePlay = false;
+            if (GeneralManager.instance.mapManager.stageTurnCount > 0 && GeneralManager.instance.mapManager.player.GetComponent<PlayerManager>().isPlayerMove == false)
             {
                 Ray Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D Hit2d = Physics2D.Raycast((Vector2)Ray.origin, (Vector2)Ray.direction);
@@ -25,30 +27,34 @@ public class TurnTile : MonoBehaviour
                         if (Hit2d.transform.gameObject.GetComponent<TileData>().imageID != 0)
                         {
                             TurnTileList.Add(Hit2d.transform.gameObject);
-                            GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_06);
+                            
                             for (int num = 0; num < Hit2d.transform.gameObject.transform.childCount; num++)
                             {
                                 if (Hit2d.transform.GetChild(num).gameObject.name == "Player" || Hit2d.transform.GetChild(num).gameObject.name == "Rope" || Hit2d.transform.GetChild(num).gameObject.name == "Stone")
                                     return;
                                 if (Hit2d.transform.GetChild(num).gameObject.name == "Select")
+                                {
                                     Hit2d.transform.GetChild(num).gameObject.SetActive(true);
+                                    GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_06);
+                                }
                             }
                         }
                     }
                 }
             }
         }
-
         if (Input.GetMouseButtonUp(0))
         {
-            GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_11);
+            GeneralManager.instance.isEnablePlay = true;
             if (GeneralManager.instance.mapManager.stageTurnCount > 0 && TurnTileList.Count > 0)
             {
                 Turn();
                 GeneralManager.instance.mapManager.TurnObjectSetList();
                 GeneralManager.instance.mapManager.stageTurnCount--;
+                GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_11);
             }
             TurnTileList.Clear();
+            TurnTileList = new List<GameObject>();
         }
 
 

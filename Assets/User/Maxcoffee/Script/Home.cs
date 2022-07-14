@@ -79,13 +79,14 @@ public class Home : MonoBehaviour
 	
 	public void ChengeNextStageScene()
     {
-		if (GeneralManager.instance.mapManager.selectStageNum > 3)
+		GeneralManager.instance.soundManager.StopBGM();
+		GeneralManager.instance.mapManager.selectStageNum++;
+		if (GeneralManager.instance.mapManager.selectStageNum > 2)
         {
-			SceneManager.LoadScene("MaxcoffeeScene");
+			SceneManager.LoadScene("SelectStageScene");
 		}
         else
         {
-			GeneralManager.instance.mapManager.selectStageNum++;
 			SceneManager.LoadScene("GameScene");
 		}
 
