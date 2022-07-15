@@ -11,12 +11,14 @@ public class ScrollButton : MonoBehaviour
     public void Up()
     {
         Scroll2.GetComponent<Scroll>()._count--;
+        GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_03);
     }
 
     //下ボタンを押したらスクロール
     public void Down()
     {
         Scroll2.GetComponent<Scroll>()._count++;
+        GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_03);
     }
 
 }

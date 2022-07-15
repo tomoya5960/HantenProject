@@ -8,7 +8,12 @@ public class EdiotTileData : MonoBehaviour
     [SerializeField]
     private int             _imageID        = 0;
     public  bool            isTurnOver      = true;    //タイルの反転可能かの有無
-    private bool            isEnableRope    = false;   //このタイルにロープが落ちているか
+    [SerializeField]
+    private bool           _isEnableRope    = false;   //このタイルにロープが落ちているか
+    [SerializeField]
+    private bool           _isEnableStone = false;
+    [SerializeField]
+    private bool            _isEnablePlayer = false;
     private  int            _childCount     = 0;       //子オブジェクトのがず
     public  bool            isEnableProceed = true;        //通ることができるか
     private      GameObject _child       = null;       //子オブジェクトの格納
@@ -23,29 +28,36 @@ public class EdiotTileData : MonoBehaviour
             SearchSetSprite(_imageID);
         }
     }
-
-    public bool _isEnableRope
+    public bool isEnableRope
     {
-        get { return isEnableRope; }
+        get { return _isEnableRope; }
         set
         {
-            isEnableRope = value;
-            //子オブジェクトがある（ロープオブジェクトがある）場合のみ処理
-            if (_child != null)
-            {
-                if (isEnableRope && _imageID == 2)   //ロープがあって、ロープの表示がオフ担っていたら表示する
-                    _child.SetActive(true);
+            _isEnableRope = value;
+            if (_isEnableRope && _imageID == 2)
+                SearchSetRope();
 
-                else
-                    _child.SetActive(false);
-            }
-            else
-            {
-                if (isEnableRope && _imageID == 2)
-                    SearchSetRope();
-                else
-                    isEnableRope = false;
-            }
+        }
+    }
+
+    public bool isEnableStone
+    {
+        get { return _isEnableStone; }
+        set
+        {
+            _isEnableStone = value;
+            if (_isEnableStone && (_imageID == 1 || _imageID == 2 || _imageID == 3))
+                SearchSetStone();
+        }
+    }
+    public bool isEnablePlayer
+    {
+        get { return _isEnablePlayer; }
+        set
+        {
+            _isEnablePlayer = value;
+            if (_isEnablePlayer && (_imageID == 1 || _imageID == 2 || _imageID == 3))
+                SearchSetPlayer();
         }
     }
 
@@ -61,6 +73,10 @@ public class EdiotTileData : MonoBehaviour
         if (_childCount == 0 && isEnableRope)
         {
             SearchSetRope();
+        }
+        else if(_childCount == 0 && isEnableStone)
+        {
+            SearchSetStone();
         }
         else if (_childCount != 0)
             _child = transform.GetChild(0).gameObject;
@@ -90,7 +106,37 @@ public class EdiotTileData : MonoBehaviour
             Debug.LogError($"<color=yellow>Prefabs/Rope がないよ</color>");
             return;
         }
-        else
+        else if(this.gameObject.transform.childCount < 1)
+        {
+            GameObject prefab = (GameObject)Instantiate(prefabObj, transform.position, Quaternion.identity, transform);
+            _child = prefab;
+        }
+    }
+
+    public void SearchSetStone()
+    {
+        GameObject prefabObj = (GameObject)Resources.Load("Prefabs/Stone");
+        if (prefabObj == null)
+        {
+            Debug.LogError($"<color=yellow>Prefabs/Stone がないよ</color>");
+            return;
+        }
+        else if (this.gameObject.transform.childCount < 1)
+        {
+            GameObject prefab = (GameObject)Instantiate(prefabObj, transform.position, Quaternion.identity, transform);
+            _child = prefab;
+        }
+    }
+
+    public void SearchSetPlayer()
+    {
+        GameObject prefabObj = (GameObject)Resources.Load("Prefabs/Player");
+        if (prefabObj == null)
+        {
+            Debug.LogError($"<color=yellow>Prefabs/Player がないよ</color>");
+            return;
+        }
+        else if (this.gameObject.transform.childCount < 1)
         {
             GameObject prefab = (GameObject)Instantiate(prefabObj, transform.position, Quaternion.identity, transform);
             _child = prefab;

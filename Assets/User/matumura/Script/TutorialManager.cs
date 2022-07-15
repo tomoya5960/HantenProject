@@ -6,23 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
-    public int stageNum = 0;    //ƒV[ƒ“‚Ì”Ô†
     public void test()
     {
-        switch(stageNum)
-        {
-            case 0:
-                SceneManager.LoadScene("tutorial", LoadSceneMode.Single);
-                break;
-            case 1:
-                SceneManager.LoadScene("Level1", LoadSceneMode.Single);
-                break;
-            case 2:
-                SceneManager.LoadScene("Level2", LoadSceneMode.Single);
-                break;
-            case 3:
-                SceneManager.LoadScene("Level3", LoadSceneMode.Single);
-                break;
-        }
+        GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_02);
+        SceneManager.LoadScene("GameScene");
     }
 }
