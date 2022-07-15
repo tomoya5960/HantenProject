@@ -1053,6 +1053,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenenalManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7824138051153384953, guid: 21e878592465e10408877a3dad1dc914, type: 3}
+      propertyPath: seClips.Array.data[7].Name
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824138051153384953, guid: 21e878592465e10408877a3dad1dc914, type: 3}
+      propertyPath: seClips.Array.data[8].Name
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824138051153384953, guid: 21e878592465e10408877a3dad1dc914, type: 3}
+      propertyPath: seClips.Array.data[9].Name
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824138051153384953, guid: 21e878592465e10408877a3dad1dc914, type: 3}
+      propertyPath: seClips.Array.data[10].Name
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824138051153384953, guid: 21e878592465e10408877a3dad1dc914, type: 3}
+      propertyPath: seClips.Array.data[11].Name
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824138051153384953, guid: 21e878592465e10408877a3dad1dc914, type: 3}
+      propertyPath: seClips.Array.data[12].Name
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824138051153384953, guid: 21e878592465e10408877a3dad1dc914, type: 3}
+      propertyPath: seClips.Array.data[13].Name
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7824138051153384954, guid: 21e878592465e10408877a3dad1dc914, type: 3}
       propertyPath: m_RootOrder
       value: 3
