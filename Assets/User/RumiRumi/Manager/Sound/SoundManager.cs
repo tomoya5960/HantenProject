@@ -169,6 +169,7 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         _bgmSource = gameObject.AddComponent<AudioSource>();
+        _bgmSource.loop = true;
         _seSource = gameObject.AddComponent<AudioSource>();
 
         string[] BGM = System.Enum.GetNames(typeof(BgmName));    //string[]Å®int[]Ç…ïœä∑

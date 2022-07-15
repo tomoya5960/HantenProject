@@ -107,6 +107,7 @@ public class MapManager : MonoBehaviour
                     isMove = true;
                 break;
         }
+        player.GetComponent<PlayerManager>().characterAnimationControl.SetActionMode(true);
         return isMove;
     }
 
@@ -150,6 +151,7 @@ public class MapManager : MonoBehaviour
                     break;
             }
         }
+
         return isMove;
     }
 

@@ -37,89 +37,92 @@ public class TurnTile : MonoBehaviour
                 {
                     if (Hit2d.transform.gameObject.tag == "MapTile")
                     {
-                        if (_choiceTile == null)
+                        if (Hit2d.transform.gameObject.GetComponent<TileData>().imageID != 0)
                         {
-                            _choiceTile = Hit2d.transform.gameObject;
-                            TurnTileList.Add(Hit2d.transform.gameObject);
-                            emphasisTile = Hit2d.transform.GetChild(0).gameObject;
-                            emphasisTile.gameObject.SetActive(true);
-
-                        }
-                        else
-                        {
-                            if (_choiceTile != Hit2d.transform.gameObject)
+                            if (_choiceTile == null)
                             {
-                                if (!(_choiceTile.transform.localPosition.x != Hit2d.transform.localPosition.x
-                                    && _choiceTile.transform.localPosition.y != Hit2d.transform.localPosition.y))
+                                _choiceTile = Hit2d.transform.gameObject;
+                                TurnTileList.Add(Hit2d.transform.gameObject);
+                                emphasisTile = Hit2d.transform.GetChild(0).gameObject;
+                                emphasisTile.gameObject.SetActive(true);
+
+                            }
+                            else
+                            {
+                                if (_choiceTile != Hit2d.transform.gameObject)
                                 {
-                                    if (_choiceTileDir != null)
+                                    if (!(_choiceTile.transform.localPosition.x != Hit2d.transform.localPosition.x
+                                        && _choiceTile.transform.localPosition.y != Hit2d.transform.localPosition.y))
                                     {
-                                        if (!(Hit2d.transform.localPosition.x == _choiceTileDir.transform.localPosition.x
-                                      || Hit2d.transform.localPosition.y == _choiceTileDir.transform.localPosition.y))
+                                        if (_choiceTileDir != null)
                                         {
-                                            for (int i = TurnTileList.Count - 1; i >= 0; i--)
+                                            if (!(Hit2d.transform.localPosition.x == _choiceTileDir.transform.localPosition.x
+                                          || Hit2d.transform.localPosition.y == _choiceTileDir.transform.localPosition.y))
                                             {
-                                                var obj = TurnTileList[i];
-                                                if (_choiceTile == obj) continue;
-                                                TurnTileList.Remove(obj);
-                                                emphasisTile = obj.transform.GetChild(0).gameObject;
-                                                emphasisTile.gameObject.SetActive(false);
-                                            }
-
-                                        }
-                                    }
-                                    //invisibleà»äOÇ≈ xÇ∆yÇ™Ç«ÇøÇÁÇ©ï–ï˚ÇæÇØìØàÍÇ≈Ç†ÇÈèÍçáÇÃèàóù
-                                    if (Hit2d.transform.gameObject.GetComponent<TileData>().imageID != 0)
-                                    {
-                                        _choiceTileDir = Hit2d.transform.gameObject;
-                                        TurnTileList.Add(Hit2d.transform.gameObject);
-                                        emphasisTile = Hit2d.transform.GetChild(0).gameObject;
-                                        emphasisTile.gameObject.SetActive(true);
-                                    }
-                                    //_choiceTileÇ∆_choiceTileDirÇÃxÇ∆yÇÃÇ«ÇøÇÁÇ™ìØÇ∂Ç©îªíËÇ∑ÇÈ
-                                    bool sameIsX = false;
-                                    bool sameIsY = false;
-                                    if (_choiceTileDir.transform.localPosition.x == _choiceTile.transform.localPosition.x) sameIsX = true;
-                                    if (_choiceTileDir.transform.localPosition.y == _choiceTile.transform.localPosition.y) sameIsY = true;
-                                    if (sameIsX)
-                                    {
-                                        var parent = _choiceTile.transform.parent.gameObject;
-                                        TileData[] tileArray = parent.GetComponentsInChildren<TileData>();
-                                        if (tileArray != null)
-                                        {
-                                            for (int i = 0; i < tileArray.Length; i++)
-                                            {
-                                                if (tileArray[i].GetComponent<TileData>().imageID != 0)
+                                                for (int i = TurnTileList.Count - 1; i >= 0; i--)
                                                 {
-                                                    if (tileArray[i].transform.localPosition.x != _choiceTile.transform.localPosition.x) continue;
-                                                    TurnTileList.Add(tileArray[i].gameObject);
-                                                    emphasisTile = tileArray[i].transform.GetChild(0).gameObject;
-                                                    emphasisTile.gameObject.SetActive(true);
+                                                    var obj = TurnTileList[i];
+                                                    if (_choiceTile == obj) continue;
+                                                    TurnTileList.Remove(obj);
+                                                    emphasisTile = obj.transform.GetChild(0).gameObject;
+                                                    emphasisTile.gameObject.SetActive(false);
                                                 }
-                                            }
-                                            GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_06);
-                                        }
-                                    }
-                                    if (sameIsY)
-                                    {
-                                        var parent = _choiceTile.transform.parent.gameObject;
-                                        TileData[] tileArray = parent.GetComponentsInChildren<TileData>();
-                                        if (tileArray != null)
-                                        {
-                                            for (int i = 0; i < tileArray.Length; i++)
-                                            {
-                                                if (tileArray[i].GetComponent<TileData>().imageID != 0)
-                                                {
-                                                    if (tileArray[i].transform.localPosition.y != _choiceTile.transform.localPosition.y) continue;
-                                                    TurnTileList.Add(tileArray[i].gameObject);
-                                                    emphasisTile = tileArray[i].transform.GetChild(0).gameObject;
-                                                    emphasisTile.gameObject.SetActive(true);
-                                                }
-                                            }
-                                            GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_06);
-                                        }
-                                    }
 
+                                            }
+                                        }
+                                        //invisibleà»äOÇ≈ xÇ∆yÇ™Ç«ÇøÇÁÇ©ï–ï˚ÇæÇØìØàÍÇ≈Ç†ÇÈèÍçáÇÃèàóù
+                                        if (Hit2d.transform.gameObject.GetComponent<TileData>().imageID != 0)
+                                        {
+                                            _choiceTileDir = Hit2d.transform.gameObject;
+                                            TurnTileList.Add(Hit2d.transform.gameObject);
+                                            emphasisTile = Hit2d.transform.GetChild(0).gameObject;
+                                            emphasisTile.gameObject.SetActive(true);
+                                        }
+                                        //_choiceTileÇ∆_choiceTileDirÇÃxÇ∆yÇÃÇ«ÇøÇÁÇ™ìØÇ∂Ç©îªíËÇ∑ÇÈ
+                                        bool sameIsX = false;
+                                        bool sameIsY = false;
+                                        if (_choiceTileDir.transform.localPosition.x == _choiceTile.transform.localPosition.x) sameIsX = true;
+                                        if (_choiceTileDir.transform.localPosition.y == _choiceTile.transform.localPosition.y) sameIsY = true;
+                                        if (sameIsX)
+                                        {
+                                            var parent = _choiceTile.transform.parent.gameObject;
+                                            TileData[] tileArray = parent.GetComponentsInChildren<TileData>();
+                                            if (tileArray != null)
+                                            {
+                                                for (int i = 0; i < tileArray.Length; i++)
+                                                {
+                                                    if (tileArray[i].GetComponent<TileData>().imageID != 0)
+                                                    {
+                                                        if (tileArray[i].transform.localPosition.x != _choiceTile.transform.localPosition.x) continue;
+                                                        TurnTileList.Add(tileArray[i].gameObject);
+                                                        emphasisTile = tileArray[i].transform.GetChild(0).gameObject;
+                                                        emphasisTile.gameObject.SetActive(true);
+                                                    }
+                                                }
+                                                GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_06);
+                                            }
+                                        }
+                                        if (sameIsY)
+                                        {
+                                            var parent = _choiceTile.transform.parent.gameObject;
+                                            TileData[] tileArray = parent.GetComponentsInChildren<TileData>();
+                                            if (tileArray != null)
+                                            {
+                                                for (int i = 0; i < tileArray.Length; i++)
+                                                {
+                                                    if (tileArray[i].GetComponent<TileData>().imageID != 0)
+                                                    {
+                                                        if (tileArray[i].transform.localPosition.y != _choiceTile.transform.localPosition.y) continue;
+                                                        TurnTileList.Add(tileArray[i].gameObject);
+                                                        emphasisTile = tileArray[i].transform.GetChild(0).gameObject;
+                                                        emphasisTile.gameObject.SetActive(true);
+                                                    }
+                                                }
+                                                GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_06);
+                                            }
+                                        }
+
+                                    }
                                 }
                             }
                         }

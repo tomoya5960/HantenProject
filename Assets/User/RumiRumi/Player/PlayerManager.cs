@@ -27,6 +27,11 @@ public class PlayerManager : MonoBehaviour
     private float _playerSpeed = 2;
     public bool isPlayerMove = false;  //プレイヤーが動いているか
     private int _playerdis = 130;
+    private bool isRunning = false;
+    //アニメーション関連
+    [HideInInspector]
+    public CharacterAnimationControl characterAnimationControl = null;
+
     private void Awake()
     {
         canvas = GameObject.Find("Canvas").gameObject.GetComponent<Canvas>();
@@ -44,6 +49,7 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
+            characterAnimationControl = GetComponent<CharacterAnimationControl>();
             GeneralManager.instance.mapManager.PlayerPos = gameObject.transform.parent.GetComponent<TileData>().tilePos;
             playerPos = GeneralManager.instance.mapManager.PlayerPos;    //プレイヤーのスタート位置を格納
             GeneralManager.instance.mapManager.TurnObjectSetList();
@@ -56,6 +62,7 @@ public class PlayerManager : MonoBehaviour
     /// <param name="direction"></param>
     public void SetPlayerPos(int direction)
     {
+        if (isRunning) {return; }
         switch (direction)
         {
             case 0:
@@ -65,6 +72,7 @@ public class PlayerManager : MonoBehaviour
                     playerPos += new Vector2(-1, 0);
                     nowPos += new Vector2Int(0, _playerdis);
                     StartCoroutine(PlayerMove(direction));
+
                 }
                 else
                     CheckGoalSetRope(0);
@@ -76,6 +84,7 @@ public class PlayerManager : MonoBehaviour
                     playerPos += new Vector2(1, 0);
                     nowPos += new Vector2Int(0, -_playerdis);
                     StartCoroutine(PlayerMove(direction));
+
                 }
                 else
                     CheckGoalSetRope(1);
@@ -87,6 +96,7 @@ public class PlayerManager : MonoBehaviour
                     playerPos += new Vector2(0, -1);
                     nowPos += new Vector2Int(-_playerdis, 0);
                     StartCoroutine(PlayerMove(direction));
+
                 }
                 else
                     CheckGoalSetRope(2);
@@ -98,6 +108,7 @@ public class PlayerManager : MonoBehaviour
                     playerPos += new Vector2(0, 1);
                     nowPos += new Vector2Int(_playerdis, 0);
                     StartCoroutine(PlayerMove(direction));
+
                 }
                 else
                     CheckGoalSetRope(3);
@@ -148,10 +159,11 @@ public class PlayerManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator PlayerMove(int direction)
     {
+
         float moveDis = 0;
         Vector3 movePos = new Vector3();
         isPlayerMove = true;
-
+        characterAnimationControl.SetActionMode(false, (CharacterAnimationControl.CharacterDirectionType)direction);
         switch (direction)
         {
             case 0:
@@ -172,6 +184,7 @@ public class PlayerManager : MonoBehaviour
         }
         while (true)    //移動
         {
+           
             transform.Translate(movePos);
             moveDis += _playerSpeed;
             if (moveDis >= _playerdis)
@@ -184,6 +197,8 @@ public class PlayerManager : MonoBehaviour
             }
             yield return null;
         }
+        isRunning = false;
+        characterAnimationControl.SetActionMode(true);
         yield break;
     }
 }

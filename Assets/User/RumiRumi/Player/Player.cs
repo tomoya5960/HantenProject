@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     private PlayerManager _playerManager;
     [HideInInspector]
     public direction dic;
+
+    
+
     private void Awake()
     {
         _playerSprite = GetComponent<SpriteRenderer>();
@@ -31,25 +34,25 @@ public class Player : MonoBehaviour
         #region ˆÚ“®
         if (!_playerManager.isPlayerMove && GeneralManager.instance.isEnablePlay == true)
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
+            #region ŽÎ‚ß‹ÖŽ~
+            if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
+                return;
+            if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
+                return;
+            if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.D)))
+                return;
+            if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A)))
+                return;
+            #endregion
+
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
                 Move(direction.Up);
-                
-            }
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 Move(direction.Down);
-                
-            }
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            {
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
                 Move(direction.Left);
-                
-            }
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
                 Move(direction.Right);
-            }
         }
         #endregion
     }
@@ -61,12 +64,14 @@ public class Player : MonoBehaviour
     private void Move(direction playerDic)
     {
         GeneralManager.instance.isEnablePlay = false;
+        dic = playerDic;
+        ChangePlayerSprite(dic);
         do
         {
-            dic = playerDic;
-            ChangePlayerSprite(dic);
             _playerManager.SetPlayerPos((int)playerDic);
         } while (GeneralManager.instance.mapManager.IsIceFloor((int)playerDic));
+
+       // ChangePlayerSprite(dic);
         GeneralManager.instance.mapManager.SetBeforeStageData();
         GeneralManager.instance.isEnablePlay = true;
     }
