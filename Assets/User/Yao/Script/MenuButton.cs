@@ -8,43 +8,6 @@ public class MenuButton : MonoBehaviour
 
     public GameObject Menu1;
 
-<<<<<<< HEAD
-    public void Retry()
-    {
-        Debug.Log("c");
-    }
-    public void Restart()
-    {
-        Debug.Log("a");
-    }
-
-    public void MenuOn()
-    {
-        Menu1.SetActive(true);
-
-        Debug.Log("b");
-    }
-
-    public void MenuOff()
-    {
-        Menu1.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (Name == false)
-            {
-                Debug.Log("d");
-                Name = true;
-            }
-        }
-
-
-    }
-
-=======
     public void MenuOnOff()
     {
         if (Name == false)
@@ -66,5 +29,4 @@ public class MenuButton : MonoBehaviour
         Menu1.SetActive(Name);
 
     }
->>>>>>> Main
 }
