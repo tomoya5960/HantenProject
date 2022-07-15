@@ -90,23 +90,6 @@ public class Blackout : MonoBehaviour
     /// </summary>
     public void SceneChange()
     {
-        switch (_stageNum)
-        {
-            case 0:
-                SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
-                break;
-            case 1:
-                SceneManager.LoadScene("Level1", LoadSceneMode.Single);
-                break;
-            case 2:
-                SceneManager.LoadScene("Level2", LoadSceneMode.Single);
-                break;
-            case 3:
-                SceneManager.LoadScene("Level3", LoadSceneMode.Single);
-                break;
-            default:
-                Debug.Log("ステージ選択しろよー");
-                break;
-        }
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 }

@@ -8,6 +8,7 @@ public class MenuButton : MonoBehaviour
 
     public GameObject Menu1;
 
+<<<<<<< HEAD
     public void Retry()
     {
         Debug.Log("c");
@@ -43,4 +44,27 @@ public class MenuButton : MonoBehaviour
 
     }
 
+=======
+    public void MenuOnOff()
+    {
+        if (Name == false)
+        {
+            if (GeneralManager.instance.isEnablePlay)
+            {
+                Name = true;
+                GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_04);
+                GeneralManager.instance.isEnablePlay = false;
+                GeneralManager.instance.soundManager.MuteBGM();
+            }
+        }
+        else if (Name == true)
+        {
+            Name = false;
+            GeneralManager.instance.isEnablePlay = true;
+            GeneralManager.instance.soundManager.ResumeBGM();
+        }
+        Menu1.SetActive(Name);
+
+    }
+>>>>>>> Main
 }

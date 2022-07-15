@@ -6,7 +6,12 @@ TagManager:
   tags:
   - MapTile
   - TileData
+<<<<<<< HEAD
   - KYOUTYOUTIle
+=======
+  - Rope
+  - Stone
+>>>>>>> Main
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - 
   - 
   - Rope
-  - 
+  - Stone
   - 
   - 
   - 

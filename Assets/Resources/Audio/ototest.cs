@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ototest : MonoBehaviour
 {
-
+    [Range(0,2)]
+    public int audio_test;
     void Update()
     {
         //çƒê∂
 
         if (Input.GetKeyDown(KeyCode.Q))
-            GeneralManager.instance.soundManager.PlayBGM(0);    //BGM
+            GeneralManager.instance.soundManager.PlayBGM((SoundManager.BgmName)audio_test) ;    //BGM
         if (Input.GetKeyDown(KeyCode.W))
-            GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_02);   //SE
+            GeneralManager.instance.soundManager.PlaySE((SoundManager.SeName)audio_test);   //SE
 
         //í‚é~
         if (Input.GetKeyDown(KeyCode.E))
