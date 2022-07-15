@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GeneralManager : MonoBehaviour
 {
     public static GeneralManager instance = null;   //ゲームマネージャは一つしかないよっていうやつ
-    //[HideInInspector]
+    [HideInInspector]
     public bool isEnablePlay = true;  //行動できるかどうか
     [HideInInspector]
     public        SoundManager   soundManager;       //SoundManagerを格納するやつだ！！
