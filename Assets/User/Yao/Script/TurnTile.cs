@@ -133,12 +133,12 @@ public class TurnTile : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             GeneralManager.instance.isEnablePlay = true;
+            firstTile = null;
+            _choiceTile = null;
+            _choiceTileDir = null;
             playerObject = GeneralManager.instance.mapManager.mapPosX[(int)GeneralManager.instance.mapManager.PlayerPos.x].mapPosY[(int)GeneralManager.instance.mapManager.PlayerPos.y];
             if (TurnTileList.Count <= 1 || TurnTileList.Contains(playerObject))
             {
-                firstTile = null;
-                _choiceTile = null;
-                _choiceTileDir = null;
                 foreach (var tile in TurnTileList)
                 {
                     for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
@@ -155,9 +155,6 @@ public class TurnTile : MonoBehaviour
             else if (GeneralManager.instance.mapManager.stageTurnCount > 0)
             {
                 Turn();
-                GeneralManager.instance.mapManager.TurnObjectSetList();
-                GeneralManager.instance.mapManager.stageTurnCount--;
-                GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_11);
             }
             TurnTileList.Clear();
             TurnTileList = new List<GameObject>();
@@ -169,19 +166,52 @@ public class TurnTile : MonoBehaviour
             bool doTurn = false;
             //‚à‚µ•ûŠp‚ª’è‚Ü‚ç‚¸‚É”½“]‚·‚éêŠ‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚ç”½“]‚¹‚¸‚Éˆ—‚ğ”²‚¯‚é
             if (_choiceTileDir != null) doTurn = true;
+
+            bool checkTurn = false;
             TurnTileList = TurnTileList.Distinct().ToList();
             foreach (var tile in TurnTileList)
             {
-                tile.gameObject.GetComponent<TileMaster>().TurnImage();
-                for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
+                if(!checkTurn && (tile.GetComponent<TileData>().imageID == 1 || tile.GetComponent<TileData>().imageID == 3 || 
+                                  tile.GetComponent<TileData>().imageID == 7 || tile.GetComponent<TileData>().imageID == 8 || tile.GetComponent<TileData>().imageID == 9))
                 {
-                    if (tile.transform.GetChild(num).gameObject.name == "Select")
-                    {
-                        if (doTurn) tile.gameObject.GetComponent<TileMaster>().TurnImage();
-                        emphasisTile = tile.transform.GetChild(num).gameObject;
-                    }
+                    checkTurn = true;
                 }
-                emphasisTile.gameObject.SetActive(false);
+            }
+            if (checkTurn)
+            {
+                foreach (var tile in TurnTileList)
+                {
+                    tile.gameObject.GetComponent<TileMaster>().TurnImage();
+                    for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
+                    {
+                        if (tile.transform.GetChild(num).gameObject.name == "Select")
+                        {
+                            tile.transform.GetChild(num).gameObject.SetActive(false);
+                            emphasisTile = tile.transform.GetChild(num).gameObject;
+                        }
+                    }
+                    emphasisTile.gameObject.SetActive(false);
+                }
+                GeneralManager.instance.mapManager.TurnObjectSetList();
+                GeneralManager.instance.mapManager.stageTurnCount--;
+                GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_11);
+            }
+            else
+            {
+                foreach (var tile in TurnTileList)
+                {
+                    for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
+                    {
+                        if (tile.transform.GetChild(num).gameObject.name == "Select")
+                        {
+                            tile.transform.GetChild(num).gameObject.SetActive(false);
+                            emphasisTile = tile.transform.GetChild(num).gameObject;
+                        }
+                    }
+                    emphasisTile.gameObject.SetActive(false);
+                }
+                TurnTileList.Clear();
+                TurnTileList = new List<GameObject>();
             }
         }
     }

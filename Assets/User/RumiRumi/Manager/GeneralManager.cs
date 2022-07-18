@@ -20,6 +20,7 @@ public class GeneralManager : MonoBehaviour
 
     private void Awake()    //スタートの前に呼び出すよ
     {
+        Application.targetFrameRate =480;
         if (instance == null)    //もしゲームマネージャーがなかった場合に呼ぶよ
         {
             instance = this;    //こいつが世界に一つのマネージャーになるよ
@@ -43,10 +44,12 @@ public class GeneralManager : MonoBehaviour
                 Application.Quit();
 #endif
         }
-        if(Input.GetKey(KeyCode.Tab))
+        if (Input.GetKey(KeyCode.Tab))
+        {
 #if UNITY_EDITOR
             SceneManager.LoadScene("MaxcoffeeScene");
 #endif
+        }
         #endregion
     }
 }

@@ -80,7 +80,7 @@ public class MapManager : MonoBehaviour
     public bool Move(int vecTest)
     {
         var isMove = false;
-        switch(vecTest)
+        switch (vecTest)
         {
             case 0: //è„
                 if (mapPosX[(int)PlayerPos.x - 1].mapPosY[(int)PlayerPos.y].GetComponent<TileData>().isEnableStone)

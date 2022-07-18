@@ -36,6 +36,7 @@ public class LoadOnlyJson : MonoBehaviour
             SetTiles(parentTiles);
         }
         loadFileName = SceneManager.GetActiveScene().name;
+        OnDataLoad();
     }
 
     private void Start()

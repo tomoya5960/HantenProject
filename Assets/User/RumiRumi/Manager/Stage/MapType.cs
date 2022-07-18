@@ -30,7 +30,7 @@ public class MapType : MonoBehaviour
 
     [HideInInspector]
     public ImageIdType imageName;
-    [HideInInspector]
+    //[HideInInspector]
     public List<string> jsonList = new List<string>(); //JsonDataƒŠƒXƒg
 
     private void Awake()

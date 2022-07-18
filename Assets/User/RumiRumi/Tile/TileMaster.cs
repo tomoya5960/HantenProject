@@ -117,6 +117,11 @@ public class TileMaster : MonoBehaviour
                 _turnFaceType = TurnFaceType.Goal;
                 _tileData.isEnableProceed = true;   //’Ê‚ê‚é‚æ‚¤‚É‚·‚é
                 _isEnableTurn = false;
+                GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_09);
+                var color = GameFade.instance.m_image.color;
+                color.a = 255;
+                GameFade.instance.m_image.color = color;
+                GameFade.instance.FadeOut(1);
             }
         }
     }
