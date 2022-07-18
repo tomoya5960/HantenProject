@@ -5,7 +5,7 @@ using System.Linq;
 
 public class TurnTile : MonoBehaviour
 {
-    private GameObject _choiceTile, _choiceTileDir, emphasisTile;
+    private GameObject _choiceTile, _choiceTileDir, emphasisTile, playerObject;
 
     [SerializeField]
     private List<GameObject> TurnTileList = new List<GameObject>();
@@ -133,10 +133,27 @@ public class TurnTile : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             GeneralManager.instance.isEnablePlay = true;
-            if (GeneralManager.instance.mapManager.stageTurnCount > 0 && TurnTileList.Count > 0)
+            playerObject = GeneralManager.instance.mapManager.mapPosX[(int)GeneralManager.instance.mapManager.PlayerPos.x].mapPosY[(int)GeneralManager.instance.mapManager.PlayerPos.y];
+            if (TurnTileList.Count <= 1 || TurnTileList.Contains(playerObject))
             {
+                firstTile = null;
                 _choiceTile = null;
                 _choiceTileDir = null;
+                foreach (var tile in TurnTileList)
+                {
+                    for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
+                    {
+                        if (tile.transform.GetChild(num).gameObject.name == "Select")
+                        {
+                            tile.transform.GetChild(num).gameObject.SetActive(false);
+                            emphasisTile = tile.transform.GetChild(num).gameObject;
+                        }
+                    }
+                    emphasisTile.gameObject.SetActive(false);
+                }
+            }
+            else if (GeneralManager.instance.mapManager.stageTurnCount > 0)
+            {
                 Turn();
                 GeneralManager.instance.mapManager.TurnObjectSetList();
                 GeneralManager.instance.mapManager.stageTurnCount--;
