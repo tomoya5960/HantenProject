@@ -48,6 +48,8 @@ public class GeneralManager : MonoBehaviour
         {
 #if UNITY_EDITOR
             SceneManager.LoadScene("MaxcoffeeScene");
+#else
+            SceneManager.LoadScene("MaxcoffeeScene");
 #endif
         }
         #endregion
