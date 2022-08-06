@@ -7,18 +7,18 @@ public class ScrollButton : MonoBehaviour
     [SerializeField]
     private GameObject Scroll2;
 
-    //ãƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚çƒXƒNƒ[ƒ‹
+    //ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½
     public void Up()
     {
         Scroll2.GetComponent<Scroll>()._count--;
-        GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_03);
+        GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_03);
     }
 
-    //‰ºƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚çƒXƒNƒ[ƒ‹
+    //ï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½
     public void Down()
     {
         Scroll2.GetComponent<Scroll>()._count++;
-        GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_03);
+        GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_03);
     }
 
 }
