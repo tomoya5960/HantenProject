@@ -32,7 +32,7 @@ public class Home : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			isFadeOut = true;
-			GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_02);
+			GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_02);
 		}
 		//if (onof == true)
 		//{
@@ -79,9 +79,9 @@ public class Home : MonoBehaviour
 	
 	public void ChengeNextStageScene()
     {
-		GeneralManager.instance.soundManager.StopBGM();
-		GeneralManager.instance.mapManager.selectStageNum++;
-		if (GeneralManager.instance.mapManager.selectStageNum > 2)
+		GeneralManager.Instance.soundManager.StopBGM();
+		GeneralManager.Instance.selectStageNum++;
+		if (GeneralManager.Instance.selectStageNum > 2)
         {
 			SceneManager.LoadScene("SelectStageScene");
 		}

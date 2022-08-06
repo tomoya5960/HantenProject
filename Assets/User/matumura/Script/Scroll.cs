@@ -36,7 +36,7 @@ public class Scroll : MonoBehaviour
         var wh = Input.GetAxis("Mouse ScrollWheel") * 10;
         if (_count != _count - wh)
         {
-            GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_03);
+            GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_03);
             _count -= (int)wh;
         }
         
@@ -53,7 +53,7 @@ public class Scroll : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, moveM, step);
             Master1.transform.localScale = new Vector3(1.3f, 1.3f, 1);
             Master2.transform.localScale = new Vector3(1, 1, 1);
-            GeneralManager.instance.mapManager.selectStageNum = _count-1;
+            GeneralManager.Instance.selectStageNum = _count-1;
         }
         if (_count == 2)
         {
@@ -62,7 +62,7 @@ public class Scroll : MonoBehaviour
             Master1.transform.localScale = new Vector3(1, 1, 1);
             Master2.transform.localScale = new Vector3(1.3f, 1.3f, 1);
             Master3.transform.localScale = new Vector3(1, 1, 1);
-            GeneralManager.instance.mapManager.selectStageNum = _count -1;
+            GeneralManager.Instance.selectStageNum = _count -1;
         }
         if (_count == 3)
         {
@@ -71,7 +71,7 @@ public class Scroll : MonoBehaviour
             Master2.transform.localScale = new Vector3(1, 1, 1);
             Master3.transform.localScale = new Vector3(1.3f, 1.3f, 1);
             Master4.transform.localScale = new Vector3(1, 1, 1);
-            GeneralManager.instance.mapManager.selectStageNum = _count - 1;
+            GeneralManager.Instance.selectStageNum = _count - 1;
         }
         if (_count == 4)
         {
@@ -79,7 +79,7 @@ public class Scroll : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, moveM, step);
             Master3.transform.localScale = new Vector3(1, 1, 1);
             Master4.transform.localScale = new Vector3(1.3f, 1.3f, 1);
-            GeneralManager.instance.mapManager.selectStageNum = _count - 1;
+            GeneralManager.Instance.selectStageNum = _count - 1;
         }
 
         #region ÇSÇVÅ`ÇWÇOçsñ⁄ÇíZÇ≠èëÇ≠Ç∆Ç±Ç§Ç»ÇÈÅ@éQçlíˆìxÇ…
@@ -109,6 +109,6 @@ public class Scroll : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, moveM, step);
         Master3.transform.localScale = new Vector3(1, 1, 1);
         Master4.transform.localScale = new Vector3(1.3f, 1.3f, 1);
-        GeneralManager.instance.mapManager.selectStageNum = _count - 1;
+        GeneralManager.Instance.selectStageNum = _count - 1;
     }
 }

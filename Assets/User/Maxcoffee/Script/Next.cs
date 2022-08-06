@@ -32,7 +32,7 @@ public class Next : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			isFadeOut = true;
-			GeneralManager.instance.soundManager.PlaySE(SoundManager.SeName.se_02);
+			GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_02);
 		}
 		if (isFadeIn)
 		{
@@ -75,7 +75,7 @@ public class Next : MonoBehaviour
 
 	public void ChengeSelectStageScene()
 	{
-		GeneralManager.instance.soundManager.StopBGM();
+		GeneralManager.Instance.soundManager.StopBGM();
 		SceneManager.LoadScene("SelectStageScene");
 	}
 }
