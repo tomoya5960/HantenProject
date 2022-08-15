@@ -8,10 +8,11 @@ public class StageManager : MonoBehaviour
                       public static StageManager Instance;
     [HideInInspector] public        MapManager   mapManager;
     [HideInInspector] public        UIManager    uiManager;
+                      public        GameObject   clearCanvas;
     
     [HideInInspector] public        List<string> stageList         = new List<string>();     //マップデータのリスト
                       public        GameObject[] stageTiles;
-                      
+
     [HideInInspector] public        GameObject   player;
                       public        int          turnNum        = 0;     //現在のターン数
                       private       int          _hantenNum;             //そのステージで使える残りの反転数
@@ -59,7 +60,7 @@ public class StageManager : MonoBehaviour
         
         mapManager = GetComponent<MapManager>();
         uiManager = GetComponent<UIManager>();
-        
+
         //マップデータを読み込む
         SetMapData();
     }

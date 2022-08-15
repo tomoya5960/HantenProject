@@ -178,10 +178,10 @@ public class MapManager : MonoBehaviour
         public void CheckClear()
         {
             if (mapTiles[StageManager.Instance.playerArrayPos.x, StageManager.Instance.playerArrayPos.y].GetComponent<MapTile>().turnFaceType != TurnFaceType.Goal) return;
-            GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_09);
-            GameFade.Instance.FadeOut(1);
-            SceneManager.LoadScene("Result");
-
+            {
+                StageManager.Instance.clearCanvas.SetActive(true);
+                GeneralManager.Instance.isPlay = false;
+            }
         }
 
         /// <summary>
@@ -204,14 +204,14 @@ public class MapManager : MonoBehaviour
 
             
             //ロードするのは初期データ？ :ちがければロードしたデータを削除
-            for (var DestroyDataNum = StageManager.Instance.saveStageData.Count - 1; DestroyDataNum > _nowDataCount; DestroyDataNum--)
+            for (var destroyDataNum = StageManager.Instance.saveStageData.Count - 1; destroyDataNum > _nowDataCount; destroyDataNum--)
             {
                 //ロードしたセーブデータは削除
-                StageManager.Instance.saveStageData.Remove(StageManager.Instance.saveStageData[DestroyDataNum]);
-                StageManager.Instance.savePlayerArray.Remove(StageManager.Instance.savePlayerArray[DestroyDataNum]);
-                StageManager.Instance.saveTurnNum.Remove(StageManager.Instance.saveTurnNum[DestroyDataNum]); 
-                StageManager.Instance.saveHantenNum.Remove(StageManager.Instance.saveHantenNum[DestroyDataNum]); 
-                StageManager.Instance.saveIsHaveRope.Remove(StageManager.Instance.saveIsHaveRope[DestroyDataNum]); 
+                StageManager.Instance.saveStageData.Remove(StageManager.Instance.saveStageData[destroyDataNum]);
+                StageManager.Instance.savePlayerArray.Remove(StageManager.Instance.savePlayerArray[destroyDataNum]);
+                StageManager.Instance.saveTurnNum.Remove(StageManager.Instance.saveTurnNum[destroyDataNum]); 
+                StageManager.Instance.saveHantenNum.Remove(StageManager.Instance.saveHantenNum[destroyDataNum]); 
+                StageManager.Instance.saveIsHaveRope.Remove(StageManager.Instance.saveIsHaveRope[destroyDataNum]); 
             }
 
             #region セーブ
