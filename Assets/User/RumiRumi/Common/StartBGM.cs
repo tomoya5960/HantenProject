@@ -4,7 +4,6 @@ using UnityEngine;
 
 public enum BgmName    //BGM
 {
-    //�Ȍ�ǉ�
     bgm_01 = 0,
     bgm_02,
     bgm_03,
