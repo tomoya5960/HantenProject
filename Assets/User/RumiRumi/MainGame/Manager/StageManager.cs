@@ -11,7 +11,7 @@ public class StageManager : MonoBehaviour
                       public        GameObject   clearCanvas;
     
     [HideInInspector] public        List<string> stageList       = new List<string>();     //マップデータのリスト
-                      public        GameObject[] stageTiles;
+    [HideInInspector] public        GameObject[] stageTiles;
     [HideInInspector] public        List<GameObject> stageObject = new List<GameObject>();
     
     
@@ -25,7 +25,7 @@ public class StageManager : MonoBehaviour
     #region セーブ関係
 
         [HideInInspector] public List<string> saveStageData                 = new List<string>();
-         public List<string> saveStageObjectData           = new List<string>();
+        [HideInInspector] public List<string> saveStageObjectData           = new List<string>();
         [HideInInspector] public List<Vector2Int> savePlayerArray           = new List<Vector2Int>();
         [HideInInspector] public List<int> saveTurnNum                      = new List<int>();
         [HideInInspector] public List<int> saveHantenNum                    = new List<int>();

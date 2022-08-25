@@ -262,7 +262,13 @@ public class MapManager : MonoBehaviour
             Index loadDataNum = _nowDataCount - 1;
             if(_nowDataCount != 1) _nowDataCount--;
             _mapData = JsonUtility.FromJson<MapData>(StageManager.Instance.saveStageData[loadDataNum]);
-            stageObjectData = JsonUtility.FromJson<StageObjectData>(StageManager.Instance.saveStageObjectData[loadDataNum]);
+            if (StageManager.Instance.stageObject.Count >= 1)
+            {
+                Debug.Log("a");
+                stageObjectData = JsonUtility.FromJson<StageObjectData>(StageManager.Instance.saveStageObjectData[loadDataNum]);  
+            }
+
+            
             #region ロード
 
                 //二次配列のプレイヤー座標を読み込み
@@ -296,15 +302,20 @@ public class MapManager : MonoBehaviour
                     tileData.isInvert = map.mapChip.isInvert;
                     tileData.isRope = map.mapChip.isRope;
                 }
-                
-                //オブジェクトデータ読み込み
-                foreach (var map in stageObjectData.objectChips.Select((ObjectChip, index) => new { ObjectChip, index }))
+
+                if (StageManager.Instance.stageObject.Count > 0)
                 {
-                    if(StageManager.Instance.stageObject.Count <= map.index) break;
-                    MapObjects mapObjects = StageManager.Instance.stageObject[map.index].GetComponent<MapObjects>();
-                    mapObjects.objectPos = map.ObjectChip.objectPos;
-                    mapObjects.pos = map.ObjectChip.pos;
-                    StageManager.Instance.stageObject[map.index].gameObject.transform.position = map.ObjectChip.pos;
+                    //オブジェクトデータ読み込み
+                    foreach (var map in stageObjectData.objectChips.Select((ObjectChip, index) => new { ObjectChip, index }))
+                    {
+                        if(StageManager.Instance.stageObject.Count <= map.index) break;
+                        MapObjects mapObjects = StageManager.Instance.stageObject[map.index].GetComponent<MapObjects>();
+                        StageManager.Instance.mapManager.mapObjects[mapObjects.objectPos.x, mapObjects.objectPos.y] = null;
+                        mapObjects.objectPos = map.ObjectChip.objectPos;
+                        StageManager.Instance.mapManager.mapObjects[mapObjects.objectPos.x, mapObjects.objectPos.y] = mapObjects.gameObject;
+                        mapObjects.pos = map.ObjectChip.pos;
+                        StageManager.Instance.stageObject[map.index].gameObject.transform.position = map.ObjectChip.pos;
+                    }   
                 }
 
             #endregion
