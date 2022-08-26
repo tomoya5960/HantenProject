@@ -51,6 +51,8 @@ public class MapObjects : MonoBehaviour
             SetUpPlayerMove(playerDirection);
             //地面が氷床ならもう一度移動
         } while (StageManager.Instance.mapManager.mapTiles[checkPos.x, checkPos.y].GetComponent<MapTile>().tileId == TileTypeId.aisle_03);
+        StageManager.Instance.mapManager.SaveTurnData();
+        StageManager.Instance.mapManager.SaveObject();
     }
 
     private void SetUpPlayerMove(PlayerDirection playerDirection)
@@ -137,8 +139,6 @@ public class MapObjects : MonoBehaviour
         //移動の誤差を修正
         transform.position = pos;
         GeneralManager.Instance.isPlay = true;
-        StageManager.Instance.mapManager.SaveTurnData();
-        StageManager.Instance.mapManager.SaveObject();
         yield break;
     }
     

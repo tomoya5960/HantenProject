@@ -263,9 +263,8 @@ public class MapManager : MonoBehaviour
             Index loadDataNum = _nowDataCount - 1;
             if(_nowDataCount != 1) _nowDataCount--;
             _mapData = JsonUtility.FromJson<MapData>(StageManager.Instance.saveStageData[loadDataNum]);
-            if (StageManager.Instance.stageObject.Count >= 1)
+            if (StageManager.Instance.saveStageObjectData.Count >= 1)
             {
-                Debug.Log("a");
                 stageObjectData = JsonUtility.FromJson<StageObjectData>(StageManager.Instance.saveStageObjectData[loadDataNum]);  
             }
 
