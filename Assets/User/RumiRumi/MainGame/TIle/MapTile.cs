@@ -15,8 +15,8 @@ public class MapTile : MonoBehaviour
       }
 
     [HideInInspector] public  SpriteRenderer spriteRenderer;
-    
-    [HideInInspector] public TurnFaceType    turnFaceType; //タイルの表裏
+    [HideInInspector] public  Vector2Int     tilePos;
+    [HideInInspector] public  TurnFaceType   turnFaceType; //タイルの表裏
                       private OnObjectType   _onObjectType;
                       
                       public  TileTypeId     tileId;         //タイルID
@@ -130,6 +130,16 @@ public class MapTile : MonoBehaviour
             if (child != null) return;
             GameObject prefab = (GameObject)Instantiate(objectPrefab, transform.position, Quaternion.identity, transform);
             child = prefab;
+            if (child.name == "Stone(Clone)")
+            {
+                child.GetComponent<MapObjects>().objectPos = tilePos;
+                StageManager.Instance.mapManager.mapObjects[tilePos.x, tilePos.y] = child;
+                child.transform.parent = null;
+                child.transform.position = transform.position;
+                StageManager.Instance.stageObject.Add(child);
+                return;
+            }
+            
             child.transform.localPosition = Vector3.zero;
         }
     }
