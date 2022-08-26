@@ -216,6 +216,7 @@ public class MapManager : MonoBehaviour
                 StageManager.Instance.saveTurnNum.Remove(StageManager.Instance.saveTurnNum[destroyDataNum]); 
                 StageManager.Instance.saveHantenNum.Remove(StageManager.Instance.saveHantenNum[destroyDataNum]); 
                 StageManager.Instance.saveIsHaveRope.Remove(StageManager.Instance.saveIsHaveRope[destroyDataNum]);
+                if(StageManager.Instance.saveStageObjectData.Count > 0) continue;
                 StageManager.Instance.saveStageObjectData.Remove(StageManager.Instance.saveStageObjectData[destroyDataNum]);
             }
 
