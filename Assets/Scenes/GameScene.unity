@@ -16561,11 +16561,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7883595726206030905, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: selectStageNum
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: hantenNum.Array.size
-      value: 5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: hantenNum.Array.data[3]
@@ -16573,7 +16573,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: hantenNum.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
+      propertyPath: hantenNum.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
+      propertyPath: hantenNum.Array.data[6]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
+      propertyPath: hantenNum.Array.data[7]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
+      propertyPath: hantenNum.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
+      propertyPath: hantenNum.Array.data[9]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
+      propertyPath: hantenNum.Array.data[10]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7883595726206030907, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: m_RootOrder
