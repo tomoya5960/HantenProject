@@ -32,26 +32,26 @@ public class GeneralManager : MonoBehaviour
 
     private void Update()
     {
-        #region ゲームのtitle移動/終了
-            //ゲーム終了
-            if (Input.GetKey(KeyCode.Escape))
-            {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-                    Application.Quit();
-#endif
-            }
-            //タイトルに移動
-            if (Input.GetKey(KeyCode.Tab))
-            {
-#if UNITY_EDITOR
-            SceneManager.LoadScene("MaxcoffeeScene");
-#else
-                SceneManager.LoadScene("MaxcoffeeScene");
-#endif
-            }
+//        #region ゲームのtitle移動/終了
+//            //ゲーム終了
+//            if (Input.GetKey(KeyCode.Escape))
+//            {
+//#if UNITY_EDITOR
+//            UnityEditor.EditorApplication.isPlaying = false;
+//#else
+//                    Application.Quit();
+//#endif
+//            }
+//            //タイトルに移動
+//            if (Input.GetKey(KeyCode.Tab))
+//            {
+//#if UNITY_EDITOR
+//            SceneManager.LoadScene("MaxcoffeeScene");
+//#else
+//                SceneManager.LoadScene("MaxcoffeeScene");
+//#endif
+//            }
 
-            #endregion
+//            #endregion
     }
 }

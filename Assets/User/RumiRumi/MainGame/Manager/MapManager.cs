@@ -2,16 +2,11 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class MapManager : MonoBehaviour
 {
-     private          MapData         _mapData = new MapData();       //ステージで使うMapのデータ
-     public          StageObjectData stageObjectData;
-     
-     
+     private          MapData       _mapData = new MapData();       //ステージで使うMapのデータ
      public  readonly GameObject[,] mapTiles = new GameObject[7,8]; //マップの二次元配列
-     public           GameObject[,] mapObjects = new GameObject[7,8]; //マップにあるオブジェクトの二次元配列
      private          int           _nowDataCount;                  //現在読み込んでいるデータのリスト番号を取得   
 
     #region ゲーム開始前に使う関数
@@ -38,7 +33,7 @@ public class MapManager : MonoBehaviour
                 for (int width = 0; width < 8; width++)
                 {
                     mapTiles[height, width] = StageManager.Instance.stageTiles[tileCount];
-                    mapTiles[height, width].GetComponent<MapTile>().tilePos = new Vector2Int(height, width);
+
                     tileCount++;
                 }
             }
@@ -207,6 +202,7 @@ public class MapManager : MonoBehaviour
             }
             var json = JsonUtility.ToJson(_mapData, false);
 
+            
             //ロードするのは初期データ？ :ちがければロードしたデータを削除
             for (var destroyDataNum = StageManager.Instance.saveStageData.Count - 1; destroyDataNum > _nowDataCount; destroyDataNum--)
             {
@@ -215,9 +211,7 @@ public class MapManager : MonoBehaviour
                 StageManager.Instance.savePlayerArray.Remove(StageManager.Instance.savePlayerArray[destroyDataNum]);
                 StageManager.Instance.saveTurnNum.Remove(StageManager.Instance.saveTurnNum[destroyDataNum]); 
                 StageManager.Instance.saveHantenNum.Remove(StageManager.Instance.saveHantenNum[destroyDataNum]); 
-                StageManager.Instance.saveIsHaveRope.Remove(StageManager.Instance.saveIsHaveRope[destroyDataNum]);
-                if(StageManager.Instance.saveStageObjectData.Count > 0) continue;
-                StageManager.Instance.saveStageObjectData.Remove(StageManager.Instance.saveStageObjectData[destroyDataNum]);
+                StageManager.Instance.saveIsHaveRope.Remove(StageManager.Instance.saveIsHaveRope[destroyDataNum]); 
             }
 
             #region セーブ
@@ -240,21 +234,6 @@ public class MapManager : MonoBehaviour
             _nowDataCount++;
         }
 
-        public void SaveObject()
-        {
-            //マップオブジェクトデータを読み込み
-            foreach (var map in stageObjectData.objectChips.Select((objectChip, index) => new { objectChip, index }))
-            {
-                if(StageManager.Instance.stageObject.Count <= map.index) break;
-                var mapObject = StageManager.Instance.stageObject[map.index].gameObject.GetComponent<MapObjects>();
-                map.objectChip.objectPos = mapObject.objectPos;
-                map.objectChip.pos = StageManager.Instance.stageObject[map.index].gameObject.transform.position;
-            }
-            var objectJson = JsonUtility.ToJson(stageObjectData, false);
-            //オブジェクトデータを保存
-            StageManager.Instance.saveStageObjectData.Add(objectJson);
-        }
-        
         /// <summary>
         /// 一手前のデータをロード
         /// </summary>
@@ -263,13 +242,7 @@ public class MapManager : MonoBehaviour
             Index loadDataNum = _nowDataCount - 1;
             if(_nowDataCount != 1) _nowDataCount--;
             _mapData = JsonUtility.FromJson<MapData>(StageManager.Instance.saveStageData[loadDataNum]);
-            if (StageManager.Instance.stageObject.Count >= 1)
-            {
-                Debug.Log("a");
-                stageObjectData = JsonUtility.FromJson<StageObjectData>(StageManager.Instance.saveStageObjectData[loadDataNum]);  
-            }
 
-            
             #region ロード
 
                 //二次配列のプレイヤー座標を読み込み
@@ -286,7 +259,6 @@ public class MapManager : MonoBehaviour
                 StageManager.Instance.hantenNum = StageManager.Instance.saveHantenNum[loadDataNum];
                 //ロープの所持を読み込み
                 StageManager.Instance.isHaveRope = StageManager.Instance.saveIsHaveRope[loadDataNum];
-
                 //マップデータを読み込み
                 foreach (var map in _mapData.tileChips.Select((mapChip, index) => new { mapChip, index }))
                 {
@@ -302,21 +274,6 @@ public class MapManager : MonoBehaviour
                     tileData.isAdvance = map.mapChip.isAdvance;
                     tileData.isInvert = map.mapChip.isInvert;
                     tileData.isRope = map.mapChip.isRope;
-                }
-
-                if (StageManager.Instance.stageObject.Count > 0)
-                {
-                    //オブジェクトデータ読み込み
-                    foreach (var map in stageObjectData.objectChips.Select((ObjectChip, index) => new { ObjectChip, index }))
-                    {
-                        if(StageManager.Instance.stageObject.Count <= map.index) break;
-                        MapObjects mapObjects = StageManager.Instance.stageObject[map.index].GetComponent<MapObjects>();
-                        StageManager.Instance.mapManager.mapObjects[mapObjects.objectPos.x, mapObjects.objectPos.y] = null;
-                        mapObjects.objectPos = map.ObjectChip.objectPos;
-                        StageManager.Instance.mapManager.mapObjects[mapObjects.objectPos.x, mapObjects.objectPos.y] = mapObjects.gameObject;
-                        mapObjects.pos = map.ObjectChip.pos;
-                        StageManager.Instance.stageObject[map.index].gameObject.transform.position = map.ObjectChip.pos;
-                    }   
                 }
 
             #endregion

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,7 +10,7 @@ public class PlayerManager : MonoBehaviour
 
                       private readonly int     _playerSpeed     = 5;
                       private readonly int     _oneMoveDistance = 115;
-    [HideInInspector] public           Vector3 pos              = Vector3.zero;
+    [FormerlySerializedAs("_pos")] [HideInInspector] public Vector3 pos             = Vector3.zero;
 
     private void Awake()
     {
@@ -22,7 +21,8 @@ public class PlayerManager : MonoBehaviour
      {
          pos = gameObject.transform.position;
      }
-    
+
+    // ReSharper disable Unity.PerformanceAnalysis
     /// <summary>
     /// プレイヤーの配列座標の変更 :プレイヤーが移動する前に読み込まれる
     /// </summary>
@@ -62,42 +62,7 @@ public class PlayerManager : MonoBehaviour
         }
             
     }
-
-    /// <summary>
-    /// 岩が進行方向にある確認
-    /// </summary>
-    public bool CheckRock(PlayerDirection playerDirection)
-    {
-        Vector2Int checkPos = new Vector2Int();
-        switch (playerDirection)
-        {
-            case PlayerDirection.Up:
-                checkPos = new Vector2Int(StageManager.Instance.playerArrayPos.x - 1, StageManager.Instance.playerArrayPos.y);
-                break;
-            case PlayerDirection.Down:
-                checkPos = new Vector2Int(StageManager.Instance.playerArrayPos.x + 1, StageManager.Instance.playerArrayPos.y);
-                break;
-            case PlayerDirection.Right:
-                checkPos = new Vector2Int(StageManager.Instance.playerArrayPos.x, StageManager.Instance.playerArrayPos.y + 1);
-                break;
-            case PlayerDirection.Left:
-                checkPos = new Vector2Int(StageManager.Instance.playerArrayPos.x, StageManager.Instance.playerArrayPos.y - 1);
-                break;
-        }
-
-        if (StageManager.Instance.mapManager.mapObjects[checkPos.x, checkPos.y] != null)
-        {
-            var mapObject = StageManager.Instance.mapManager.mapObjects[checkPos.x, checkPos.y];
-            if (mapObject.name == "Stone(Clone)")
-            {
-                mapObject.GetComponent<MapObjects>().MoveStone(playerDirection);
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    
+                     
     /// <summary>
     /// 実際に移動するコルーチン
     /// </summary>
