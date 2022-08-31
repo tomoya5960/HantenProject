@@ -10,25 +10,25 @@ public class MenuButton : MonoBehaviour
 
     public void MenuOnOff()
     {
-        if (Name == false)
+        if (GeneralManager.Instance.isPlay)
         {
-            if (GeneralManager.Instance.isPlay)
+            if (Name == false)
             {
                 Name = true;
-                Other.GetComponent<TurnTile>().enabled = false;
-                GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_04);
-                GeneralManager.Instance.isPlay = false;
-                GeneralManager.Instance.soundManager.MuteBGM();
+                    Other.GetComponent<TurnTile>().enabled = false;
+                    GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_04);
+                    GeneralManager.Instance.isPlay = false;
+                    GeneralManager.Instance.soundManager.MuteBGM();
             }
-        }
-        else if (Name == true)
-        {
-            Name = false;
-            Other.GetComponent<TurnTile>().enabled = true;
-            GeneralManager.Instance.isPlay = true;
-            GeneralManager.Instance.soundManager.ResumeBGM();
-        }
-        Menu1.SetActive(Name);
+            else if (Name == true)
+            {
+                Name = false;
+                Other.GetComponent<TurnTile>().enabled = true;
+                GeneralManager.Instance.isPlay = true;
+                GeneralManager.Instance.soundManager.ResumeBGM();
+            }
 
+            Menu1.SetActive(Name);
+        }
     }
 }

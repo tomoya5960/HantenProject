@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class tutorial : MonoBehaviour
 {
-    public int èºë∫ = 0;
     private bool masasi = false;
     public GameObject matumura;
     [SerializeField]private GameObject obj;
@@ -37,65 +36,4 @@ public class tutorial : MonoBehaviour
         }
 
     }
-
-
-
-    /*
-           switch (èºë∫)
-           {
-               case 0:
-                   goj1.SetActive(true);
-                   Time.timeScale = 0;
-                   if (Input.GetKeyDown(KeyCode.Tab) || Input.GetMouseButtonDown(0))
-                   {
-                       goj1.SetActive(false);
-                       Time.timeScale = 1;
-                       èºë∫++;
-                   }
-                   break;
-               case 1:
-                   Time.timeScale = 0;
-                   if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-                   {
-                       Time.timeScale = 1;
-                   }
-                   break;
-               case 2:
-                   goj2.SetActive(true);
-                   Time.timeScale = 0;
-                   if (Input.GetKeyDown(KeyCode.Tab) || Input.GetMouseButtonDown(0))
-                   {
-                       goj2.SetActive(false);
-                       Time.timeScale = 1;
-                       èºë∫++;
-                   }
-                   break;
-               case 3:
-                   // îΩì]ââèoÇÇ‡ÇÁÇ¡ÇƒÇ≠ÇÈ
-                   break;
-               case 4:
-                   goj3.SetActive(true);
-                   Time.timeScale = 0;
-                   if (Input.GetKeyDown(KeyCode.Tab) || Input.GetMouseButtonDown(0))
-                   {
-                       goj3.SetActive(false);
-                       Time.timeScale = 1;
-                       èºë∫++;
-                   }
-                   break;
-               case 5:
-                   // ÉçÅ[ÉvÇÃèàóùÇÇ‡ÇÁÇ¡ÇƒÇ≠ÇÈ
-                   break;
-               case 6:
-                   goj4.SetActive(true);
-                   Time.timeScale = 0;
-                   if (Input.GetKeyDown(KeyCode.Tab) || Input.GetMouseButtonDown(0))
-                   {
-                       goj4.SetActive(false);
-                       Time.timeScale = 1;
-                       èºë∫++;
-                   }
-                   break;
-           }
-           */
 }

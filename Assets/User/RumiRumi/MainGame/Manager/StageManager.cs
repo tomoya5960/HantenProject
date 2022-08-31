@@ -78,8 +78,9 @@ public class StageManager : MonoBehaviour
         mapManager.SaveTurnData();
         mapManager.stageObjectData = new StageObjectData();
         mapManager.SaveObject();
-        //初期設定が全て終了したのでゲームを開始しますぅぅ
-        GeneralManager.Instance.isPlay = true;
+        //初期設定が全て終了したのでゲームを開始しますぅぅ :tutorialならチュートリアル画面を出すためまだ開始しない
+        if(GeneralManager.Instance.selectStageNum != 0)
+            GeneralManager.Instance.isPlay = true;
         GeneralManager.Instance.soundManager.PlayBGM((SoundManager.BgmName)BgmName.bgm_02);
         
 

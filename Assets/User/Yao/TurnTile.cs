@@ -14,7 +14,7 @@ public class TurnTile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && GeneralManager.Instance.isPlay)
         {
             Ray Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D Hit2d = Physics2D.Raycast((Vector2)Ray.origin, (Vector2)Ray.direction);
@@ -26,7 +26,7 @@ public class TurnTile : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButton(0))     //クリックした場所に選択するタイルがあるか
+        if (Input.GetMouseButton(0) && firstTile)     //クリックした場所に選択するタイルがあるか
         {
             if (StageManager.Instance.hantenNum > 0 && StageManager.Instance.isPlayerMove == false)
             {
@@ -130,12 +130,10 @@ public class TurnTile : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && firstTile != null)
         {
 
-            firstTile = null;
-            _choiceTile = null;
-            _choiceTileDir = null;
+
             playerObject = StageManager.Instance.mapManager.mapTiles[StageManager.Instance.playerArrayPos.x,StageManager.Instance.playerArrayPos.y];
             if (TurnTileList.Count <= 1 || TurnTileList.Contains(playerObject))
             {
@@ -157,6 +155,10 @@ public class TurnTile : MonoBehaviour
             {
                 Turn();
             }
+
+            firstTile = null;
+            _choiceTile = null;
+            _choiceTileDir = null;
             TurnTileList.Clear();
             TurnTileList = new List<GameObject>();
         }

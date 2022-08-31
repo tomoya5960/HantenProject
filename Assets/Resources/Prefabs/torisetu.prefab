@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8591225706715314085}
   - component: {fileID: 3241638128860101119}
   - component: {fileID: 3048627943380129157}
+  - component: {fileID: 5668260460129463759}
   m_Layer: 0
   m_Name: torisetu
   m_TagString: Untagged
@@ -102,3 +103,29 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf371d2e050279f4b969005e7631e60b, type: 3}
   - {fileID: 21300000, guid: 21482dd5886c80845ae579fd840c974d, type: 3}
   - {fileID: 21300000, guid: 38c2298c1bc54664ab22904f3bae8eff, type: 3}
+--- !u!61 &5668260460129463759
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586049615224717811}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.96}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.96, y: 0.96}
+  m_EdgeRadius: 0

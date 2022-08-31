@@ -73,7 +73,7 @@ public sealed class GameFade : MonoBehaviour
 
         if (is_reversing) m_image.enabled = false;
         if (on_completed != null) on_completed();
-        GeneralManager.Instance.isPlay = true;
+        //GeneralManager.Instance.isPlay = true;
         if (!is_reversing) SceneManager.LoadScene("Result");
     }
 }

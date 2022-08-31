@@ -13,7 +13,7 @@ public class GeneralManager : MonoBehaviour
     [HideInInspector] public        MapType        mapType;
     
                       public int    selectStageNum;                 //ステージ番号 :この番号に対応したステージを遊ぶ
-    [HideInInspector] public bool   isPlay;                         //行動してもよいか
+    public bool   isPlay;                         //行動してもよいか
     private void Awake()
     {
         //FPSを60に固定
@@ -43,7 +43,7 @@ public class GeneralManager : MonoBehaviour
 #endif
             }
             //タイトルに移動
-            if (Input.GetKey(KeyCode.Tab))
+            if (Input.GetKey(KeyCode.F1))
             {
 #if UNITY_EDITOR
             SceneManager.LoadScene("MaxcoffeeScene");

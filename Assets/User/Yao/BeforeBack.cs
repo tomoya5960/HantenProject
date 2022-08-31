@@ -12,15 +12,14 @@ public class BeforeBack : MonoBehaviour
             onBack();
         }
     }
+
     public void onBack()
     {
-        if (GeneralManager.Instance.isPlay)
+        if (GeneralManager.Instance.isPlay && !StageManager.Instance.isPlayerMove)
         {
-            if (!StageManager.Instance.isPlayerMove)
-            {
-                GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_08);
-                StageManager.Instance.mapManager.LoadTurnData();
-            }
+            GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_08);
+            StageManager.Instance.mapManager.LoadTurnData();
         }
+
     }
 }

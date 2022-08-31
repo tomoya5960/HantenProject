@@ -4959,12 +4959,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597328997}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efc69c6e270c9284eae5fbd676294140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "\u677E\u6751": 0
   matumura: {fileID: 586049615224717811, guid: be4dda9d701dd5a4a92fef36ea16b4f5, type: 3}
   obj: {fileID: 0}
 --- !u!1 &1655532013
