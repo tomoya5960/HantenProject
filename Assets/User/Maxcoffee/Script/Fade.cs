@@ -32,11 +32,10 @@ public class Fade : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			isFadeOut = true;
-			GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_01);
 		}
 		if (onof == true)
 		{
-			SceneManager.LoadScene("SelectStageScene");
+			SceneManager.LoadScene("TestScene");
 		}
 		if (isFadeIn)
 		{

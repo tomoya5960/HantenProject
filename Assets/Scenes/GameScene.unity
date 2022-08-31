@@ -4959,7 +4959,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597328997}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efc69c6e270c9284eae5fbd676294140, type: 3}
   m_Name: 
@@ -6506,6 +6506,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d7ca6a2886302408c3b7d93edebaba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageObjectData:
+    objectChips:
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
+    - objectPos: {x: 0, y: 0}
+      pos: {x: 0, y: 0, z: 0}
 --- !u!4 &1939249087
 Transform:
   m_ObjectHideFlags: 0
@@ -6594,11 +6616,13 @@ MonoBehaviour:
   - {fileID: 2100584307536074596}
   - {fileID: 2100584307509833662}
   - {fileID: 2100584306770726447}
+  stageObject: []
   player: {fileID: 0}
   turnNum: 0
   isPlayerMove: 0
   playerArrayPos: {x: 0, y: 0}
   saveStageData: []
+  saveStageObjectData: []
   savePlayerArray: []
   saveTurnNum: 
   saveHantenNum: 
@@ -7745,6 +7769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -7890,6 +7915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -8035,6 +8061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -8180,6 +8207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -8325,6 +8353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -8470,6 +8499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -8615,6 +8645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -8760,6 +8791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -8905,6 +8937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -9050,6 +9083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -9195,6 +9229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -9340,6 +9375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -9485,6 +9521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -9630,6 +9667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -9775,6 +9813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -9920,6 +9959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -10065,6 +10105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -10210,6 +10251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -10355,6 +10397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -10500,6 +10543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -10645,6 +10689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -10790,6 +10835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -10935,6 +10981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -11080,6 +11127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -11225,6 +11273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -11370,6 +11419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -11515,6 +11565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -11660,6 +11711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -11805,6 +11857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -11950,6 +12003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -12095,6 +12149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -12240,6 +12295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -12385,6 +12441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -12530,6 +12587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -12675,6 +12733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -12820,6 +12879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -12965,6 +13025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -13110,6 +13171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -13255,6 +13317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -13400,6 +13463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -13545,6 +13609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -13690,6 +13755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -13835,6 +13901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -13980,6 +14047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -14125,6 +14193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -14270,6 +14339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -14415,6 +14485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -14560,6 +14631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -14705,6 +14777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -14850,6 +14923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -14995,6 +15069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -15140,6 +15215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -15285,6 +15361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -15430,6 +15507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -15575,6 +15653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
@@ -15720,6 +15799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  tilePos: {x: 0, y: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0

@@ -197,6 +197,7 @@ public class TurnTile : MonoBehaviour
                 }
                 StageManager.Instance.hantenNum--;
                 StageManager.Instance.mapManager.SaveTurnData();
+                StageManager.Instance.mapManager.SaveObject();
                 GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_11);
 
                 GeneralManager.Instance.isPlay = true;

@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; //ï¿½pï¿½lï¿½ï¿½ï¿½ÌƒCï¿½ï¿½ï¿½[ï¿½Wï¿½ğ‘€ì‚·ï¿½ï¿½Ì‚É•Kï¿½v
+using UnityEngine.UI; //ƒpƒlƒ‹‚ÌƒCƒ[ƒW‚ğ‘€ì‚·‚é‚Ì‚É•K—v
 using UnityEngine.SceneManagement;
 
 public class Home : MonoBehaviour
 {
 
-	public float fadeSpeed = 0.003f;        //ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½Ï‚ï¿½ï¿½Xï¿½sï¿½[ï¿½hï¿½ï¿½ï¿½Ç—ï¿½
-	float red, green, blue, alfa;   //ï¿½pï¿½lï¿½ï¿½ï¿½ÌFï¿½Aï¿½sï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½Ç—ï¿½
+	public float fadeSpeed = 0.003f;        //“§–¾“x‚ª•Ï‚í‚éƒXƒs[ƒh‚ğŠÇ—
+	float red, green, blue, alfa;   //ƒpƒlƒ‹‚ÌFA•s“§–¾“x‚ğŠÇ—
 	[HideInInspector]
 	public bool onof = false;
 	[HideInInspector]
-	public bool isFadeOut = false;  //ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ÌŠJï¿½nï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O
+	public bool isFadeOut = false;  //ƒtƒF[ƒhƒAƒEƒgˆ—‚ÌŠJnAŠ®—¹‚ğŠÇ—‚·‚éƒtƒ‰ƒO
 	[HideInInspector]
-	public bool isFadeIn = false;   //ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌŠJï¿½nï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O
+	public bool isFadeIn = false;   //ƒtƒF[ƒhƒCƒ“ˆ—‚ÌŠJnAŠ®—¹‚ğŠÇ—‚·‚éƒtƒ‰ƒO
 
-	Image fadeImage;                //ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ÏXï¿½ï¿½ï¿½ï¿½pï¿½lï¿½ï¿½ï¿½ÌƒCï¿½ï¿½ï¿½[ï¿½W
+	Image fadeImage;                //“§–¾“x‚ğ•ÏX‚·‚éƒpƒlƒ‹‚ÌƒCƒ[ƒW
 
 	void Start()
 	{
@@ -32,12 +32,11 @@ public class Home : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			isFadeOut = true;
-			//GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_02);
 		}
-		//if (onof == true)
-		//{
-		//	ChengeNextStageScene();
-		//}
+		if (onof == true)
+		{
+			SceneManager.LoadScene("TestScene");
+		}
 		if (isFadeIn)
 		{
 			StartFadeIn();
@@ -51,22 +50,22 @@ public class Home : MonoBehaviour
 
 	void StartFadeIn()
 	{
-		alfa -= fadeSpeed;                //a)ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½É‰ï¿½ï¿½ï¿½ï¿½ï¿½
-		SetAlpha();                      //b)ï¿½ÏXï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½xï¿½pï¿½lï¿½ï¿½ï¿½É”ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½
+		alfa -= fadeSpeed;                //a)•s“§–¾“x‚ğ™X‚É‰º‚°‚é
+		SetAlpha();                      //b)•ÏX‚µ‚½•s“§–¾“xƒpƒlƒ‹‚É”½‰f‚·‚é
 		if (alfa <= 0)
-		{                    //c)ï¿½ï¿½ï¿½Sï¿½É“ï¿½ï¿½ï¿½ï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½çˆï¿½ï¿½ï¿½ğ”²‚ï¿½ï¿½ï¿½
+		{                    //c)Š®‘S‚É“§–¾‚É‚È‚Á‚½‚çˆ—‚ğ”²‚¯‚é
 			isFadeIn = false;
-			fadeImage.enabled = false;//d)ï¿½pï¿½lï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½tï¿½É‚ï¿½ï¿½ï¿½
+			fadeImage.enabled = false;//d)ƒpƒlƒ‹‚Ì•\¦‚ğƒIƒt‚É‚·‚é
 		}
 	}
 
 	void StartFadeOut()
 	{
-		fadeImage.enabled = true;  // a)ï¿½pï¿½lï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½
-		alfa += fadeSpeed;         // b)ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½É‚ï¿½ï¿½ï¿½ï¿½ï¿½
-		SetAlpha();               // c)ï¿½ÏXï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½pï¿½lï¿½ï¿½ï¿½É”ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½
+		fadeImage.enabled = true;  // a)ƒpƒlƒ‹‚Ì•\¦‚ğƒIƒ“‚É‚·‚é
+		alfa += fadeSpeed;         // b)•s“§–¾“x‚ğ™X‚É‚ ‚°‚é
+		SetAlpha();               // c)•ÏX‚µ‚½“§–¾“x‚ğƒpƒlƒ‹‚É”½‰f‚·‚é
 		if (alfa >= 1)
-		{             // d)ï¿½ï¿½ï¿½Sï¿½É•sï¿½ï¿½ï¿½ï¿½ï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½çˆï¿½ï¿½ï¿½ğ”²‚ï¿½ï¿½ï¿½
+		{             // d)Š®‘S‚É•s“§–¾‚É‚È‚Á‚½‚çˆ—‚ğ”²‚¯‚é
 			isFadeOut = false;
 			onof = true;
 		}
@@ -75,21 +74,5 @@ public class Home : MonoBehaviour
 	void SetAlpha()
 	{
 		fadeImage.color = new Color(red, green, blue, alfa);
-	}
-	
-	public void ChengeNextStageScene()
-    {
-	    GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_02);
-		GeneralManager.Instance.soundManager.StopBGM();
-		GeneralManager.Instance.selectStageNum++;
-		if (GeneralManager.Instance.selectStageNum > 2)
-        {
-			SceneManager.LoadScene("SelectStageScene");
-		}
-        else
-        {
-			SceneManager.LoadScene("GameScene");
-		}
-
 	}
 }

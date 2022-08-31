@@ -51,13 +51,13 @@ public class Player : MonoBehaviour
                 
             #endregion
 
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 Move(PlayerDirection.Up);
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 Move(PlayerDirection.Down);
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 Move(PlayerDirection.Left);
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 Move(PlayerDirection.Right);
 
         #endregion
@@ -71,12 +71,16 @@ public class Player : MonoBehaviour
     {
         //プレイヤーが移動中？ && 行動してもいい？
         if (StageManager.Instance.isPlayerMove || !GeneralManager.Instance.isPlay) return;
-
+        //ターンを進める
+        StageManager.Instance.turnNum++;
+        
         Vector2Int beforePos;
         //プレイヤーの向きを変更
         playerDirection = playerDic;
         //プレイヤーの向きにあったスプライトに変更
         ChangePlayerSprite(playerDic);
+        //進行方向に岩があるか確認 :ある場合は移動を中断して岩を動かす
+        if(_playerManager.CheckRock(playerDic)) return;
         do
         {
             //移動前に座標を取得
@@ -89,8 +93,6 @@ public class Player : MonoBehaviour
         } while (StageManager.Instance.mapManager.CheckIceFloor());
         //プレイヤーの向きにあったスプライトに変更
         ChangePlayerSprite(playerDic);
-        //ターンを進める
-        StageManager.Instance.turnNum++;
     }
 
     /// <summary>
