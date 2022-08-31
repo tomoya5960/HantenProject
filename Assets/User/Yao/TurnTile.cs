@@ -172,8 +172,10 @@ public class TurnTile : MonoBehaviour
             TurnTileList = TurnTileList.Distinct().ToList();
             foreach (var tile in TurnTileList)
             {
-                if(!checkTurn && (tile.GetComponent<MapTile>().tileId == (TileTypeId)1 || tile.GetComponent<MapTile>().tileId == (TileTypeId)3 || 
-                                  tile.GetComponent<MapTile>().tileId == (TileTypeId)7 || tile.GetComponent<MapTile>().tileId == (TileTypeId)8 || tile.GetComponent<MapTile>().tileId == (TileTypeId)9))
+                var Tileinfo = tile.GetComponent<MapTile>();
+                if (!checkTurn && ((Tileinfo.tileId == TileTypeId.aisle_01 || Tileinfo.tileId == TileTypeId.aisle_03 ||
+                                  Tileinfo.tileId == TileTypeId.goal_01 || Tileinfo.tileId == TileTypeId.goal_02 || Tileinfo.tileId == TileTypeId.goal_03 || Tileinfo.tileId == TileTypeId.wall_01
+                                   || Tileinfo.tileId == TileTypeId.wall_03) && Tileinfo.isInvert))
                 {
                     checkTurn = true;
                 }
@@ -196,7 +198,7 @@ public class TurnTile : MonoBehaviour
                 StageManager.Instance.hantenNum--;
                 StageManager.Instance.mapManager.SaveTurnData();
                 GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_11);
-                
+
                 GeneralManager.Instance.isPlay = true;
             }
             else
