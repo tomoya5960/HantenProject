@@ -260,8 +260,8 @@ public class MapManager : MonoBehaviour
         /// </summary>
         public void LoadTurnData()
         {
-            Index loadDataNum = _nowDataCount - 1;
-            if(_nowDataCount != 1) _nowDataCount--;
+            if(_nowDataCount != 1) _nowDataCount = 2;
+            Index loadDataNum = _nowDataCount - 2;
             _mapData = JsonUtility.FromJson<MapData>(StageManager.Instance.saveStageData[loadDataNum]);
             if (StageManager.Instance.saveStageObjectData.Count >= 1)
             {

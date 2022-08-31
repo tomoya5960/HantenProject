@@ -40,8 +40,24 @@ public class StageNameUI : MonoBehaviour
             case 5:
                 stageNum = "五";
                 break;
+            case 6:
+                stageNum = "六";
+                break;
+            case 7:
+                stageNum = "七";
+                break;
+            case 8:
+                stageNum = "八";
+                break;
+            case 9:
+                stageNum = "九";
+                break;
+            case 10:
+                stageNum = "十";
+                break;
             default:
                 Debug.LogError("ステージ名UIでSelectStageNumが正しく取得できなかったよ♡");
+                stageNum = "✕";
                 break;
         }
         _stageName = "第" + stageNum + "階層";

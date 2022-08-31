@@ -16600,7 +16600,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7883595726206030905, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: selectStageNum
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: hantenNum.Array.size
