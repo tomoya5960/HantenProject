@@ -9,6 +9,7 @@ public class tutorial : MonoBehaviour
     [SerializeField]private GameObject obj;
     void Start()
     {
+        if (GeneralManager.Instance.selectStageNum == 0) GetComponent<tutorial>().enabled  = false;
         if (GeneralManager.Instance.selectStageNum == 0)
         {
             obj = Instantiate(matumura, new Vector3(0.0f,0.0f, 0.0f), Quaternion.identity);

@@ -1,5 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum BgmName    //BGM
 {
@@ -16,7 +17,6 @@ public class StartBGM : MonoBehaviour
     
     void Start()
     {
-        if(SceneManager.GetActiveScene().name != "MaxcoffeeScene")
         GeneralManager.Instance.soundManager.StopBGM();
         GeneralManager.Instance.soundManager.PlayBGM((SoundManager.BgmName)bgm);
     }
