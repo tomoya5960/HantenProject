@@ -43,7 +43,7 @@ public class GeneralManager : MonoBehaviour
 #endif
             }
             //タイトルに移動
-            if (Input.GetKey(KeyCode.Tab))
+            if (Input.GetKey(KeyCode.Backspace))
             {
 #if UNITY_EDITOR
             SceneManager.LoadScene("MaxcoffeeScene");
