@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f5b257fe1c77b8248a98d6b9a52b0892, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d87973871cc930b4a9fb2afa69da0dfa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3559,8 +3559,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d9ea2eb646ab9014babedec767d99a6c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5960,8 +5960,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e2b8cd65bc313c745a7baa3ae3e0cde2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -16600,7 +16600,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7883595726206030905, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: selectStageNum
-      value: 11
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: hantenNum.Array.size
