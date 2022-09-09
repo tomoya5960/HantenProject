@@ -10,9 +10,10 @@ public class MapManager : MonoBehaviour
      public          StageObjectData stageObjectData;
      
      
-     public  readonly GameObject[,] mapTiles = new GameObject[7,8]; //マップの二次元配列
+     public  readonly GameObject[,] mapTiles = new GameObject[7,8];   //マップの二次元配列
      public           GameObject[,] mapObjects = new GameObject[7,8]; //マップにあるオブジェクトの二次元配列
-     private          int           _nowDataCount;                  //現在読み込んでいるデータのリスト番号を取得   
+     private          int           _nowDataCount;                    //現在読み込んでいるデータのリスト番号を取得
+     public           GameObject    ropeAnim;                         //ロープアニメーション
 
     #region ゲーム開始前に使う関数
 
@@ -173,6 +174,8 @@ public class MapManager : MonoBehaviour
             StageManager.Instance.isHaveRope = obj.isRope;
             //プレイヤーがロープを取得したときに呼ばれる
             StageManager.Instance.isHaveRope = true;
+            //ロープアニメーション再生
+            Instantiate (ropeAnim, StageManager.Instance.player.transform.localPosition, Quaternion.identity);
             obj.isRope = false;
             obj.child.SetActive(false);
         }
