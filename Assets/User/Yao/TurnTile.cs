@@ -8,6 +8,8 @@ public class TurnTile : MonoBehaviour
 {
     private GameObject _choiceTile, _choiceTileDir, emphasisTile, playerObject;
 
+    private bool checkStone = false;
+
     [SerializeField]
     private List<GameObject> TurnTileList = new List<GameObject>();
     GameObject firstTile;
@@ -34,11 +36,20 @@ public class TurnTile : MonoBehaviour
                 RaycastHit2D Hit2d = Physics2D.Raycast((Vector2)Ray.origin, (Vector2)Ray.direction);
                 if (Hit2d)
                 {
-                    if (Hit2d.transform.gameObject.tag == "MapTile")
+                    if (Hit2d.transform.gameObject.tag == "MapTile" || Hit2d.transform.gameObject.tag == "Stone")
                     {
                         GeneralManager.Instance.isPlay = false;
+
+                        if(Hit2d.transform.gameObject.tag == "Stone")
+                        {
+                            TurnTileList.Add(Hit2d.transform.gameObject);
+                            checkStone = true;
+
+                        }
+
                         if (Hit2d.transform.gameObject.GetComponent<MapTile>().tileId != 0)
                         {
+               
                             if (_choiceTile == null)
                             {
                                 _choiceTile = Hit2d.transform.gameObject;
@@ -95,6 +106,11 @@ public class TurnTile : MonoBehaviour
                                                     {
                                                         if (tileArray[i].transform.localPosition.x != _choiceTile.transform.localPosition.x) continue;
                                                         TurnTileList.Add(tileArray[i].gameObject);
+                                                        var Pos =tileArray[i].GetComponent<MapTile>().tilePos;
+                                                        if (StageManager.Instance.mapManager.mapObjects[Pos.x,Pos.y] != null)
+                                                        {
+                                                            checkStone = true;
+                                                        }
                                                         emphasisTile = tileArray[i].transform.GetChild(0).gameObject;
                                                         emphasisTile.gameObject.SetActive(true);
                                                     }
@@ -114,6 +130,11 @@ public class TurnTile : MonoBehaviour
                                                     {
                                                         if (tileArray[i].transform.localPosition.y != _choiceTile.transform.localPosition.y) continue;
                                                         TurnTileList.Add(tileArray[i].gameObject);
+                                                        var Pos = tileArray[i].GetComponent<MapTile>().tilePos;
+                                                        if (StageManager.Instance.mapManager.mapObjects[Pos.x, Pos.y] != null)
+                                                        {
+                                                            checkStone = true;
+                                                        }
                                                         emphasisTile = tileArray[i].transform.GetChild(0).gameObject;
                                                         emphasisTile.gameObject.SetActive(true);
                                                     }
@@ -137,7 +158,7 @@ public class TurnTile : MonoBehaviour
             _choiceTile = null;
             _choiceTileDir = null;
             playerObject = StageManager.Instance.mapManager.mapTiles[StageManager.Instance.playerArrayPos.x,StageManager.Instance.playerArrayPos.y];
-            if (TurnTileList.Count <= 1 || TurnTileList.Contains(playerObject))
+            if (TurnTileList.Count <= 1 || TurnTileList.Contains(playerObject)|| checkStone == true)
             {
                 foreach (var tile in TurnTileList)
                 {
@@ -151,6 +172,7 @@ public class TurnTile : MonoBehaviour
                     }
                     emphasisTile.gameObject.SetActive(false);
                 }
+                checkStone = false;
                 GeneralManager.Instance.isPlay = true;
             }
             else if (StageManager.Instance.hantenNum > 0)
