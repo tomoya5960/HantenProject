@@ -26,6 +26,25 @@ public class TileMaster : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    public void ChaneTile()
+    {
+        //反転できる？
+        if (_mapTile.isInvert)
+        {
+            StartCoroutine("Kaiten");
+        }
+    }
+    private IEnumerator Kaiten()
+    {
+        for (int i = 0; i < 180; i += 3)
+        {
+            transform.Rotate(0,3,0);
+            //見えないところで反転するよ
+            if (i == 90) Hanten();
+            yield return null;
+        }
+    }
+    
     /// <summary>
     /// タイルの反転処理
     /// </summary>
