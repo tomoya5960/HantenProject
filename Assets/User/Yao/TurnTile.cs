@@ -16,7 +16,7 @@ public class TurnTile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && GeneralManager.Instance.isPlay)
+        if (Input.GetMouseButtonDown(0))
         {
             Ray Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D Hit2d = Physics2D.Raycast((Vector2)Ray.origin, (Vector2)Ray.direction);
@@ -28,7 +28,7 @@ public class TurnTile : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButton(0) && firstTile)     //クリックした場所に選択するタイルがあるか
+        if (Input.GetMouseButton(0))     //クリックした場所に選択するタイルがあるか
         {
             if (StageManager.Instance.hantenNum > 0 && StageManager.Instance.isPlayerMove == false)
             {
@@ -40,7 +40,7 @@ public class TurnTile : MonoBehaviour
                     {
                         GeneralManager.Instance.isPlay = false;
 
-                        if(Hit2d.transform.gameObject.tag == "Stone")
+                        if (Hit2d.transform.gameObject.tag == "Stone")
                         {
                             TurnTileList.Add(Hit2d.transform.gameObject);
                             checkStone = true;
@@ -49,7 +49,7 @@ public class TurnTile : MonoBehaviour
 
                         if (Hit2d.transform.gameObject.GetComponent<MapTile>().tileId != 0)
                         {
-               
+
                             if (_choiceTile == null)
                             {
                                 _choiceTile = Hit2d.transform.gameObject;
@@ -106,8 +106,8 @@ public class TurnTile : MonoBehaviour
                                                     {
                                                         if (tileArray[i].transform.localPosition.x != _choiceTile.transform.localPosition.x) continue;
                                                         TurnTileList.Add(tileArray[i].gameObject);
-                                                        var Pos =tileArray[i].GetComponent<MapTile>().tilePos;
-                                                        if (StageManager.Instance.mapManager.mapObjects[Pos.x,Pos.y] != null)
+                                                        var Pos = tileArray[i].GetComponent<MapTile>().tilePos;
+                                                        if (StageManager.Instance.mapManager.mapObjects[Pos.x, Pos.y] != null)
                                                         {
                                                             checkStone = true;
                                                         }
@@ -151,12 +151,14 @@ public class TurnTile : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButtonUp(0) && firstTile != null)
+        if (Input.GetMouseButtonUp(0))
         {
 
-
-            playerObject = StageManager.Instance.mapManager.mapTiles[StageManager.Instance.playerArrayPos.x,StageManager.Instance.playerArrayPos.y];
-            if (TurnTileList.Count <= 1 || TurnTileList.Contains(playerObject)|| checkStone == true)
+            firstTile = null;
+            _choiceTile = null;
+            _choiceTileDir = null;
+            playerObject = StageManager.Instance.mapManager.mapTiles[StageManager.Instance.playerArrayPos.x, StageManager.Instance.playerArrayPos.y];
+            if (TurnTileList.Count <= 1 || TurnTileList.Contains(playerObject) || checkStone == true)
             {
                 foreach (var tile in TurnTileList)
                 {
@@ -177,10 +179,6 @@ public class TurnTile : MonoBehaviour
             {
                 Turn();
             }
-
-            firstTile = null;
-            _choiceTile = null;
-            _choiceTileDir = null;
             TurnTileList.Clear();
             TurnTileList = new List<GameObject>();
         }
@@ -208,7 +206,7 @@ public class TurnTile : MonoBehaviour
             {
                 foreach (var tile in TurnTileList)
                 {
-                    tile.gameObject.GetComponent<TileMaster>().ChaneTile();
+                    tile.gameObject.GetComponent<TileMaster>().Hanten();
                     for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
                     {
                         if (tile.transform.GetChild(num).gameObject.name == "Select")
