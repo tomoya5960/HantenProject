@@ -4966,6 +4966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matumura: {fileID: 586049615224717811, guid: be4dda9d701dd5a4a92fef36ea16b4f5, type: 3}
   obj: {fileID: 0}
+  makimono: {fileID: 1951153789}
 --- !u!1 &1655532013
 GameObject:
   m_ObjectHideFlags: 0
@@ -6642,6 +6643,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ropeUI: {fileID: 0}
   hantensUI: {fileID: 0}
+--- !u!1 &1951153789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5030314172961165558, guid: 0de094c518b21604599ce3c6e25e22d4, type: 3}
+  m_PrefabInstance: {fileID: 5030314172552589051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1970021825
 GameObject:
   m_ObjectHideFlags: 0
@@ -16647,6 +16653,10 @@ PrefabInstance:
       propertyPath: endMarker
       value: 
       objectReference: {fileID: 1597328998}
+    - target: {fileID: 5030314172961165557, guid: 0de094c518b21604599ce3c6e25e22d4, type: 3}
+      propertyPath: present_Location
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5030314172961165558, guid: 0de094c518b21604599ce3c6e25e22d4, type: 3}
       propertyPath: m_Name
       value: Makimono

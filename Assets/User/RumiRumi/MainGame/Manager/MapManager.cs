@@ -273,7 +273,6 @@ public class MapManager : MonoBehaviour
 
             
             #region ロード
-
                 //二次配列のプレイヤー座標を読み込み
                 StageManager.Instance.playerArrayPos = StageManager.Instance.savePlayerArray[loadDataNum];
                 //プレイヤーのPositionを読み込み
@@ -297,8 +296,9 @@ public class MapManager : MonoBehaviour
                     string spriteName = ((TileTypeId)map.mapChip.tileId).ToString();
                     //Texturesにある取得した名前のスプライトを取得
                     Sprite tileSprite = Resources.Load<Sprite>("Textures/" + spriteName) as Sprite;
-                    
+
                     //差し替え
+                    tileData.turnFaceType = map.mapChip.turnFaceType;
                     tileData.spriteRenderer.sprite = tileSprite;
                     tileData.tileId = map.mapChip.tileId;
                     tileData.isAdvance = map.mapChip.isAdvance;

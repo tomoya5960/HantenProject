@@ -9,7 +9,6 @@ public class StageNameLogo : MonoBehaviour
     public float fps = 0.2f;
     public float read = 1.0f;
     public float MoveSpeed = 0.1f;
-    
     [SerializeField,Header("最初の画像")] 
     private Sprite firstSprite;
     
@@ -35,16 +34,14 @@ public class StageNameLogo : MonoBehaviour
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        if (useSpriteList.Count > GeneralManager.Instance.selectStageNum)
-        {            
-            useSpriteList = logoInfos[GeneralManager.Instance.selectStageNum].logoSprites;
-            StartCoroutine("RopeAnim");
-            distance_two = Vector3.Distance(startMarker.localPosition, endMarker.localPosition);
+
+        if (useSpriteList.Count > GeneralManager.Instance.selectStageNum || GeneralManager.Instance.selectStageNum != 0)
+        {
+            callCoroutine();
         }
         else
         {
             gameObject.SetActive(false);
-            GetComponent<StageNameLogo>().enabled = false;
         }
     }
 
@@ -58,10 +55,16 @@ public class StageNameLogo : MonoBehaviour
             transform.localPosition = Vector3.Lerp(startMarker.localPosition, endMarker.localPosition, present_Location);
         }
     }
+    public void callCoroutine()
+    {
+        StartCoroutine("RopeAnim");
 
+    }
     private IEnumerator RopeAnim()
     {
         int count = 0;
+        useSpriteList = logoInfos[GeneralManager.Instance.selectStageNum].logoSprites;
+        distance_two = Vector3.Distance(startMarker.localPosition, endMarker.localPosition);
         while (count < useSpriteList.Count)
         {
             Sprite nextSprite = useSpriteList[count];

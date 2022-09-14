@@ -16,7 +16,7 @@ public class MapTile : MonoBehaviour
 
     [HideInInspector] public  SpriteRenderer spriteRenderer;
     [HideInInspector] public  Vector2Int     tilePos;
-    [HideInInspector] public  TurnFaceType   turnFaceType; //タイルの表裏
+     public  TurnFaceType   turnFaceType; //タイルの表裏
                       private OnObjectType   _onObjectType;
                       
                       public  TileTypeId     tileId;         //タイルID

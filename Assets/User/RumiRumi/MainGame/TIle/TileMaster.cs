@@ -186,10 +186,8 @@ public class TileMaster : MonoBehaviour
 
                     case TileTypeId.wall_01: //反転できる壁
                         return TileTypeId.aisle_02.ToString();
-                        break;
                     case TileTypeId.wall_03: //氷の壁
                         return TileTypeId.aisle_03.ToString();
-                        break;
 
                 #endregion
 

@@ -21,6 +21,7 @@ public class MapData
         //初期化
         public TileChip()
         {
+            turnFaceType = TurnFaceType.Front;
             tileId = TileTypeId.invisible;
             isAdvance = false;
             isInvert = false;

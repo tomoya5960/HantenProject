@@ -59,7 +59,8 @@ public class SoundManager : MonoBehaviour
         {
 
             Debug.LogWarning("BGMが同じだったよ");
-            //_bgmSource.Play();
+            _bgmSource.Stop();
+            _bgmSource.Play();
             return;
         }
         #endregion
