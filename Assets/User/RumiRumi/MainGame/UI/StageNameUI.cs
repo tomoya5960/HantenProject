@@ -56,8 +56,7 @@ public class StageNameUI : MonoBehaviour
                 stageNum = "十";
                 break;
             default:
-                Debug.LogError("ステージ名UIでSelectStageNumが正しく取得できなかったよ♡");
-                stageNum = "✕";
+                stageNum = "EX";
                 break;
         }
         _stageName = "第" + stageNum + "階層";

@@ -26,21 +26,26 @@ public class TileMaster : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void ChaneTile()
+    public void ChangeTile()
     {
         //反転できる？
-        if (_mapTile.isInvert)
+        if (_mapTile.isInvert || _mapTile.turnFaceType == TurnFaceType.Back && spriteLists[(int)TurnFaceType.Front].name == "goal_01")
         {
             StartCoroutine("Kaiten");
         }
     }
     private IEnumerator Kaiten()
     {
+        GeneralManager.Instance.isPlay = false;
         for (int i = 0; i < 180; i += 3)
         {
             transform.Rotate(0,3,0);
             //見えないところで反転するよ
-            if (i == 90) Hanten();
+            if (i == 90 || i == -90)
+            {
+                Hanten();
+                GeneralManager.Instance.isPlay = true;
+            }
             yield return null;
         }
     }

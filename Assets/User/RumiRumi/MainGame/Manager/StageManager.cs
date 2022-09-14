@@ -24,12 +24,12 @@ public class StageManager : MonoBehaviour
 
     #region セーブ関係
 
-        [HideInInspector] public List<string> saveStageData                 = new List<string>();
-        [HideInInspector] public List<string> saveStageObjectData           = new List<string>();
-        [HideInInspector] public List<Vector2Int> savePlayerArray           = new List<Vector2Int>();
-        [HideInInspector] public List<int> saveTurnNum                      = new List<int>();
-        [HideInInspector] public List<int> saveHantenNum                    = new List<int>();
-        [HideInInspector] public List<bool> saveIsHaveRope                  = new List<bool>();
+        [HideInInspector] public List<string>          saveStageData        = new List<string>();
+        [HideInInspector] public List<string>          saveStageObjectData  = new List<string>();
+        [HideInInspector] public List<Vector2Int>      savePlayerArray      = new List<Vector2Int>();
+        [HideInInspector] public List<int>             saveTurnNum          = new List<int>();
+        [HideInInspector] public List<int>             saveHantenNum        = new List<int>();
+        [HideInInspector] public List<bool>            saveIsHaveRope       = new List<bool>();
         [HideInInspector] public List<PlayerDirection> savePlayerDirections = new List<PlayerDirection>();
 
     #endregion
@@ -75,9 +75,11 @@ public class StageManager : MonoBehaviour
         //読み込んだマップデータをもとに置き換える
         mapManager.SetTiles();
         mapManager.OnDataLoad();
-        mapManager.SaveTurnData();
         mapManager.stageObjectData = new StageObjectData();
+        //スタート段階のマップデータを保存
+        mapManager.SaveTurnData();
         mapManager.SaveObject();
+        mapManager._nowDataCount = 0;
         //初期設定が全て終了したのでゲームを開始しますぅぅ
         GeneralManager.Instance.isPlay = true;
         GeneralManager.Instance.soundManager.PlayBGM((SoundManager.BgmName)BgmName.bgm_02);

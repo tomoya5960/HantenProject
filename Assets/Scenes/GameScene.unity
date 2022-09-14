@@ -6528,6 +6528,7 @@ MonoBehaviour:
       pos: {x: 0, y: 0, z: 0}
     - objectPos: {x: 0, y: 0}
       pos: {x: 0, y: 0, z: 0}
+  _nowDataCount: 0
   ropeAnim: {fileID: 1982882866810940966, guid: 592f93b3cbb2bcd4186b6a27957118b4, type: 3}
 --- !u!4 &1939249087
 Transform:
@@ -7775,10 +7776,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584305937136485
 MonoBehaviour:
@@ -7920,10 +7924,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584305947997477
 MonoBehaviour:
@@ -8065,10 +8072,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306003131979
 MonoBehaviour:
@@ -8210,10 +8220,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306040397056
 MonoBehaviour:
@@ -8355,10 +8368,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306076375194
 MonoBehaviour:
@@ -8500,10 +8516,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306084436971
 MonoBehaviour:
@@ -8645,10 +8664,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306137487140
 MonoBehaviour:
@@ -8790,10 +8812,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306156701874
 MonoBehaviour:
@@ -8935,10 +8960,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306196253831
 MonoBehaviour:
@@ -9080,10 +9108,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306275068402
 MonoBehaviour:
@@ -9225,10 +9256,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306337564849
 MonoBehaviour:
@@ -9370,10 +9404,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306505655821
 MonoBehaviour:
@@ -9515,10 +9552,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306551370429
 MonoBehaviour:
@@ -9660,10 +9700,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306573371734
 MonoBehaviour:
@@ -9805,10 +9848,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306632232935
 MonoBehaviour:
@@ -9950,10 +9996,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306658231212
 MonoBehaviour:
@@ -10095,10 +10144,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306660146575
 MonoBehaviour:
@@ -10240,10 +10292,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306675127569
 MonoBehaviour:
@@ -10385,10 +10440,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306737205976
 MonoBehaviour:
@@ -10530,10 +10588,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306748438751
 MonoBehaviour:
@@ -10675,10 +10736,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306753528896
 MonoBehaviour:
@@ -10820,10 +10884,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306758474698
 MonoBehaviour:
@@ -10965,10 +11032,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306767227169
 MonoBehaviour:
@@ -11110,10 +11180,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306770726450
 MonoBehaviour:
@@ -11255,10 +11328,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306771090669
 MonoBehaviour:
@@ -11400,10 +11476,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306789991154
 MonoBehaviour:
@@ -11545,10 +11624,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306846956913
 MonoBehaviour:
@@ -11690,10 +11772,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306890043438
 MonoBehaviour:
@@ -11835,10 +11920,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584306994656272
 MonoBehaviour:
@@ -11980,10 +12068,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307013519077
 MonoBehaviour:
@@ -12125,10 +12216,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307139099034
 MonoBehaviour:
@@ -12270,10 +12364,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307175027414
 MonoBehaviour:
@@ -12415,10 +12512,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307195966428
 MonoBehaviour:
@@ -12560,10 +12660,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307238380486
 MonoBehaviour:
@@ -12705,10 +12808,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307238505808
 MonoBehaviour:
@@ -12850,10 +12956,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307346021215
 MonoBehaviour:
@@ -12995,10 +13104,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307356559501
 MonoBehaviour:
@@ -13140,10 +13252,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307416391086
 MonoBehaviour:
@@ -13285,10 +13400,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307443283102
 MonoBehaviour:
@@ -13430,10 +13548,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307473583065
 MonoBehaviour:
@@ -13575,10 +13696,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307478107335
 MonoBehaviour:
@@ -13720,10 +13844,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307509833665
 MonoBehaviour:
@@ -13865,10 +13992,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307511118063
 MonoBehaviour:
@@ -14010,10 +14140,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307515689102
 MonoBehaviour:
@@ -14155,10 +14288,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307536074599
 MonoBehaviour:
@@ -14300,10 +14436,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307553053133
 MonoBehaviour:
@@ -14445,10 +14584,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307558120066
 MonoBehaviour:
@@ -14590,10 +14732,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307727874155
 MonoBehaviour:
@@ -14735,10 +14880,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307841397417
 MonoBehaviour:
@@ -14880,10 +15028,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307851565999
 MonoBehaviour:
@@ -15025,10 +15176,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307873998117
 MonoBehaviour:
@@ -15170,10 +15324,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307879639127
 MonoBehaviour:
@@ -15315,10 +15472,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307907831535
 MonoBehaviour:
@@ -15460,10 +15620,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307959837530
 MonoBehaviour:
@@ -15605,10 +15768,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584307973590951
 MonoBehaviour:
@@ -15750,10 +15916,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  childSpriteRenderer: {fileID: 0}
   tilePos: {x: 0, y: 0}
+  color: {x: 0, y: 0, z: 0, w: 0}
   turnFaceType: 0
   tileId: 0
   isAdvance: 0
+  _isInvert: 0
   child: {fileID: 0}
 --- !u!114 &2100584308054732343
 MonoBehaviour:
@@ -16616,7 +16785,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7883595726206030905, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: selectStageNum
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7883595726206030906, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: hantenNum.Array.size

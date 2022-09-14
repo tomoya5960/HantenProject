@@ -206,7 +206,7 @@ public class TurnTile : MonoBehaviour
             {
                 foreach (var tile in TurnTileList)
                 {
-                    tile.gameObject.GetComponent<TileMaster>().Hanten();
+                    tile.gameObject.GetComponent<TileMaster>().ChangeTile();
                     for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
                     {
                         if (tile.transform.GetChild(num).gameObject.name == "Select")
@@ -222,7 +222,7 @@ public class TurnTile : MonoBehaviour
                 StageManager.Instance.mapManager.SaveObject();
                 GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_11);
 
-                GeneralManager.Instance.isPlay = true;
+                //GeneralManager.Instance.isPlay = true;
             }
             else
             {
@@ -237,10 +237,10 @@ public class TurnTile : MonoBehaviour
                         }
                     }
                     emphasisTile.gameObject.SetActive(false);
-                    GeneralManager.Instance.isPlay = true;
                 }
                 TurnTileList.Clear();
                 TurnTileList = new List<GameObject>();
+                GeneralManager.Instance.isPlay = true;
             }
         }
     }

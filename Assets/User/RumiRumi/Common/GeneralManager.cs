@@ -13,7 +13,7 @@ public class GeneralManager : MonoBehaviour
     [HideInInspector] public        MapType        mapType;
     
                       public int    selectStageNum;                 //ステージ番号 :この番号に対応したステージを遊ぶ
-     public bool   isPlay;                         //行動してもよいか
+    [HideInInspector] public bool   isPlay;                         //行動してもよいか
     private void Awake()
     {
         //FPSを60に固定

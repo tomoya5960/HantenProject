@@ -35,7 +35,7 @@ public class StageNameLogo : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
 
-        if (useSpriteList.Count > GeneralManager.Instance.selectStageNum || GeneralManager.Instance.selectStageNum != 0)
+        if (useSpriteList.Count > GeneralManager.Instance.selectStageNum || GeneralManager.Instance.selectStageNum != 0 )
         {
             callCoroutine();
         }
@@ -57,7 +57,10 @@ public class StageNameLogo : MonoBehaviour
     }
     public void callCoroutine()
     {
-        StartCoroutine("RopeAnim");
+        if (GeneralManager.Instance.selectStageNum < 11)
+            StartCoroutine("RopeAnim");
+        else
+            gameObject.Equals(false);
 
     }
     private IEnumerator RopeAnim()
