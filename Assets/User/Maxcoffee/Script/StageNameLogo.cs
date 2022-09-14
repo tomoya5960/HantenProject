@@ -35,10 +35,17 @@ public class StageNameLogo : MonoBehaviour
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-
-        useSpriteList = logoInfos[GeneralManager.Instance.selectStageNum].logoSprites;
-        StartCoroutine("RopeAnim");
-        distance_two = Vector3.Distance(startMarker.localPosition, endMarker.localPosition);
+        if (useSpriteList.Count > GeneralManager.Instance.selectStageNum)
+        {            
+            useSpriteList = logoInfos[GeneralManager.Instance.selectStageNum].logoSprites;
+            StartCoroutine("RopeAnim");
+            distance_two = Vector3.Distance(startMarker.localPosition, endMarker.localPosition);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            GetComponent<StageNameLogo>().enabled = false;
+        }
     }
 
     private void Update()
