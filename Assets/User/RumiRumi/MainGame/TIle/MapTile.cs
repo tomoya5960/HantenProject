@@ -15,18 +15,39 @@ public class MapTile : MonoBehaviour
       }
 
     [HideInInspector] public  SpriteRenderer spriteRenderer;
+    [HideInInspector] public SpriteRenderer childSpriteRenderer; //子オブジェクトのスプライトレンダラー
     [HideInInspector] public  Vector2Int     tilePos;
-     public  TurnFaceType   turnFaceType; //タイルの表裏
+    [HideInInspector] public  Vector4        color = new Vector4();
+    [HideInInspector] public  TurnFaceType   turnFaceType; //タイルの表裏
                       private OnObjectType   _onObjectType;
                       
                       public  TileTypeId     tileId;         //タイルID
                       public  bool           isAdvance;      //前進できるか
-                      public  bool           isInvert;       //反転できるか
+                      public  bool           _isInvert;       //反転できるか
                       private bool           _isPlayer;      //岩が配置されているか
                       private bool           _isRope;        //プレイヤーが配置されているか
                       private bool           _isStone;       //ロープが配置されているか
-    [HideInInspector] public  GameObject     child;
+                      [HideInInspector] public  GameObject     child;
 
+    public bool isInvert
+    {
+        get => _isInvert;
+        set
+        {
+            _isInvert = value;
+            if(!childSpriteRenderer)childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+            if (_isInvert || tileId == TileTypeId.goal_01 || tileId == TileTypeId.goal_02)
+            {
+                childSpriteRenderer.color = new Color(0, 255, 255, 0.4f); //シアン
+                color = childSpriteRenderer.color;
+            }
+            else 
+            {
+                childSpriteRenderer.color = new Color(255, 0, 0, 0.4f);             //赤色
+                color = childSpriteRenderer.color;
+            }
+        }
+    }
     public bool isPlayer
     {
         get => _isPlayer;
@@ -137,6 +158,9 @@ public class MapTile : MonoBehaviour
                 child.transform.parent = null;
                 child.transform.position = transform.position;
                 StageManager.Instance.stageObject.Add(child);
+                
+                var beforeMaptile = StageManager.Instance.mapManager.mapTiles[tilePos.x, tilePos.y].GetComponent<MapTile>();
+                beforeMaptile.childSpriteRenderer.color = new Color(255, 0, 0, 0.4f);//赤
                 return;
             }
             

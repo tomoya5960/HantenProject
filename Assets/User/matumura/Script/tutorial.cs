@@ -42,7 +42,8 @@ public class tutorial : MonoBehaviour
                     makimono.GetComponent<StageNameLogo>().callCoroutine();
                 }
             }
-            
+
+            GeneralManager.Instance.isPlay = masasi;
             obj.SetActive(!masasi);
         }
 

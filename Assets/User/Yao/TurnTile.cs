@@ -208,7 +208,7 @@ public class TurnTile : MonoBehaviour
             {
                 foreach (var tile in TurnTileList)
                 {
-                    tile.gameObject.GetComponent<TileMaster>().Hanten();
+                    tile.gameObject.GetComponent<TileMaster>().ChaneTile();
                     for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
                     {
                         if (tile.transform.GetChild(num).gameObject.name == "Select")
