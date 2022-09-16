@@ -37,9 +37,9 @@ public class TileMaster : MonoBehaviour
     private IEnumerator Kaiten()
     {
         GeneralManager.Instance.isPlay = false;
-        for (int i = 0; i < 180; i += 3)
+        for (int i = 0; i < 180; i += 6)
         {
-            transform.Rotate(0,3,0);
+            transform.Rotate(0,6,0);
             //見えないところで反転するよ
             if (i == 90 || i == -90)
             {

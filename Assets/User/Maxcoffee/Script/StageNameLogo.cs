@@ -35,7 +35,7 @@ public class StageNameLogo : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
 
-        if (useSpriteList.Count > GeneralManager.Instance.selectStageNum || GeneralManager.Instance.selectStageNum != 0 )
+        if (11 == GeneralManager.Instance.selectStageNum || GeneralManager.Instance.selectStageNum != 0 )
         {
             callCoroutine();
         }
