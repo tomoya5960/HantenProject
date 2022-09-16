@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MaxcoffeeScene.unity
+    guid: d1b151c1411773e4e8ad6b7bf140ea66
+  - enabled: 1
+    path: Assets/Scenes/SelectStageScene.unity
+    guid: bfac678b07d366c46a60cf89b43a5b4d
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: e36356afe575fa0418a835849f897410
+  - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: 1abc98d499fe5434e99f29027035e54f
   m_configObjects: {}
