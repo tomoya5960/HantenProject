@@ -145,6 +145,23 @@ public class TurnTile : MonoBehaviour
 
                                     }
                                 }
+                                else
+                                {
+                                    Debug.Log("元に戻った");
+                                    foreach (var tile in TurnTileList)
+                                    {
+                                        for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
+                                        {
+                                            if (tile.transform.GetChild(num).gameObject.name == "Select")
+                                            {
+                                                tile.transform.GetChild(num).gameObject.SetActive(false);
+                                                emphasisTile = tile.transform.GetChild(num).gameObject;
+                                            }
+                                        }
+                                        emphasisTile.gameObject.SetActive(false);
+                                    }
+                                    TurnTileList.Clear();
+                                }
                             }
                         }
                     }
