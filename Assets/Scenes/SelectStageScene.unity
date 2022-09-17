@@ -1170,7 +1170,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u53CD\u8EE2\u56DE\u6570 2\u56DE"
+  m_Text: "\u53CD\u8EE2\u56DE\u6570 4\u56DE"
 --- !u!222 &290803761
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2810,7 +2810,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4f7b0932e9a4a7a408302ef467db2ca1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94acb40f6a9f1874682446b9cc96800d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
