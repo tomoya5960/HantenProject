@@ -6,7 +6,6 @@ public class MenuButton : MonoBehaviour
 {
     public bool Name = false;
     public GameObject Other;
-    public GameObject Menu1;
 
     public void MenuOnOff()
     {
@@ -15,20 +14,18 @@ public class MenuButton : MonoBehaviour
             if (Name == false)
             {
                 Name = true;
-                    Other.GetComponent<TurnTile>().enabled = false;
-                    GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_04);
-                    GeneralManager.Instance.isPlay = false;
-                    GeneralManager.Instance.soundManager.MuteBGM();
+                
+                Other.GetComponent<MenuImage>().OpenMenuBota();
+                GeneralManager.Instance.isPlay = false;
+
             }
             else if (Name == true)
             {
                 Name = false;
                 Other.GetComponent<TurnTile>().enabled = true;
-                GeneralManager.Instance.isPlay = true;
-                GeneralManager.Instance.soundManager.ResumeBGM();
-            }
+                Other.GetComponent<MenuImage>().CloseMenuBota();
 
-            Menu1.SetActive(Name);
+            }
         }
     }
 }

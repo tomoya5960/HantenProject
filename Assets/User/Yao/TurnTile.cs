@@ -1,15 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEditor.SceneManagement;
 
 public class TurnTile : MonoBehaviour
 {
     private GameObject _choiceTile, _choiceTileDir, emphasisTile, playerObject;
 
     private bool checkStone = false;
-
+    private bool Hanten = false;
     [SerializeField]
     private List<GameObject> TurnTileList = new List<GameObject>();
     GameObject firstTile;
@@ -25,6 +23,7 @@ public class TurnTile : MonoBehaviour
                 if (Hit2d.transform.gameObject.tag == "MapTile")
                 {
                     firstTile = Hit2d.transform.gameObject;
+                    Hanten = true;
                 }
             }
         }
@@ -145,6 +144,22 @@ public class TurnTile : MonoBehaviour
 
                                     }
                                 }
+                                else
+                                {
+                                    foreach (var tile in TurnTileList)
+                                    {
+                                        for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
+                                        {
+                                            if (tile.transform.GetChild(num).gameObject.name == "Select")
+                                            {
+                                                tile.transform.GetChild(num).gameObject.SetActive(false);
+                                                emphasisTile = tile.transform.GetChild(num).gameObject;
+                                            }
+                                        }
+                                        emphasisTile.gameObject.SetActive(false);
+                                    }
+                                    TurnTileList.Clear();
+                                }
                             }
                         }
                     }
@@ -171,9 +186,13 @@ public class TurnTile : MonoBehaviour
                         }
                     }
                     emphasisTile.gameObject.SetActive(false);
+                    
                 }
                 checkStone = false;
-                GeneralManager.Instance.isPlay = true;
+                if (Hanten)
+                    GeneralManager.Instance.isPlay = true;
+                Hanten = false;
+
             }
             else if (StageManager.Instance.hantenNum > 0)
             {

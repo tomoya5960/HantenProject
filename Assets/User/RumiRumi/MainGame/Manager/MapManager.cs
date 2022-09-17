@@ -1,8 +1,6 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class MapManager : MonoBehaviour
 {
@@ -263,8 +261,8 @@ public class MapManager : MonoBehaviour
         /// </summary>
         public void LoadTurnData()
         {
-            if(_nowDataCount != 0) _nowDataCount--;
             Index loadDataNum = _nowDataCount;
+            if(_nowDataCount >= 1) _nowDataCount--;
             _mapData = JsonUtility.FromJson<MapData>(StageManager.Instance.saveStageData[loadDataNum]);
             if (StageManager.Instance.saveStageObjectData.Count >= 1)
             {
@@ -283,10 +281,10 @@ public class MapManager : MonoBehaviour
                 //ターン数を読み込み
                 StageManager.Instance.turnNum = StageManager.Instance.saveTurnNum[loadDataNum];
                 //反転数を読み込み
-                StageManager.Instance.hantenNum = StageManager.Instance.saveHantenNum[loadDataNum];
+                StageManager.Instance.hantenNum = StageManager.Instance.saveHantenNum[_nowDataCount];
                 //ロープの所持を読み込み
                 StageManager.Instance.isHaveRope = StageManager.Instance.saveIsHaveRope[loadDataNum];
-
+                StageManager.Instance.uiManager.ChangeRopeUI();
                 //マップデータを読み込み
                 foreach (var map in _mapData.tileChips.Select((mapChip, index) => new { mapChip, index }))
                 {

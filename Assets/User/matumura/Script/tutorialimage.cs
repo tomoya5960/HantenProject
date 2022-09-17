@@ -27,11 +27,16 @@ public class tutorialimage : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (SpriteNum != sprites.Count - 1)
-            {
-                SpriteNum++;
-                spriteRenderer.sprite = sprites[SpriteNum];
-            }
+            clickPage();
+        }
+    }
+
+    public void clickPage()
+    {
+        if (SpriteNum != sprites.Count - 1)
+        {
+            SpriteNum++;
+            spriteRenderer.sprite = sprites[SpriteNum];
         }
     }
 }
