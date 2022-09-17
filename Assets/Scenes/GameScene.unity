@@ -16266,6 +16266,10 @@ PrefabInstance:
       propertyPath: seClips.Array.data[4].Volume
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 7883595726206030904, guid: 611da3a573376ad45935a10d85858782, type: 3}
+      propertyPath: seClips.Array.data[9].Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7883595726206030905, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: selectStageNum
       value: 0
@@ -16394,7 +16398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc361f476771d74e9e514822344e048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 15
+  MoveSpeed: 40
   fps: 0.05
   sprites:
   - {fileID: -1862948018, guid: 70db42385b9a8dc41bd352b24a57e1b4, type: 3}

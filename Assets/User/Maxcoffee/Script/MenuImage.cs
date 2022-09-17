@@ -75,7 +75,7 @@ public class MenuImage : MonoBehaviour
     // ƒ{ƒ^ƒ“‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—
     public void OpenMenuBota()
     {
-        GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_10);
+        GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_09);
         GeneralManager.Instance.isPlay = false;
         countbt++;
         if (countbt == 1)
@@ -92,6 +92,7 @@ public class MenuImage : MonoBehaviour
     }
     public void CloseMenuBota()
     {
+        GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_09);
         GeneralManager.Instance.isPlay = true;
         countbt++;
         if (countbt == 2)
