@@ -14,7 +14,7 @@ public class BeforeBack : MonoBehaviour
     {
         if (GeneralManager.Instance.isPlay && !StageManager.Instance.isPlayerMove)
         {
-            GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_08);
+            GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_04);
             StageManager.Instance.mapManager.LoadTurnData();
         }
 
