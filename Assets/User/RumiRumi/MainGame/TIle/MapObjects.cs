@@ -16,6 +16,7 @@ public class MapObjects : MonoBehaviour
     private void Start()
     {
         pos = gameObject.transform.position;
+        
     }
     
     public void MoveStone(PlayerDirection playerDirection)
@@ -51,6 +52,8 @@ public class MapObjects : MonoBehaviour
             SetUpPlayerMove(playerDirection);
             //地面が氷床ならもう一度移動
         } while (StageManager.Instance.mapManager.mapTiles[checkPos.x, checkPos.y].GetComponent<MapTile>().tileId == TileTypeId.aisle_03);
+        //StageManager.Instance.mapManager.SaveTurnData();
+        //StageManager.Instance.mapManager.SaveObject();
     }
 
     private void SetUpPlayerMove(PlayerDirection playerDirection)
@@ -99,6 +102,10 @@ public class MapObjects : MonoBehaviour
     /// <returns></returns>
     IEnumerator Moving(PlayerDirection playerDirection)
     {
+        //前の場所にいたタイルの色を元に戻す
+        var beforeMaptile = StageManager.Instance.mapManager.mapTiles[objectPos.x, objectPos.y].GetComponent<MapTile>();
+        beforeMaptile.childSpriteRenderer.color = beforeMaptile.color;
+        
         Vector3 movePos = new Vector3();
         //移動した距離
         float movedDistance = 0f;
@@ -137,8 +144,10 @@ public class MapObjects : MonoBehaviour
         //移動の誤差を修正
         transform.position = pos;
         GeneralManager.Instance.isPlay = true;
-        StageManager.Instance.mapManager.SaveTurnData();
-        StageManager.Instance.mapManager.SaveObject();
+        
+        //今いる場所のタイルの色を赤にして反転できなくする
+        var nowMaptile = StageManager.Instance.mapManager.mapTiles[objectPos.x, objectPos.y].GetComponent<MapTile>();
+        nowMaptile.childSpriteRenderer.color = new Color(255, 0, 0, 0.4f);//赤
         yield break;
     }
     

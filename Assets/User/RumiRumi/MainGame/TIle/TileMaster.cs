@@ -26,6 +26,30 @@ public class TileMaster : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    public void ChangeTile()
+    {
+        //反転できる？
+        if (_mapTile.isInvert || _mapTile.turnFaceType == TurnFaceType.Back && spriteLists[(int)TurnFaceType.Front].name == "goal_01")
+        {
+            StartCoroutine("Kaiten");
+        }
+    }
+    private IEnumerator Kaiten()
+    {
+        GeneralManager.Instance.isPlay = false;
+        for (int i = 0; i < 180; i += 6)
+        {
+            transform.Rotate(0,6,0);
+            //見えないところで反転するよ
+            if (i == 90 || i == -90)
+            {
+                Hanten();
+                GeneralManager.Instance.isPlay = true;
+            }
+            yield return null;
+        }
+    }
+    
     /// <summary>
     /// タイルの反転処理
     /// </summary>
@@ -186,10 +210,8 @@ public class TileMaster : MonoBehaviour
 
                     case TileTypeId.wall_01: //反転できる壁
                         return TileTypeId.aisle_02.ToString();
-                        break;
                     case TileTypeId.wall_03: //氷の壁
                         return TileTypeId.aisle_03.ToString();
-                        break;
 
                 #endregion
 

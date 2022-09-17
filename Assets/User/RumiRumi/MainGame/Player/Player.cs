@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public enum PlayerDirection  //移動する方向
 {
@@ -83,9 +80,9 @@ public class Player : MonoBehaviour
         if(_playerManager.CheckRock(playerDic)) return;
         do
         {
+            
             //移動前に座標を取得
             beforePos = StageManager.Instance.playerArrayPos;
-            
             _playerManager.SetUpPlayerMove(playerDic);
             //移動後の座標が変わっていなければそのまま終了する
             if (beforePos == StageManager.Instance.playerArrayPos) return;
@@ -93,6 +90,13 @@ public class Player : MonoBehaviour
         } while (StageManager.Instance.mapManager.CheckIceFloor());
         //プレイヤーの向きにあったスプライトに変更
         ChangePlayerSprite(playerDic);
+        
+        //前の場所にいたタイルの色を元に戻す
+        var beforeMaptile = StageManager.Instance.mapManager.mapTiles[beforePos.x, beforePos.y].GetComponent<MapTile>();
+        beforeMaptile.childSpriteRenderer.color = beforeMaptile.color;
+        //今いる場所のタイルの色を赤にして反転できなくする
+        var nowMaptile = StageManager.Instance.mapManager.mapTiles[StageManager.Instance.playerArrayPos.x, StageManager.Instance.playerArrayPos.y].GetComponent<MapTile>();
+        nowMaptile.childSpriteRenderer.color = new Color(255, 0, 0, 0.4f);//赤
     }
 
     /// <summary>

@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ScrollButton : MonoBehaviour
@@ -21,4 +21,14 @@ public class ScrollButton : MonoBehaviour
         GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_03);
     }
 
+    private void Update()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            GeneralManager.Instance.selectStageNum = 11;
+            GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_02);
+            SceneManager.LoadScene("GameScene");
+        }
+    }
 }

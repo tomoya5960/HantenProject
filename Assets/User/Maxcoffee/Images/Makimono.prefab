@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5030314172961165558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5030314172961165547}
+  - component: {fileID: 5030314172961165556}
+  - component: {fileID: 5030314172961165557}
+  m_Layer: 0
+  m_Name: Makimono
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5030314172961165547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030314172961165558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -710, y: 400, z: 0}
+  m_LocalScale: {x: 100.00001, y: 100.00001, z: 100.00001}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5030314172961165556
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030314172961165558}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1000
+  m_Sprite: {fileID: 21300000, guid: bcf6c1ab4c3e55b4dade222998221b35, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &5030314172961165557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030314172961165558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc84e9c8420d4e4ca0be2d06cc5525d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fps: 0.2
+  read: 1
+  MoveSpeed: 2
+  firstSprite: {fileID: 21300000, guid: bcf6c1ab4c3e55b4dade222998221b35, type: 3}
+  logoInfos:
+  - stageName: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB"
+    logoSprites:
+    - {fileID: 21300000, guid: 9f7c39483aa46b447971757ff0cfdc15, type: 3}
+    - {fileID: 21300000, guid: 3c57717708d4ab04caeae32115064bd0, type: 3}
+    - {fileID: 21300000, guid: 4dc4c2e87d3d5d242b366f167b889349, type: 3}
+    - {fileID: 21300000, guid: 6f859ee21ce04524fb1c451bc5ff2816, type: 3}
+    - {fileID: 21300000, guid: 54e00c6dee6c11440b33f96b0a217092, type: 3}
+  - stageName: "\u7B2C\u2160\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: e458c79b5ca6392409d9f890fa5bc827, type: 3}
+    - {fileID: 21300000, guid: ef52212ffce5e0f4a9bd2599d99c21be, type: 3}
+    - {fileID: 21300000, guid: d2aeac32368e6924581a82e46820d27e, type: 3}
+    - {fileID: 21300000, guid: a04abdaff66c63942be7fc91a9421e45, type: 3}
+    - {fileID: 21300000, guid: 16f066178facdef4dafd614591a50e3d, type: 3}
+  - stageName: "\u7B2C\u2161\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: 89c18ee10244cbc4787221e6f966d6fd, type: 3}
+    - {fileID: 21300000, guid: 960fed9d50a5c0a47b6cd153b8f6725d, type: 3}
+    - {fileID: 21300000, guid: e2027d34051de6746b8038841b04483b, type: 3}
+    - {fileID: 21300000, guid: 8bfe5769d2685d74c99fbc92a5d235ce, type: 3}
+    - {fileID: 21300000, guid: 707ed826f961bb14cacf69237412061b, type: 3}
+  - stageName: "\u7B2C\u2162\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: f3f489e1a5e3fa4489659ec7baef89a6, type: 3}
+    - {fileID: 21300000, guid: 73f3ec5b40f24764d8294fddffa8792d, type: 3}
+    - {fileID: 21300000, guid: 837eb740b74bb8147801610f86b99412, type: 3}
+    - {fileID: 21300000, guid: b26dca5d3147ebf48ba9adabb015c82c, type: 3}
+    - {fileID: 21300000, guid: a797f089e8d134a418822c6bd7643643, type: 3}
+  - stageName: "\u7B2C\u2163\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: e48e19004ca082441b14c6e98f889e6d, type: 3}
+    - {fileID: 21300000, guid: 15c2d9b5c5fc408459d8a6835658ea98, type: 3}
+    - {fileID: 21300000, guid: 7553af2208a03ed498108871aa4d7fc2, type: 3}
+    - {fileID: 21300000, guid: 99076cd504f6ca94c82c5f7fe6344697, type: 3}
+    - {fileID: 21300000, guid: 0518f901e181836489b2b13c56a602ea, type: 3}
+  - stageName: "\u7B2C\u2164\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: 0a82f79935843b5439c0e4aad6028624, type: 3}
+    - {fileID: 21300000, guid: d2c3066db19ffc54393cdf02b5096bf3, type: 3}
+    - {fileID: 21300000, guid: 0725b142946a3f04aad1427f29233ce9, type: 3}
+    - {fileID: 21300000, guid: fdebb5f0ca94ff4489405699c712c38e, type: 3}
+    - {fileID: 21300000, guid: ba6c2883a27ad894192b38a64a03968d, type: 3}
+  - stageName: "\u7B2C\u2165\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: f01e4aedeeac74e4db1cf39fa424ce30, type: 3}
+    - {fileID: 21300000, guid: 9a1cb38955081a74099d44af217087e2, type: 3}
+    - {fileID: 21300000, guid: 4bebd00a139cf1b4fac3f5cbe55895fb, type: 3}
+    - {fileID: 21300000, guid: 3c06c324e4898ce4688fbe52a14edb54, type: 3}
+    - {fileID: 21300000, guid: 325c42c837db54c438b00d8207426f12, type: 3}
+  - stageName: "\u7B2C\u2166\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: ef50decf1e51ddb408b0c798818d4230, type: 3}
+    - {fileID: 21300000, guid: b726544ffb2d91849aaa60591533059c, type: 3}
+    - {fileID: 21300000, guid: e23e96dab2758d54f89be65f45906e1f, type: 3}
+    - {fileID: 21300000, guid: 163e11afd61ea4642bdcc8b6a0d474ea, type: 3}
+    - {fileID: 21300000, guid: 32070c87fc9f90a4493fe138734ddc2b, type: 3}
+  - stageName: "\u7B2C\u2167\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: da4c9c9724e67e649afc27ef8fd86f65, type: 3}
+    - {fileID: 21300000, guid: e5f93aeec0d339f4dafd748f01ee4781, type: 3}
+    - {fileID: 21300000, guid: c72254e913b765d4f81feb3ef5dfa412, type: 3}
+    - {fileID: 21300000, guid: 03b0b3f27417ce94bbf4ad61c29419b6, type: 3}
+    - {fileID: 21300000, guid: 633089696ef610b419922280bc1b8765, type: 3}
+  - stageName: "\u7B2C\u2168\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: b894820f781c81d4e891e48c94c237f4, type: 3}
+    - {fileID: 21300000, guid: fd637f9112ca4684291aa7a181095d8c, type: 3}
+    - {fileID: 21300000, guid: 414a385f6cbbf574c84338dd56ebf4b8, type: 3}
+    - {fileID: 21300000, guid: b78f436a45267534f95c167350108b63, type: 3}
+    - {fileID: 21300000, guid: 28ddcd6500fa9be4cb3a4dd9d8dde010, type: 3}
+  - stageName: "\u7B2C\u2168\u968E\u5C64"
+    logoSprites:
+    - {fileID: 21300000, guid: 190f010a79194ef46b15895e6efcae92, type: 3}
+    - {fileID: 21300000, guid: a233bc30803c7de4eb7068f54e978acb, type: 3}
+    - {fileID: 21300000, guid: 57f2fa184370c9e4e904fb8101726f8a, type: 3}
+    - {fileID: 21300000, guid: 4d421b4ad74251640afb574b2da80ead, type: 3}
+    - {fileID: 21300000, guid: ae2c8a7c10701d046b69f201006c48fe, type: 3}
+  startMarker: {fileID: 5030314172961165547}
+  endMarker: {fileID: 0}
+  present_Location: 1

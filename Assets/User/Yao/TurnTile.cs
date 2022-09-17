@@ -1,22 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEditor.SceneManagement;
 
 public class TurnTile : MonoBehaviour
 {
     private GameObject _choiceTile, _choiceTileDir, emphasisTile, playerObject;
 
     private bool checkStone = false;
-
+    private bool Hanten = false;
     [SerializeField]
     private List<GameObject> TurnTileList = new List<GameObject>();
     GameObject firstTile;
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D Hit2d = Physics2D.Raycast((Vector2)Ray.origin, (Vector2)Ray.direction);
@@ -25,6 +23,7 @@ public class TurnTile : MonoBehaviour
                 if (Hit2d.transform.gameObject.tag == "MapTile")
                 {
                     firstTile = Hit2d.transform.gameObject;
+                    Hanten = true;
                 }
             }
         }
@@ -40,7 +39,7 @@ public class TurnTile : MonoBehaviour
                     {
                         GeneralManager.Instance.isPlay = false;
 
-                        if(Hit2d.transform.gameObject.tag == "Stone")
+                        if (Hit2d.transform.gameObject.tag == "Stone")
                         {
                             TurnTileList.Add(Hit2d.transform.gameObject);
                             checkStone = true;
@@ -49,7 +48,7 @@ public class TurnTile : MonoBehaviour
 
                         if (Hit2d.transform.gameObject.GetComponent<MapTile>().tileId != 0)
                         {
-               
+
                             if (_choiceTile == null)
                             {
                                 _choiceTile = Hit2d.transform.gameObject;
@@ -106,8 +105,8 @@ public class TurnTile : MonoBehaviour
                                                     {
                                                         if (tileArray[i].transform.localPosition.x != _choiceTile.transform.localPosition.x) continue;
                                                         TurnTileList.Add(tileArray[i].gameObject);
-                                                        var Pos =tileArray[i].GetComponent<MapTile>().tilePos;
-                                                        if (StageManager.Instance.mapManager.mapObjects[Pos.x,Pos.y] != null)
+                                                        var Pos = tileArray[i].GetComponent<MapTile>().tilePos;
+                                                        if (StageManager.Instance.mapManager.mapObjects[Pos.x, Pos.y] != null)
                                                         {
                                                             checkStone = true;
                                                         }
@@ -147,7 +146,10 @@ public class TurnTile : MonoBehaviour
                                 }
                                 else
                                 {
+<<<<<<< HEAD
                                     Debug.Log("元に戻った");
+=======
+>>>>>>> Main
                                     foreach (var tile in TurnTileList)
                                     {
                                         for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
@@ -174,8 +176,8 @@ public class TurnTile : MonoBehaviour
             firstTile = null;
             _choiceTile = null;
             _choiceTileDir = null;
-            playerObject = StageManager.Instance.mapManager.mapTiles[StageManager.Instance.playerArrayPos.x,StageManager.Instance.playerArrayPos.y];
-            if (TurnTileList.Count <= 1 || TurnTileList.Contains(playerObject)|| checkStone == true)
+            playerObject = StageManager.Instance.mapManager.mapTiles[StageManager.Instance.playerArrayPos.x, StageManager.Instance.playerArrayPos.y];
+            if (TurnTileList.Count <= 1 || TurnTileList.Contains(playerObject) || checkStone == true)
             {
                 foreach (var tile in TurnTileList)
                 {
@@ -188,9 +190,13 @@ public class TurnTile : MonoBehaviour
                         }
                     }
                     emphasisTile.gameObject.SetActive(false);
+                    
                 }
                 checkStone = false;
-                GeneralManager.Instance.isPlay = true;
+                if (Hanten)
+                    GeneralManager.Instance.isPlay = true;
+                Hanten = false;
+
             }
             else if (StageManager.Instance.hantenNum > 0)
             {
@@ -223,7 +229,7 @@ public class TurnTile : MonoBehaviour
             {
                 foreach (var tile in TurnTileList)
                 {
-                    tile.gameObject.GetComponent<TileMaster>().Hanten();
+                    tile.gameObject.GetComponent<TileMaster>().ChangeTile();
                     for (int num = 0; num < tile.transform.gameObject.transform.childCount; num++)
                     {
                         if (tile.transform.GetChild(num).gameObject.name == "Select")
@@ -236,9 +242,10 @@ public class TurnTile : MonoBehaviour
                 }
                 StageManager.Instance.hantenNum--;
                 StageManager.Instance.mapManager.SaveTurnData();
+                StageManager.Instance.mapManager.SaveObject();
                 GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_11);
 
-                GeneralManager.Instance.isPlay = true;
+                //GeneralManager.Instance.isPlay = true;
             }
             else
             {
@@ -253,10 +260,10 @@ public class TurnTile : MonoBehaviour
                         }
                     }
                     emphasisTile.gameObject.SetActive(false);
-                    GeneralManager.Instance.isPlay = true;
                 }
                 TurnTileList.Clear();
                 TurnTileList = new List<GameObject>();
+                GeneralManager.Instance.isPlay = true;
             }
         }
     }

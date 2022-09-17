@@ -1,8 +1,6 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class MapManager : MonoBehaviour
 {
@@ -10,9 +8,10 @@ public class MapManager : MonoBehaviour
      public          StageObjectData stageObjectData;
      
      
-     public  readonly GameObject[,] mapTiles = new GameObject[7,8]; //マップの二次元配列
-     public           GameObject[,] mapObjects = new GameObject[7,8]; //マップにあるオブジェクトの二次元配列
-     private          int           _nowDataCount;                  //現在読み込んでいるデータのリスト番号を取得   
+                       public  readonly GameObject[,] mapTiles = new GameObject[7,8];   //マップの二次元配列
+                       public           GameObject[,] mapObjects = new GameObject[7,8]; //マップにあるオブジェクトの二次元配列
+     [HideInInspector] public           int           _nowDataCount;                    //現在読み込んでいるデータのリスト番号を取得
+                       public           GameObject    ropeAnim;                         //ロープアニメーション
 
     #region ゲーム開始前に使う関数
 
@@ -173,6 +172,8 @@ public class MapManager : MonoBehaviour
             StageManager.Instance.isHaveRope = obj.isRope;
             //プレイヤーがロープを取得したときに呼ばれる
             StageManager.Instance.isHaveRope = true;
+            //ロープアニメーション再生
+            Instantiate (ropeAnim, StageManager.Instance.player.transform.localPosition, Quaternion.identity);
             obj.isRope = false;
             obj.child.SetActive(false);
         }
@@ -260,18 +261,15 @@ public class MapManager : MonoBehaviour
         /// </summary>
         public void LoadTurnData()
         {
-            Index loadDataNum = _nowDataCount - 1;
-            if(_nowDataCount != 1) _nowDataCount--;
+            Index loadDataNum = _nowDataCount;
+            if(_nowDataCount >= 1) _nowDataCount--;
             _mapData = JsonUtility.FromJson<MapData>(StageManager.Instance.saveStageData[loadDataNum]);
-            if (StageManager.Instance.stageObject.Count >= 1)
+            if (StageManager.Instance.saveStageObjectData.Count >= 1)
             {
-                Debug.Log("a");
                 stageObjectData = JsonUtility.FromJson<StageObjectData>(StageManager.Instance.saveStageObjectData[loadDataNum]);  
             }
-
             
             #region ロード
-
                 //二次配列のプレイヤー座標を読み込み
                 StageManager.Instance.playerArrayPos = StageManager.Instance.savePlayerArray[loadDataNum];
                 //プレイヤーのPositionを読み込み
@@ -283,10 +281,10 @@ public class MapManager : MonoBehaviour
                 //ターン数を読み込み
                 StageManager.Instance.turnNum = StageManager.Instance.saveTurnNum[loadDataNum];
                 //反転数を読み込み
-                StageManager.Instance.hantenNum = StageManager.Instance.saveHantenNum[loadDataNum];
+                StageManager.Instance.hantenNum = StageManager.Instance.saveHantenNum[_nowDataCount];
                 //ロープの所持を読み込み
                 StageManager.Instance.isHaveRope = StageManager.Instance.saveIsHaveRope[loadDataNum];
-
+                StageManager.Instance.uiManager.ChangeRopeUI();
                 //マップデータを読み込み
                 foreach (var map in _mapData.tileChips.Select((mapChip, index) => new { mapChip, index }))
                 {
@@ -295,8 +293,9 @@ public class MapManager : MonoBehaviour
                     string spriteName = ((TileTypeId)map.mapChip.tileId).ToString();
                     //Texturesにある取得した名前のスプライトを取得
                     Sprite tileSprite = Resources.Load<Sprite>("Textures/" + spriteName) as Sprite;
-                    
+
                     //差し替え
+                    tileData.turnFaceType = map.mapChip.turnFaceType;
                     tileData.spriteRenderer.sprite = tileSprite;
                     tileData.tileId = map.mapChip.tileId;
                     tileData.isAdvance = map.mapChip.isAdvance;
