@@ -1170,7 +1170,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u53CD\u8EE2\u56DE\u6570 3\u56DE"
+  m_Text: "\u53CD\u8EE2\u56DE\u6570 2\u56DE"
 --- !u!222 &290803761
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1250,7 +1250,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u53CD\u8EE2\u56DE\u6570 3\u56DE"
+  m_Text: "\u53CD\u8EE2\u56DE\u6570 2\u56DE"
 --- !u!222 &310627978
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2043,7 +2043,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u53CD\u8EE2\u56DE\u6570 3\u56DE"
+  m_Text: "\u53CD\u8EE2\u56DE\u6570 5\u56DE"
 --- !u!222 &577460289
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4540,7 +4540,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u53CD\u8EE2\u56DE\u6570 3\u56DE"
+  m_Text: "\u53CD\u8EE2\u56DE\u6570 1\u56DE"
 --- !u!222 &1166360036
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5093,7 +5093,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u53CD\u8EE2\u56DE\u6570 3\u56DE"
+  m_Text: "\u53CD\u8EE2\u56DE\u6570 1\u56DE"
 --- !u!222 &1265836724
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6302,7 +6302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u53CD\u8EE2\u56DE\u6570 3\u56DE"
+  m_Text: "\u53CD\u8EE2\u56DE\u6570 5\u56DE"
 --- !u!222 &1684463021
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6732,7 +6732,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u53CD\u8EE2\u56DE\u6570 3\u56DE"
+  m_Text: "\u53CD\u8EE2\u56DE\u6570 1\u56DE"
 --- !u!222 &1769889080
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6981,7 +6981,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u53CD\u8EE2\u56DE\u6570 3\u56DE"
+  m_Text: "\u53CD\u8EE2\u56DE\u6570 2\u56DE"
 --- !u!222 &1855784358
 CanvasRenderer:
   m_ObjectHideFlags: 0

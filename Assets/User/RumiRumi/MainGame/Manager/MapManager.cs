@@ -1,9 +1,6 @@
 using System;
 using System.Linq;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class MapManager : MonoBehaviour
 {
