@@ -16262,6 +16262,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7883595726206030904, guid: 611da3a573376ad45935a10d85858782, type: 3}
+      propertyPath: seClips.Array.data[4].Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7883595726206030905, guid: 611da3a573376ad45935a10d85858782, type: 3}
       propertyPath: selectStageNum
       value: 0
