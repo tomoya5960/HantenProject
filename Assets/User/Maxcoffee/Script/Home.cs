@@ -82,7 +82,7 @@ public class Home : MonoBehaviour
 	    GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_02);
 		GeneralManager.Instance.soundManager.StopBGM();
 		GeneralManager.Instance.selectStageNum++;
-		if (GeneralManager.Instance.selectStageNum > 2)
+		if (GeneralManager.Instance.selectStageNum > 10)
         {
 			SceneManager.LoadScene("SelectStageScene");
 		}

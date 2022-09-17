@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class tutorial : MonoBehaviour
@@ -7,6 +9,8 @@ public class tutorial : MonoBehaviour
     private bool masasi = false;
     public GameObject matumura;
     [SerializeField]private GameObject obj;
+    [SerializeField] private GameObject makimono;
+    private bool start= false;
     void Start()
     {
         if (GeneralManager.Instance.selectStageNum != 0) GetComponent<tutorial>().enabled  = false;
@@ -31,9 +35,16 @@ public class tutorial : MonoBehaviour
             {
                 masasi =(true);
                 GeneralManager.Instance.isPlay = false;
+                makimono.SetActive(true);
+                if (!start)
+                {
+                    start = true;
+                    makimono.GetComponent<StageNameLogo>().callCoroutine();
+                }
             }
 
-            obj.SetActive(masasi);
+            GeneralManager.Instance.isPlay = masasi;
+            obj.SetActive(!masasi);
         }
 
     }

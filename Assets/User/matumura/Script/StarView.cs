@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StarView : MonoBehaviour
 {
-    [SerializeField, Tooltip("星の最大値")] private int MaxStarValue = 3;
+    [SerializeField, Tooltip("星の最大値")] private int MaxStarValue = 6;
     [SerializeField, Tooltip("難易度の値")] private int StarValue = 0;
 
     private Text text;
@@ -38,6 +38,7 @@ public class StarView : MonoBehaviour
                 startext = startext.Insert(0, "☆");
             }
         }
+
         return startext;
     }
 
