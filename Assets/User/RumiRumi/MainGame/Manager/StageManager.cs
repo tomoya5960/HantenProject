@@ -41,7 +41,8 @@ public class StageManager : MonoBehaviour
         set
         {
             _isHaveRope = value;
-            
+            if(_isHaveRope)
+                GeneralManager.Instance.soundManager.PlaySE(SoundManager.SeName.se_12);
             uiManager.ChangeRopeUI();
         }
     }
