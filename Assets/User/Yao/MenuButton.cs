@@ -14,7 +14,9 @@ public class MenuButton : MonoBehaviour
             if (Name == false)
             {
                 Name = true;
+                
                 Other.GetComponent<MenuImage>().OpenMenuBota();
+                GeneralManager.Instance.isPlay = false;
 
             }
             else if (Name == true)

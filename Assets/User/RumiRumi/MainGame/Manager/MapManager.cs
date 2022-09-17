@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -286,7 +287,7 @@ public class MapManager : MonoBehaviour
                 StageManager.Instance.hantenNum = StageManager.Instance.saveHantenNum[_nowDataCount];
                 //ロープの所持を読み込み
                 StageManager.Instance.isHaveRope = StageManager.Instance.saveIsHaveRope[loadDataNum];
-
+                StageManager.Instance.uiManager.ChangeRopeUI();
                 //マップデータを読み込み
                 foreach (var map in _mapData.tileChips.Select((mapChip, index) => new { mapChip, index }))
                 {

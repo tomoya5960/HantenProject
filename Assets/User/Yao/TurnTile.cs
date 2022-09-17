@@ -9,7 +9,7 @@ public class TurnTile : MonoBehaviour
     private GameObject _choiceTile, _choiceTileDir, emphasisTile, playerObject;
 
     private bool checkStone = false;
-
+    private bool Hanten = false;
     [SerializeField]
     private List<GameObject> TurnTileList = new List<GameObject>();
     GameObject firstTile;
@@ -25,6 +25,7 @@ public class TurnTile : MonoBehaviour
                 if (Hit2d.transform.gameObject.tag == "MapTile")
                 {
                     firstTile = Hit2d.transform.gameObject;
+                    Hanten = true;
                 }
             }
         }
@@ -171,9 +172,13 @@ public class TurnTile : MonoBehaviour
                         }
                     }
                     emphasisTile.gameObject.SetActive(false);
+                    
                 }
                 checkStone = false;
-                GeneralManager.Instance.isPlay = true;
+                if (Hanten)
+                    GeneralManager.Instance.isPlay = true;
+                Hanten = false;
+
             }
             else if (StageManager.Instance.hantenNum > 0)
             {
